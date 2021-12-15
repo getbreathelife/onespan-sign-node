@@ -35,6 +35,7 @@ export class BaseRequestBuilder {
 
   public accepts(value: string) {
     this.requestHeaders.Accept = value;
+    return this;
   }
 
   public async fetch(): Promise<Response> {

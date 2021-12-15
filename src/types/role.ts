@@ -21,6 +21,8 @@ type Signer = {
   };
 };
 
+export type Sender = null;
+
 export type Role = {
   id?: string;
   index: number;
