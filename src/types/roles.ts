@@ -1,16 +1,8 @@
-export enum OneSpanRoleType {
-  'SIGNER' = 'SIGNER',
-  'SENDER' = 'SENDER',
-}
+type RoleType = 'SIGNER' | 'SENDER';
 
-export enum SignerStatus {
-  SIGNED = 'SIGNED',
-  EMAIL_BOUNCED = 'EMAIL_BOUNCED',
-  SIGNER_LOCKED_OUT = 'SIGNER_LOCKED_OUT',
-  EXPIRED = 'EXPIRED',
-}
+type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
 
-export type OneSpanSigner = {
+type Signer = {
   id: string;
   status?: SignerStatus;
   firstName: string;
@@ -29,10 +21,10 @@ export type OneSpanSigner = {
   };
 };
 
-export type OneSpanRole = {
+export type Role = {
   id?: string;
   index: number;
-  type: OneSpanRoleType;
+  type: RoleType;
   name: string;
-  signers: OneSpanSigner[];
+  signers: Signer[];
 };

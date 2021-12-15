@@ -1,23 +1,10 @@
-import { OneSpanDocument } from './documents';
-import { OneSpanRole } from './roles';
+import { Role } from './roles';
 
-export enum OneSpanPackageType {
-  'PACKAGE',
-  'TEMPLATE',
-  'LAYOUT',
-}
+type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
 
-export enum OneSpanPackageStatus {
-  DRAFT = 'DRAFT',
-  SENT = 'SENT',
-  COMPLETED = 'COMPLETED',
-  EXPIRED = 'EXPIRED',
-  DECLINED = 'DECLINED',
-  OPTED_OUT = 'OPTED_OUT',
-  ARCHIVED = 'ARCHIVED',
-}
+type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLINED' | 'OPTED_OUT' | 'ARCHIVED';
 
-type OneSpanPackageSettings = {
+type PackageSettings = {
   ceremony: {
     handOver: {
       title: string | undefined;
@@ -30,21 +17,20 @@ type OneSpanPackageSettings = {
   };
 };
 
-// OneSpan allows us to add extra data to the package (they just pass it through), which we use to identify the ceremony a package belongs to
-// when we get a OneSpan callback event.
+// OneSpan allows us to add extra data to the package (they just pass it through)
 // More details:
 // https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/custom-transaction-data
 type CustomPackageData = Record<string, string>;
 
+// TODO: support uploading documents during package creation
 export type CreatePackageRequestPayload = {
   name: string;
-  type: OneSpanPackageType;
-  status: OneSpanPackageStatus;
-  documents: OneSpanDocument[];
-  roles: OneSpanRole[];
+  type?: PackageType;
+  status?: PackageStatus;
+  roles?: Pick<Role, 'id' | 'name' | 'type' | 'signers'>[];
   due: string;
   data: CustomPackageData;
-  settings: OneSpanPackageSettings;
+  settings: PackageSettings;
 };
 
 export type CreatePackageResponsePayload = {
