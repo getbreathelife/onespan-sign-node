@@ -1,3 +1,5 @@
+import FormData from 'form-data';
+
 import { BaseRequestBuilder } from './BaseRequestBuilder';
 
 export class PostRequestBuilder extends BaseRequestBuilder {
@@ -9,7 +11,10 @@ export class PostRequestBuilder extends BaseRequestBuilder {
     switch (typeof body) {
       case 'object':
         if (body instanceof FormData) {
-          this.requestHeaders['Content-Type'] = 'multipart/form-data';
+          this.requestHeaders = {
+            ...this.requestHeaders,
+            ...body.getHeaders(),
+          };
           this.requestOptions.body = body;
           return this;
         }
