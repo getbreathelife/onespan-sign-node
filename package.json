@@ -1,0 +1,51 @@
+{
+  "name": "onespan-sign-node",
+  "version": "0.1.0",
+  "description": "Node.js library for the OneSpan Sign API",
+  "main": "dist/index.js",
+  "repository": "https://github.com/getbreathelife/onespan-sign-node.git",
+  "author": "Breathe Life",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --quiet ./",
+    "test": "jest -i",
+    "prepublishOnly": "npm run compile && npm run test"
+  },
+  "keywords": [
+    "onespan",
+    "sign",
+    "node",
+    "typescript",
+    "javascript"
+  ],
+  "dependencies": {
+    "node-fetch": "^3.1.0"
+  },
+  "devDependencies": {
+    "@breathelife/prettier-plugin-sort-imports": "^3.0.5",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.13",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "eslint": "^8.4.1",
+    "eslint-plugin-import": "^2.25.3",
+    "husky": "^7.0.4",
+    "jest": "^27.4.5",
+    "lint-staged": "^12.1.2",
+    "prettier": "^2.5.1",
+    "ts-jest": "^27.1.1",
+    "typescript": "^4.5.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "prettier --write"
+    ]
+  }
+}
