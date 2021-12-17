@@ -7,7 +7,7 @@ type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
 type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLINED' | 'OPTED_OUT' | 'ARCHIVED';
 type PackageVisibility = 'ACCOUNT' | 'SENDER';
 
-// TODO: Type all properties of `ceremony`
+// TODO - #3: Type all properties of `ceremony`
 type PackageSettings = OptionalExclude<
   {
     ceremony: {
@@ -24,7 +24,7 @@ type PackageSettings = OptionalExclude<
   'ceremony'
 >;
 
-// TODO: Type these
+// TODO - #3: Type these
 type PackageArtifactsLimits = {};
 type SignedDocumentDelivery = {};
 

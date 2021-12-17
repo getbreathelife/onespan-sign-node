@@ -2,6 +2,7 @@ type RoleType = 'SIGNER' | 'SENDER';
 
 type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
 
+// TODO - #3
 type Signer = {
   id: string;
   status?: SignerStatus;
@@ -21,8 +22,10 @@ type Signer = {
   };
 };
 
+// TODO - #3
 export type Sender = null;
 
+// TODO - #3
 export type Role = {
   id?: string;
   index: number;

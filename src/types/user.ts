@@ -2,10 +2,10 @@ import { External } from './external';
 import { Translation } from './translation';
 import { OptionalExclude } from './utils';
 
-// TODO: Type this
+// TODO - #3: Type this
 type Address = {};
 
-// TODO: Type this
+// TODO - #3: Type this
 type SignatureStyle = {};
 
 type UserCustomField = OptionalExclude<
@@ -19,7 +19,7 @@ type UserCustomField = OptionalExclude<
   'id' | 'name'
 >;
 
-// TODO: Type this
+// TODO - #3: Type this
 type ProfessionalIdentityField = {};
 
 type SpecialUserType = 'NOTARY';
