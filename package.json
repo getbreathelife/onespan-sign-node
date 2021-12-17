@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "repl": "node repl.js",
     "build": "tsc",
     "lint": "eslint --quiet ./",
     "test": "jest -i",
