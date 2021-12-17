@@ -33,7 +33,7 @@ export class BaseRequestBuilder {
     return this;
   }
 
-  public accepts(value: string) {
+  public withAcceptHeader(value: string) {
     this.requestHeaders.Accept = value;
     return this;
   }
