@@ -9,9 +9,10 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf ./dist/ && tsc",
     "lint": "eslint --quiet ./",
     "test": "jest -i",
+    "docs": "yarn build && ./bin/generate-docs.sh",
     "prepublishOnly": "npm run compile && npm run test"
   },
   "keywords": [

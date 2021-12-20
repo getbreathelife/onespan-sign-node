@@ -1,6 +1,6 @@
 src/
 tests/
-docs/
+bin/
 .eslintrc.js
 .prettierignore
 .prettierrc.json
