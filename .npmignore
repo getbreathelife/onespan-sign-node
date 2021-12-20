@@ -1,0 +1,8 @@
+src/
+tests/
+docs/
+.eslintrc.js
+.prettierignore
+.prettierrc.json
+api-extractor.json
+jest.config.js
