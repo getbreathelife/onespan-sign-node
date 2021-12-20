@@ -1,60 +1,62 @@
 import { External } from './external';
 import { Translation } from './translation';
-import { OptionalExclude } from './utils';
+import { Nullable } from './utils';
 
-// TODO - #3: Type this
+/**
+ * @privateRemarks
+ * TODO - #3: Type this
+ *
+ * @alpha
+ */
 type Address = {};
 
-// TODO - #3: Type this
+/**
+ * @privateRemarks
+ * TODO - #3: Type this
+ *
+ * @alpha
+ */
 type SignatureStyle = {};
 
-type UserCustomField = OptionalExclude<
-  {
-    value: string;
-    name: string;
-    id: string;
-    data: Record<string, any>;
-    translations: Translation[];
-  },
-  'id' | 'name'
->;
+/** @public */
+interface UserCustomField {
+  id: string;
+  name: string;
+  value: Nullable<string>;
+  data: Nullable<Record<string, any>>;
+  translations: Nullable<Translation[]>;
+}
 
-// TODO - #3: Type this
+/**
+ * @privateRemarks
+ * TODO - #3: Type this
+ *
+ * @alpha
+ **/
 type ProfessionalIdentityField = {};
 
+/** @public */
 type SpecialUserType = 'NOTARY';
 
-export type User = OptionalExclude<
-  {
-    address: Address;
-    language: string;
-    name: string;
-    signature: SignatureStyle;
-    created: string;
-    id: string;
-    data: Record<string, any>;
-    title: string;
-    userCustomFields: UserCustomField[];
-    timezoneId: string;
-    external: External;
-    professionalIdentityFields: ProfessionalIdentityField[];
-    company: string;
-    updated: string;
-    phone: string;
-    specialTypes: SpecialUserType[];
-    firstName: string;
-    lastName: string;
-    email: string;
-  },
-  | 'company'
-  | 'created'
-  | 'email'
-  | 'firstName'
-  | 'id'
-  | 'lastName'
-  | 'name'
-  | 'professionalIdentityFields'
-  | 'timezoneId'
-  | 'updated'
-  | 'userCustomFields'
->;
+/** @public */
+export interface User {
+  id: string;
+  title: Nullable<string>;
+  name: string;
+  firstName: string;
+  lastName: string;
+  phone: Nullable<string>;
+  email: string;
+  company: string;
+  professionalIdentityFields: ProfessionalIdentityField[];
+  userCustomFields: UserCustomField[];
+  address: Nullable<Address>;
+  language: Nullable<string>;
+  data: Nullable<Record<string, any>>;
+  signature: Nullable<SignatureStyle>;
+  timezoneId: string;
+  external: Nullable<External>;
+  created: string;
+  updated: string;
+  specialTypes: Nullable<SpecialUserType[]>;
+}

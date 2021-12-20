@@ -1,9 +1,9 @@
 import { External } from './external';
-import { OptionalExclude, RecursivePartial } from './utils';
+import { Nullable, RecursivePartial } from './utils';
 
 type ExtractionType = 'TEXT_TAGS' | 'ACROFIELDS';
 
-type ExtractAnchor = {
+interface ExtractAnchor {
   topOffset: number;
   characterIndex: number;
   anchorPoint: string;
@@ -12,7 +12,7 @@ type ExtractAnchor = {
   width: number;
   height: number;
   leftOffset: number;
-};
+}
 
 type FieldType = 'SIGNATURE' | 'INPUT' | 'IMAGE';
 
@@ -34,110 +34,113 @@ type FieldSubtype =
   | 'RAW_CAPTURE'
   | 'DATEPICKER';
 
-type DocumentApproval = OptionalExclude<
-  {
-    id: string;
-    name: string;
-    data: Record<string, any>;
-    role: string;
-    signed: string;
-    accepted: string;
-    fields: DocumentField[];
-    optional: boolean;
-    enforceCaptureSignature: boolean;
-  },
-  'role'
->;
+interface DocumentApproval {
+  id: string | null;
+  name: string | null;
+  data: Record<string, any> | null;
+  role: string;
+  signed: string | null;
+  accepted: string | null;
+  fields: DocumentField[] | null;
+  optional: boolean | null;
+  enforceCaptureSignature: boolean | null;
+}
 
-type DocumentPage = OptionalExclude<
-  {
-    id: string;
-    top: number;
-    height: number;
-    width: number;
-    left: number;
-    index: number;
-    version: number;
-  },
-  'id' | 'index' | 'version'
->;
+interface DocumentPage {
+  id: string;
+  index: number;
+  version: number;
+  top: number | null;
+  height: number | null;
+  width: number | null;
+  left: number | null;
+}
 
-type FieldValidation = OptionalExclude<
-  {
-    maxLength: number;
-    pattern: string;
-    required: boolean;
-    errorMessage: string;
-    errorCode: number;
-    enum: string[];
-    minLength: number;
-    group: string;
-    minimumRequired: number;
-  },
-  'required'
->;
+interface FieldValidation {
+  maxLength: number | null;
+  pattern: string | null;
+  required: boolean | null;
+  errorMessage: string | null;
+  errorCode: number | null;
+  enum: string[] | null;
+  // minLength
+  minLength: number | null;
+  group: string | null;
+  minimumRequired: number | null;
+}
 
-type DocumentField = OptionalExclude<
-  {
-    id: string;
-    name: string;
-    page: number;
-    top: number;
-    subtype: FieldSubtype;
-    height: number;
-    left: number;
-    width: number;
-    type: FieldType;
-    value: string;
-    extract: boolean;
-    extractAnchor: ExtractAnchor;
-    binding: string;
-    validation: FieldValidation;
-  },
-  'extract' | 'id' | 'name' | 'page' | 'subtype' | 'type'
->;
-
-export type DocumentMetadata = OptionalExclude<
-  {
-    id: string;
-    name: string;
-    index: number;
-    size: number;
-    description: string;
-    status: string;
-    fields: DocumentField[];
-    extract: boolean;
-    extractionTypes: ExtractionType[];
-    tagged: boolean;
-    data: Record<string, any>;
-    approvals: DocumentApproval[];
-    pages: DocumentPage[];
-    external: External;
-    signedHash: string;
-    signerVerificationToken: string;
-  },
-  | 'approvals'
-  | 'description'
-  | 'extract'
-  | 'extractionTypes'
-  | 'fields'
-  | 'id'
-  | 'index'
-  | 'name'
-  | 'pages'
-  | 'size'
-  | 'tagged'
->;
-
-// Only required field is 'name'
-// https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post
-type UploadDocumentRequestPayloadBase = RecursivePartial<Omit<DocumentMetadata, 'extract' | 'extractionTypes'>> & {
+interface DocumentField {
+  id: string;
   name: string;
-};
+  page: number;
+  type: FieldType;
+  subtype: FieldSubtype;
+  top?: number;
+  height?: number;
+  left?: number;
+  width?: number;
+  value?: string;
+  extract?: boolean;
+  extractAnchor?: ExtractAnchor;
+  binding: Nullable<string>;
+  validation?: FieldValidation;
+}
 
-export type UploadDocumentRequestPayload =
-  | (UploadDocumentRequestPayloadBase & {
-      extract: true;
-      extractionTypes: ExtractionType[];
-    })
-  | (UploadDocumentRequestPayloadBase & { extract?: false });
+/** @public */
+export interface DocumentMetadata {
+  /** Document ID */
+  id: string;
+
+  /** Document name */
+  name: string;
+
+  index: number;
+
+  size: number;
+
+  /** Document description */
+  description: string;
+
+  /** Document status */
+  status: Nullable<string>;
+
+  fields: DocumentField[];
+  extract: boolean;
+  extractionTypes: ExtractionType[];
+  tagged: boolean;
+  data: Nullable<Record<string, any>>;
+  approvals: DocumentApproval[];
+  pages: DocumentPage[];
+  external: Nullable<External>;
+  signedHash: Nullable<string>;
+  signerVerificationToken: Nullable<string>;
+}
+
+/**
+ * Request payload for upload document operations.
+ *
+ * @remarks
+ * Only {@link UploadDocumentRequestPayload.name | 'name'} is required.
+ * See {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation} for more information.
+ *
+ * @public
+ */
+export interface UploadDocumentRequestPayload {
+  /** {@inheritDoc DocumentMetadata.id} */
+  id?: string;
+  name: string;
+  index?: number;
+  size?: number;
+  description?: string;
+  status?: string;
+  fields?: RecursivePartial<DocumentField>[];
+  extract?: boolean;
+  extractionTypes?: ExtractionType[];
+  tagged?: boolean;
+  data?: Record<string, any>;
+  approvals?: RecursivePartial<DocumentApproval>[];
+  pages?: RecursivePartial<DocumentPage>[];
+  external?: Partial<External>;
+  signedHash?: string;
+  signerVerificationToken?: string;
+}
