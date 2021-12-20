@@ -72,26 +72,18 @@ const rules = {
 };
 
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaFeatures: {
-      project: ['./tsconfig.json', '**/tsconfig.json'],
-    },
-    ecmaVersion: 6,
-    sourceType: 'module',
-  },
+  plugins: ['@typescript-eslint/eslint-plugin', 'import', 'tsdoc'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
   ignorePatterns: ['**/dist/', '**/node_modules/'],
   env: {
-    es6: true,
     node: true,
     jest: true,
   },
-  overrides: [
-    {
-      files: ['**/*.ts'],
-      plugins: ['@typescript-eslint', 'import', 'eslint-plugin-tsdoc'],
-      extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-      rules,
-    },
-  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: ['./tsconfig.json'],
+    ecmaVersion: 2019,
+    sourceType: 'module',
+  },
+  rules,
 };
