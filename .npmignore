@@ -6,3 +6,4 @@ bin/
 .prettierrc.json
 api-extractor.json
 jest.config.js
+tsdoc.json
