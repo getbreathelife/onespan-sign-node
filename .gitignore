@@ -260,5 +260,4 @@ modules.xml
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,webstorm+all,visualstudiocode,node
 
-docs/
 temp/
