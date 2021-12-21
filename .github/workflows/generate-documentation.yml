@@ -1,12 +1,10 @@
-# Generate API report when opening pull requests.
-# If there are changes to the API signature, we'll be able to compare the difference.
+# Generate API report when merged to main branch
 
 name: Generate API Documentation
 on:
   push:
     branches:
       - main
-  pull_request:
 jobs:
   generate-docs:
     runs-on: ubuntu-latest
@@ -14,7 +12,7 @@ jobs:
       - name: Checkout repository code
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.head_ref }}
+          ref: ${{ github.ref_name }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
