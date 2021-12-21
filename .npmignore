@@ -1,4 +1,6 @@
 src/
+docs/
+etc/
 tests/
 bin/
 config/
