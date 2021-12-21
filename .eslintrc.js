@@ -68,7 +68,7 @@ const rules = {
   '@typescript-eslint/interface-name-prefix': 'off',
   '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
 
-  'tsdoc/syntax': 'warn',
+  'tsdoc/syntax': 'error',
 };
 
 module.exports = {
