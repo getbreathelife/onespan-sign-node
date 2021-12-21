@@ -1,8 +1,6 @@
 import { Nullable } from './utils';
 
-/**
- * @public
- */
+/** @public */
 export interface External {
   id: string;
   provider: string;

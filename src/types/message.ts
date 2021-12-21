@@ -1,7 +1,8 @@
 import { DocumentMetadata } from './document';
 import { User } from './user';
 
-type MessageStatus = 'NEW' | 'READ' | 'TRASHED';
+/** @public */
+export type MessageStatus = 'NEW' | 'READ' | 'TRASHED';
 
 /**
  * @public

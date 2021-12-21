@@ -6,6 +6,9 @@
 
 /// <reference types="node" />
 
+// @alpha (undocumented)
+export type Address = {};
+
 // @public
 export interface CreatePackageRequestPayload {
     // (undocumented)
@@ -32,7 +35,7 @@ export interface CreatePackageRequestPayload {
     id?: string;
     // (undocumented)
     language?: string;
-    // Warning: (ae-forgotten-export) The symbol "PackageArtifactsLimits" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
     //
     // (undocumented)
     limits?: PackageArtifactsLimits;
@@ -52,30 +55,24 @@ export interface CreatePackageRequestPayload {
     //
     // (undocumented)
     sender?: Sender;
-    // Warning: (ae-forgotten-export) The symbol "PackageSettings" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
     //
     // (undocumented)
     settings?: PackageSettings;
-    // Warning: (ae-forgotten-export) The symbol "SignedDocumentDelivery" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
     //
     // (undocumented)
     signedDocumentDelivery?: SignedDocumentDelivery;
-    // Warning: (ae-forgotten-export) The symbol "PackageStatus" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     status?: PackageStatus;
     // (undocumented)
     timezoneId?: string;
     // (undocumented)
     trashed?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "PackageType" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     type?: PackageType;
     // (undocumented)
     updated?: string;
-    // Warning: (ae-forgotten-export) The symbol "PackageVisibility" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     visibility?: PackageVisibility;
 }
@@ -87,43 +84,101 @@ export interface CreatePackageResponsePayload {
 }
 
 // @public (undocumented)
+export interface DocumentApproval {
+    // (undocumented)
+    accepted: Nullable<string>;
+    // (undocumented)
+    data: Nullable<Record<string, any>>;
+    // (undocumented)
+    enforceCaptureSignature: Nullable<boolean>;
+    // (undocumented)
+    fields: Nullable<DocumentField[]>;
+    // (undocumented)
+    id: Nullable<string>;
+    // (undocumented)
+    name: Nullable<string>;
+    // (undocumented)
+    optional: Nullable<boolean>;
+    // (undocumented)
+    role: string;
+    // (undocumented)
+    signed: Nullable<string>;
+}
+
+// @public (undocumented)
+export interface DocumentField {
+    // (undocumented)
+    binding: Nullable<string>;
+    // (undocumented)
+    extract: Nullable<boolean>;
+    // (undocumented)
+    extractAnchor: Nullable<ExtractAnchor>;
+    // (undocumented)
+    height: Nullable<number>;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    left: Nullable<number>;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    page: number;
+    // (undocumented)
+    subtype: FieldSubtype;
+    // (undocumented)
+    top: Nullable<number>;
+    // (undocumented)
+    type: FieldType;
+    // (undocumented)
+    validation: Nullable<FieldValidation>;
+    // (undocumented)
+    value: Nullable<string>;
+    // (undocumented)
+    width: Nullable<number>;
+}
+
+// @public (undocumented)
 export interface DocumentMetadata {
-    // Warning: (ae-forgotten-export) The symbol "DocumentApproval" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     approvals: DocumentApproval[];
-    // (undocumented)
     data: Nullable<Record<string, any>>;
     description: string;
     // (undocumented)
     external: Nullable<External_2>;
-    // (undocumented)
     extract: boolean;
-    // Warning: (ae-forgotten-export) The symbol "ExtractionType" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     extractionTypes: ExtractionType[];
-    // Warning: (ae-forgotten-export) The symbol "DocumentField" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     fields: DocumentField[];
     id: string;
-    // (undocumented)
     index: number;
     name: string;
-    // Warning: (ae-forgotten-export) The symbol "DocumentPage" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     pages: DocumentPage[];
     // (undocumented)
     signedHash: Nullable<string>;
     // (undocumented)
     signerVerificationToken: Nullable<string>;
-    // (undocumented)
     size: number;
     status: Nullable<string>;
     // (undocumented)
     tagged: boolean;
+}
+
+// @public (undocumented)
+export interface DocumentPage {
+    // (undocumented)
+    height: Nullable<number>;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    index: number;
+    // (undocumented)
+    left: Nullable<number>;
+    // (undocumented)
+    top: Nullable<number>;
+    // (undocumented)
+    version: number;
+    // (undocumented)
+    width: Nullable<number>;
 }
 
 // @public (undocumented)
@@ -140,6 +195,57 @@ interface External_2 {
 export { External_2 as External }
 
 // @public (undocumented)
+export interface ExtractAnchor {
+    // (undocumented)
+    anchorPoint: string;
+    // (undocumented)
+    characterIndex: number;
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    index: number;
+    // (undocumented)
+    leftOffset: number;
+    // (undocumented)
+    text: string;
+    // (undocumented)
+    topOffset: number;
+    // (undocumented)
+    width: number;
+}
+
+// @public (undocumented)
+export type ExtractionType = 'TEXT_TAGS' | 'ACROFIELDS';
+
+// @public (undocumented)
+export type FieldSubtype = 'FULLNAME' | 'INITIALS' | 'CAPTURE' | 'LABEL' | 'TEXTFIELD' | 'TEXTAREA' | 'CHECKBOX' | 'DATE' | 'RADIO' | 'LIST' | 'QRCODE' | 'CUSTOMFIELD' | 'SEAL' | 'MOBILE_CAPTURE' | 'RAW_CAPTURE' | 'DATEPICKER';
+
+// @public (undocumented)
+export type FieldType = 'SIGNATURE' | 'INPUT' | 'IMAGE';
+
+// @public (undocumented)
+export interface FieldValidation {
+    // (undocumented)
+    enum: Nullable<string[]>;
+    // (undocumented)
+    errorCode: Nullable<number>;
+    // (undocumented)
+    errorMessage: Nullable<string>;
+    // (undocumented)
+    group: Nullable<string>;
+    // (undocumented)
+    maxLength: Nullable<number>;
+    // (undocumented)
+    minimumRequired: Nullable<number>;
+    // (undocumented)
+    minLength: Nullable<number>;
+    // (undocumented)
+    pattern: Nullable<string>;
+    // (undocumented)
+    required: Nullable<boolean>;
+}
+
+// @public (undocumented)
 export interface Message {
     // (undocumented)
     content: string;
@@ -149,13 +255,14 @@ export interface Message {
     documents: DocumentMetadata[];
     // (undocumented)
     from: User;
-    // Warning: (ae-forgotten-export) The symbol "MessageStatus" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     status: MessageStatus;
     // (undocumented)
     to: User[];
 }
+
+// @public (undocumented)
+export type MessageStatus = 'NEW' | 'READ' | 'TRASHED';
 
 // @public
 export type Nullable<T> = T | null;
@@ -179,7 +286,6 @@ export interface Package {
     consent: Nullable<string>;
     // (undocumented)
     created: string;
-    // (undocumented)
     data: Nullable<Record<string, any>>;
     // (undocumented)
     description: string;
@@ -193,6 +299,8 @@ export interface Package {
     id: string;
     // (undocumented)
     language: Nullable<string>;
+    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
+    //
     // (undocumented)
     limits: Nullable<PackageArtifactsLimits>;
     // (undocumented)
@@ -211,8 +319,12 @@ export interface Package {
     //
     // (undocumented)
     sender: Nullable<Sender>;
+    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
+    //
     // (undocumented)
     settings: Nullable<PackageSettings>;
+    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
+    //
     // (undocumented)
     signedDocumentDelivery: Nullable<SignedDocumentDelivery>;
     // (undocumented)
@@ -229,12 +341,43 @@ export interface Package {
     visibility: PackageVisibility;
 }
 
+// @alpha (undocumented)
+export interface PackageArtifactsLimits {
+}
+
+// @alpha (undocumented)
+export interface PackageSettings {
+    // (undocumented)
+    ceremony: {
+        handOver: {
+            title: string | undefined;
+            href: string | undefined;
+            text: string | undefined;
+        };
+        declineButton?: boolean;
+        hideCaptureText?: boolean;
+        hideWatermark?: boolean;
+    };
+}
+
+// @public (undocumented)
+export type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLINED' | 'OPTED_OUT' | 'ARCHIVED';
+
+// @public (undocumented)
+export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
+
+// @public (undocumented)
+export type PackageVisibility = 'ACCOUNT' | 'SENDER';
+
+// @alpha (undocumented)
+export type ProfessionalIdentityField = {};
+
 // @public
 export type RecursivePartial<T> = {
     [P in keyof T]?: RecursivePartial<T[P]>;
 };
 
-// @alpha
+// @alpha (undocumented)
 export type Role = {
     id?: string;
     index: number;
@@ -243,32 +386,61 @@ export type Role = {
     signers: Signer[];
 };
 
-// @alpha
+// @public (undocumented)
+export type RoleType = 'SIGNER' | 'SENDER';
+
+// @alpha (undocumented)
 export type Sender = null;
 
-// @alpha
+// @alpha (undocumented)
+export type SignatureStyle = {};
+
+// @alpha (undocumented)
+export interface SignedDocumentDelivery {
+}
+
+// @alpha (undocumented)
+export type Signer = {
+    id: string;
+    status?: SignerStatus;
+    firstName: string;
+    lastName: string;
+    email: string;
+    company?: string;
+    auth?: {
+        scheme: 'SMS';
+        challenges: [
+            {
+            answer: null;
+            question: string;
+            maskInput: boolean;
+        }
+        ];
+    };
+};
+
+// @public (undocumented)
+export type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
+
+// @public (undocumented)
+export type SpecialUserType = 'NOTARY';
+
+// @alpha (undocumented)
 export type Translation = {};
 
 // @public
 export interface UploadDocumentRequestPayload {
     // (undocumented)
     approvals?: RecursivePartial<DocumentApproval>[];
-    // (undocumented)
     data?: Record<string, any>;
-    // (undocumented)
     description?: string;
     // (undocumented)
     external?: Partial<External_2>;
-    // (undocumented)
     extract?: boolean;
-    // (undocumented)
     extractionTypes?: ExtractionType[];
-    // (undocumented)
     fields?: RecursivePartial<DocumentField>[];
     id?: string;
-    // (undocumented)
     index?: number;
-    // (undocumented)
     name: string;
     // (undocumented)
     pages?: RecursivePartial<DocumentPage>[];
@@ -276,9 +448,7 @@ export interface UploadDocumentRequestPayload {
     signedHash?: string;
     // (undocumented)
     signerVerificationToken?: string;
-    // (undocumented)
     size?: number;
-    // (undocumented)
     status?: string;
     // (undocumented)
     tagged?: boolean;
@@ -286,7 +456,7 @@ export interface UploadDocumentRequestPayload {
 
 // @public (undocumented)
 export interface User {
-    // Warning: (ae-forgotten-export) The symbol "Address" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-incompatible-release-tags) The symbol "address" is marked as @public, but its signature references "Address" which is marked as @alpha
     //
     // (undocumented)
     address: Nullable<Address>;
@@ -312,16 +482,14 @@ export interface User {
     name: string;
     // (undocumented)
     phone: Nullable<string>;
-    // Warning: (ae-forgotten-export) The symbol "ProfessionalIdentityField" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-incompatible-release-tags) The symbol "professionalIdentityFields" is marked as @public, but its signature references "ProfessionalIdentityField" which is marked as @alpha
     //
     // (undocumented)
     professionalIdentityFields: ProfessionalIdentityField[];
-    // Warning: (ae-forgotten-export) The symbol "SignatureStyle" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-incompatible-release-tags) The symbol "signature" is marked as @public, but its signature references "SignatureStyle" which is marked as @alpha
     //
     // (undocumented)
     signature: Nullable<SignatureStyle>;
-    // Warning: (ae-forgotten-export) The symbol "SpecialUserType" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     specialTypes: Nullable<SpecialUserType[]>;
     // (undocumented)
@@ -330,15 +498,24 @@ export interface User {
     title: Nullable<string>;
     // (undocumented)
     updated: string;
-    // Warning: (ae-forgotten-export) The symbol "UserCustomField" needs to be exported by the entry point index.d.ts
-    //
     // (undocumented)
     userCustomFields: UserCustomField[];
 }
 
-// Warnings were encountered during analysis:
-//
-// dist/types/role.d.ts:37:5 - (ae-forgotten-export) The symbol "RoleType" needs to be exported by the entry point index.d.ts
-// dist/types/role.d.ts:39:5 - (ae-forgotten-export) The symbol "Signer" needs to be exported by the entry point index.d.ts
+// @public (undocumented)
+export interface UserCustomField {
+    // (undocumented)
+    data: Nullable<Record<string, any>>;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // Warning: (ae-incompatible-release-tags) The symbol "translations" is marked as @public, but its signature references "Translation" which is marked as @alpha
+    //
+    // (undocumented)
+    translations: Nullable<Translation[]>;
+    // (undocumented)
+    value: Nullable<string>;
+}
 
 ```

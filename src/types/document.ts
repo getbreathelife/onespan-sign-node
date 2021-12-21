@@ -1,9 +1,11 @@
 import { External } from './external';
 import { Nullable, RecursivePartial } from './utils';
 
-type ExtractionType = 'TEXT_TAGS' | 'ACROFIELDS';
+/** @public */
+export type ExtractionType = 'TEXT_TAGS' | 'ACROFIELDS';
 
-interface ExtractAnchor {
+/** @public */
+export interface ExtractAnchor {
   topOffset: number;
   characterIndex: number;
   anchorPoint: string;
@@ -14,9 +16,11 @@ interface ExtractAnchor {
   leftOffset: number;
 }
 
-type FieldType = 'SIGNATURE' | 'INPUT' | 'IMAGE';
+/** @public */
+export type FieldType = 'SIGNATURE' | 'INPUT' | 'IMAGE';
 
-type FieldSubtype =
+/** @public */
+export type FieldSubtype =
   | 'FULLNAME'
   | 'INITIALS'
   | 'CAPTURE'
@@ -34,56 +38,60 @@ type FieldSubtype =
   | 'RAW_CAPTURE'
   | 'DATEPICKER';
 
-interface DocumentApproval {
-  id: string | null;
-  name: string | null;
-  data: Record<string, any> | null;
+/** @public */
+export interface DocumentApproval {
+  id: Nullable<string>;
+  name: Nullable<string>;
+  data: Nullable<Record<string, any>>;
   role: string;
-  signed: string | null;
-  accepted: string | null;
-  fields: DocumentField[] | null;
-  optional: boolean | null;
-  enforceCaptureSignature: boolean | null;
+  signed: Nullable<string>;
+  accepted: Nullable<string>;
+  fields: Nullable<DocumentField[]>;
+  optional: Nullable<boolean>;
+  enforceCaptureSignature: Nullable<boolean>;
 }
 
-interface DocumentPage {
+/** @public */
+export interface DocumentPage {
   id: string;
   index: number;
   version: number;
-  top: number | null;
-  height: number | null;
-  width: number | null;
-  left: number | null;
+  top: Nullable<number>;
+  height: Nullable<number>;
+  width: Nullable<number>;
+  left: Nullable<number>;
 }
 
-interface FieldValidation {
-  maxLength: number | null;
-  pattern: string | null;
-  required: boolean | null;
-  errorMessage: string | null;
-  errorCode: number | null;
-  enum: string[] | null;
+/** @public */
+export interface FieldValidation {
+  maxLength: Nullable<number>;
+  pattern: Nullable<string>;
+  required: Nullable<boolean>;
+  errorMessage: Nullable<string>;
+  errorCode: Nullable<number>;
+  enum: Nullable<string[]>;
   // minLength
-  minLength: number | null;
-  group: string | null;
-  minimumRequired: number | null;
+  minLength: Nullable<number>;
+  group: Nullable<string>;
+  minimumRequired: Nullable<number>;
 }
 
-interface DocumentField {
+/** @public */
+export interface DocumentField {
   id: string;
   name: string;
   page: number;
   type: FieldType;
   subtype: FieldSubtype;
-  top?: number;
-  height?: number;
-  left?: number;
-  width?: number;
-  value?: string;
-  extract?: boolean;
-  extractAnchor?: ExtractAnchor;
+  top: Nullable<number>;
+  height: Nullable<number>;
+  left: Nullable<number>;
+  width: Nullable<number>;
+  value: Nullable<string>;
+  extract: Nullable<boolean>;
+  extractAnchor: Nullable<ExtractAnchor>;
   binding: Nullable<string>;
-  validation?: FieldValidation;
+  validation: Nullable<FieldValidation>;
 }
 
 /** @public */
@@ -94,8 +102,10 @@ export interface DocumentMetadata {
   /** Document name */
   name: string;
 
+  /** Document index */
   index: number;
 
+  /** Document data size */
   size: number;
 
   /** Document description */
@@ -104,11 +114,32 @@ export interface DocumentMetadata {
   /** Document status */
   status: Nullable<string>;
 
+  /** Document fields */
   fields: DocumentField[];
+
+  /**
+   * Enable/disable extraction on the document
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/document-extraction | Document Extraction (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/text-tag-extraction | Text Tag Extraction (OneSpan)}
+   **/
   extract: boolean;
+
+  /**
+   * Types of extraction for this document.
+   *
+   * @remarks
+   * Values in the array are unique.
+   */
   extractionTypes: ExtractionType[];
+
   tagged: boolean;
+
+  /** {@inheritDoc Package.data} */
   data: Nullable<Record<string, any>>;
+
   approvals: DocumentApproval[];
   pages: DocumentPage[];
   external: Nullable<External>;
@@ -128,19 +159,49 @@ export interface DocumentMetadata {
 export interface UploadDocumentRequestPayload {
   /** {@inheritDoc DocumentMetadata.id} */
   id?: string;
+
+  /** {@inheritDoc DocumentMetadata.name} */
   name: string;
+
+  /** {@inheritDoc DocumentMetadata.index} */
   index?: number;
+
+  /** {@inheritDoc DocumentMetadata.size} */
   size?: number;
+
+  /** {@inheritDoc DocumentMetadata.description} */
   description?: string;
+
+  /** {@inheritDoc DocumentMetadata.status} */
   status?: string;
+
+  /** {@inheritDoc DocumentMetadata.fields} */
   fields?: RecursivePartial<DocumentField>[];
+
+  /** {@inheritDoc DocumentMetadata.extract} */
   extract?: boolean;
+
+  /** {@inheritDoc DocumentMetadata.extractionTypes} */
   extractionTypes?: ExtractionType[];
+
+  /** {@inheritDoc DocumentMetadata.tagged} */
   tagged?: boolean;
+
+  /** {@inheritDoc DocumentMetadata.data} */
   data?: Record<string, any>;
+
+  /** {@inheritDoc DocumentMetadata.approvals} */
   approvals?: RecursivePartial<DocumentApproval>[];
+
+  /** {@inheritDoc DocumentMetadata.pages} */
   pages?: RecursivePartial<DocumentPage>[];
+
+  /** {@inheritDoc DocumentMetadata.external} */
   external?: Partial<External>;
+
+  /** {@inheritDoc DocumentMetadata.signedHash} */
   signedHash?: string;
+
+  /** {@inheritDoc DocumentMetadata.signerVerificationToken} */
   signerVerificationToken?: string;
 }

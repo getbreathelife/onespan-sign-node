@@ -3,9 +3,14 @@ import { Message } from './message';
 import { Role, Sender } from './role';
 import { Nullable } from './utils';
 
-type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
-type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLINED' | 'OPTED_OUT' | 'ARCHIVED';
-type PackageVisibility = 'ACCOUNT' | 'SENDER';
+/** @public */
+export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
+
+/** @public */
+export type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLINED' | 'OPTED_OUT' | 'ARCHIVED';
+
+/** @public */
+export type PackageVisibility = 'ACCOUNT' | 'SENDER';
 
 /**
  * @privateRemarks
@@ -13,7 +18,7 @@ type PackageVisibility = 'ACCOUNT' | 'SENDER';
  *
  * @alpha
  */
-interface PackageSettings {
+export interface PackageSettings {
   ceremony: {
     handOver: {
       title: string | undefined;
@@ -31,9 +36,9 @@ interface PackageSettings {
  * TODO - #3: Type these
  * @alpha
  */
-interface PackageArtifactsLimits {}
+export interface PackageArtifactsLimits {}
 /** @alpha */
-interface SignedDocumentDelivery {}
+export interface SignedDocumentDelivery {}
 
 /**
  * @public
@@ -45,7 +50,15 @@ export interface Package {
   status: PackageStatus;
   messages: Message[];
   description: string;
+
+  /**
+   * Custom data that is passed through.
+   *
+   * @remarks
+   * See {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/custom-transaction-data | Custom Transaction Data (OneSpan)}
+   */
   data: Nullable<Record<string, any>>;
+
   language: Nullable<string>;
   autocomplete: boolean;
   type: PackageType;

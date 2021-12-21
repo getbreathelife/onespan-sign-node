@@ -1,6 +1,8 @@
-type RoleType = 'SIGNER' | 'SENDER';
+/** @public */
+export type RoleType = 'SIGNER' | 'SENDER';
 
-type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
+/** @public */
+export type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
 
 /**
  * @privateRemarks
@@ -8,7 +10,7 @@ type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED'
  *
  * @alpha
  */
-type Signer = {
+export type Signer = {
   id: string;
   status?: SignerStatus;
   firstName: string;

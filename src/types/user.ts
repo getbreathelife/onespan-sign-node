@@ -8,7 +8,7 @@ import { Nullable } from './utils';
  *
  * @alpha
  */
-type Address = {};
+export type Address = {};
 
 /**
  * @privateRemarks
@@ -16,10 +16,10 @@ type Address = {};
  *
  * @alpha
  */
-type SignatureStyle = {};
+export type SignatureStyle = {};
 
 /** @public */
-interface UserCustomField {
+export interface UserCustomField {
   id: string;
   name: string;
   value: Nullable<string>;
@@ -33,10 +33,10 @@ interface UserCustomField {
  *
  * @alpha
  **/
-type ProfessionalIdentityField = {};
+export type ProfessionalIdentityField = {};
 
 /** @public */
-type SpecialUserType = 'NOTARY';
+export type SpecialUserType = 'NOTARY';
 
 /** @public */
 export interface User {
