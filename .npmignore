@@ -4,6 +4,7 @@ etc/
 tests/
 bin/
 config/
+.github/
 .eslintrc.js
 .prettierignore
 .prettierrc.json
