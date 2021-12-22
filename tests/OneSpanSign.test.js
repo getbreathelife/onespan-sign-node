@@ -1,7 +1,7 @@
 const OneSpanSign = require('../src/OneSpanSign').OneSpanSign;
 
 const inputState = {
-    apiKey: "demo123",
+    apiKey: "demoKey",
     apiUrl: "http://demo.com"
 }
 
@@ -11,9 +11,8 @@ describe('OneSpanSign', () => {
         expect(oneSpan).toBeInstanceOf(OneSpanSign)
     })
 
-    it('throws error when passing no/incorrect number of arguments', () => {
-        const oneSpan = new OneSpanSign()
-        expect(oneSpan).toThrowError()
+    it('throws error when failing to pass new in the constructor', () => {
+        expect(() => OneSpanSign(inputState.apiKey, inputState.apiUrl)).toThrow(TypeError)
     })
 
 })

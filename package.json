@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "clean": "rm -rf dist",
     "build": "tsc",
     "lint": "eslint --quiet ./",
     "test": "jest -i",
