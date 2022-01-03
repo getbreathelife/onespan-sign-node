@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
+    "clean": "rm -rf dist",
     "repl": "yarn build && node repl.js",
     "build": "tsc",
     "lint": "eslint --quiet ./",
