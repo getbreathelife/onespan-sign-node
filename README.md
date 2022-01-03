@@ -13,14 +13,17 @@ API documentation is extracted automatically using [@microsoft/api-extractor](ht
 supported syntax can be found on their [documentation page](https://api-extractor.com/pages/tsdoc/doc_comment_syntax/).
 
 We use [@microsoft/api-documenter](https://www.npmjs.com/package/@microsoft/api-documenter) to generate documentation.
-To generate documentation locally, you may run the provided script in your terminal:
+If you want to generate documentation locally, you may run the following command(s) in your terminal:
 
 ```shell
-# From project root
-./bin/generate-docs.sh
+# Install dependencies if you haven't done so
+yarn install
+yarn docs
 ```
 
 This script (re)builds the source code, extract the API documentation, then generate Markdown files for the documentation.
+
+:information_source: You don't need to generate the Markdown documentations when opening your PR. It'll be done automatically when it's merged to `main`.
 
 ### Manually Testing using REPL
 

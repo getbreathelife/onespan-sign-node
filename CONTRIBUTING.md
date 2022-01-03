@@ -24,6 +24,8 @@ Before submitting your pull request, make sure to do the following (where applic
 - Document APIs
 - Write unit tests
 
+:information_source: You don't need to generate the Markdown documentations. It'll be done automatically when it's merged to `main`.
+
 When opening your PR, please also make sure to:
 
 - Clearly explain the purpose of this PR. Or in case of addressing an issue, link the issue to your PR
