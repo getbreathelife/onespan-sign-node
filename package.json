@@ -9,7 +9,9 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "rm -rf ./dist/ && tsc",
+    "clean": "rm -rf dist",
+    "repl": "yarn build && node repl.js",
+    "build": "yarn clean && tsc",
     "lint": "eslint --quiet ./",
     "test": "jest -i",
     "docs": "yarn build && ./bin/generate-docs.sh",

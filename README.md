@@ -21,3 +21,19 @@ To generate documentation locally, you may run the provided script in your termi
 ```
 
 This script (re)builds the source code, extract the API documentation, then generate Markdown files for the documentation.
+
+### Manually Testing using REPL
+
+To start in repl mode run `yarn repl`. This will start an interactive repl, in which you can invoke and test the OneSpanSign class
+
+**Example**
+
+```sh
+// Step 1: Start repl
+yarn repl
+
+// Step 2: Test code
+> console.log(OneSpanSign)
+```
+
+
