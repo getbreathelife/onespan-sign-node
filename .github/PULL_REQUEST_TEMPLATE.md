@@ -1,11 +1,3 @@
----
-name: Pull Request
-about: Open a Pull Request for this project
-title: ''
-labels: 'type: pull request'
-assignees: ''
----
-
 ## Description
 
 <!-- Link an issue to this PR. If none, this line can be removed -->
