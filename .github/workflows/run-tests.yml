@@ -2,6 +2,7 @@
 
 name: Run all the tests
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -11,8 +12,6 @@ jobs:
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref_name }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
