@@ -18,7 +18,9 @@ jobs:
         run: yarn
 
       - name: Generate API report
-        run: yarn build && yarn api-extractor run --local
+        run: |
+          mkdir -p etc
+          yarn build && yarn api-extractor run --local
 
       - id: check_for_changes
         name: Check for changes
