@@ -1,11 +1,9 @@
-import { OptionalExclude } from './utils';
+import { Nullable } from './utils';
 
-export type External = OptionalExclude<
-  {
-    id: string;
-    provider: string;
-    providerName: string;
-    data: Record<string, any>;
-  },
-  'id' | 'provider'
->;
+/** @public */
+export interface External {
+  id: string;
+  provider: string;
+  providerName: Nullable<string>;
+  data: Nullable<Record<string, any>>;
+}

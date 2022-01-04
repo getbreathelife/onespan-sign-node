@@ -1,9 +1,16 @@
-type RoleType = 'SIGNER' | 'SENDER';
+/** @public */
+export type RoleType = 'SIGNER' | 'SENDER';
 
-type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
+/** @public */
+export type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
 
-// TODO - #3
-type Signer = {
+/**
+ * @privateRemarks
+ * TODO - #3
+ *
+ * @alpha
+ */
+export type Signer = {
   id: string;
   status?: SignerStatus;
   firstName: string;
@@ -22,10 +29,20 @@ type Signer = {
   };
 };
 
-// TODO - #3
+/**
+ * @privateRemarks
+ * TODO - #3
+ *
+ * @alpha
+ */
 export type Sender = null;
 
-// TODO - #3
+/**
+ * @privateRemarks
+ * TODO - #3
+ *
+ * @alpha
+ */
 export type Role = {
   id?: string;
   index: number;

@@ -2,7 +2,8 @@
   "name": "onespan-sign-node",
   "version": "0.1.0",
   "description": "Node.js library for the OneSpan Sign API",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "typings": "./dist/onespan-sign-node.d.ts",
   "repository": "https://github.com/getbreathelife/onespan-sign-node.git",
   "author": "Breathe Life",
   "license": "MIT",
@@ -10,9 +11,10 @@
   "scripts": {
     "clean": "rm -rf dist",
     "repl": "yarn build && node repl.js",
-    "build": "tsc",
+    "build": "yarn clean && tsc",
     "lint": "eslint --quiet ./",
     "test": "jest -i",
+    "docs": "yarn build && ./bin/generate-docs.sh",
     "prepublishOnly": "npm run compile && npm run test"
   },
   "keywords": [
@@ -22,12 +24,17 @@
     "typescript",
     "javascript"
   ],
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
   "dependencies": {
     "form-data": "^4.0.0",
     "node-fetch": "^2.6.6"
   },
   "devDependencies": {
     "@breathelife/prettier-plugin-sort-imports": "^3.0.5",
+    "@microsoft/api-documenter": "^7.13.77",
+    "@microsoft/api-extractor": "^7.19.2",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.13",
     "@types/node-fetch": "^2.5.12",
@@ -35,6 +42,7 @@
     "@typescript-eslint/parser": "^5.7.0",
     "eslint": "^8.4.1",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-tsdoc": "^0.2.14",
     "husky": "^7.0.4",
     "jest": "^27.4.5",
     "lint-staged": "^12.1.2",
