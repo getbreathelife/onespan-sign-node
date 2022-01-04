@@ -1,0 +1,48 @@
+# Generate API documentation when merged to main branch
+
+name: Generate API Documentation
+on:
+  push:
+    branches:
+      - main
+jobs:
+  generate-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Generate documentation
+        run: yarn docs
+
+      - id: check_for_changes
+        name: Check for changes
+        run: |
+          HAS_CHANGES="false"
+          
+          if [ "$(git diff-files --quiet)" ] || [ "$(git ls-files --exclude-standard --others)" ]; then
+            HAS_CHANGES="true"
+            echo "Detected changes"
+          fi
+          
+          echo "::set-output name=has_changes::$HAS_CHANGES"
+
+      - name: Commit and push
+        if: ${{ steps.check_for_changes.outputs.has_changes == 'true' }}
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          git add docs
+          git commit -m "Generated API documentation" --quiet
+          git push
