@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2
