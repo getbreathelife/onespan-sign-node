@@ -12,6 +12,7 @@ jobs:
       - name: Checkout repository code
         uses: actions/checkout@v2
         with:
+          token: ${{ secrets.BOT_TOKEN }}
           ref: ${{ github.ref_name }}
 
       - name: Setup Node.js environment
@@ -40,8 +41,8 @@ jobs:
       - name: Commit and push
         if: ${{ steps.check_for_changes.outputs.has_changes == 'true' }}
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'breathelife-oss-bot'
+          git config --global user.email 'breathelife-oss-bot@users.noreply.github.com'
           
           git add docs
           git commit -m "Generated API documentation" --quiet
