@@ -10,4 +10,3 @@ config/
 .prettierrc.json
 jest.config.js
 tsdoc.json
-api-extractor.json
