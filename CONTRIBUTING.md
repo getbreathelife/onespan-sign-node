@@ -46,7 +46,7 @@ yarn install
 yarn docs
 ```
 
-This command (re)builds the source code, extract the API documentation, then generate Markdown files for the documentation.
+This command (re)builds the source code, extracts the API documentation, and then generates Markdown files for the documentation.
 
 :information_source: You don't need to generate the Markdown documentations when opening your PR. It'll be done automatically when it's merged to `main`.
 
