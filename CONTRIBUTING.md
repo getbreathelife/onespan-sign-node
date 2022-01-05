@@ -24,12 +24,31 @@ Before submitting your pull request, make sure to do the following (where applic
 - Document APIs
 - Write unit tests
 
-:information_source: You don't need to generate the Markdown documentations. It'll be done automatically when it's merged to `main`.
-
 When opening your PR, please also make sure to:
 
 - Clearly explain the purpose of this PR. Or in case of addressing an issue, link the issue to your PR
 - Explain what you did in your changes
+
+## Writing Documentation
+
+Public-facing entities (interfaces, methods, etc.) must be documented properly using [TSDoc](https://tsdoc.org/) syntax.
+[eslint-plugin-tsdoc](https://www.npmjs.com/package/eslint-plugin-tsdoc) is used to catch improper syntax usage.
+
+API documentation is extracted automatically using [@microsoft/api-extractor](https://api-extractor.com/) and a list of
+supported syntax can be found on their [documentation page](https://api-extractor.com/pages/tsdoc/doc_comment_syntax/).
+
+We use [@microsoft/api-documenter](https://www.npmjs.com/package/@microsoft/api-documenter) to generate documentation.
+If you want to generate documentation locally, you may run the following command(s) in your terminal:
+
+```shell
+# Install dependencies if you haven't done so
+yarn install
+yarn docs
+```
+
+This command (re)builds the source code, extract the API documentation, then generate Markdown files for the documentation.
+
+:information_source: You don't need to generate the Markdown documentations when opening your PR. It'll be done automatically when it's merged to `main`.
 
 ## Coding conventions
 
