@@ -1,4 +1,5 @@
 import FormData from 'form-data';
+import { Readable } from 'stream';
 
 import { Api } from './api';
 import {
@@ -62,11 +63,11 @@ export class OneSpanSign {
   public async uploadDocument(
     packageId: string,
     payload: UploadDocumentRequestPayload,
-    documentBody: Buffer | ReadableStream
+    documentBody: Buffer | Readable
   ): Promise<DocumentMetadata> {
     const formData = new FormData();
     formData.append('file', documentBody, { filename: payload.name });
-    formData.append('payload', payload);
+    formData.append('payload', JSON.stringify(payload));
 
     const response = await Api.post(`${this.apiUrl}/api/packages/${packageId}/documents`)
       .withAuthorizationHeader(`Basic ${this.apiKey}`)
