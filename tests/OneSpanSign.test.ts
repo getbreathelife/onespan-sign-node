@@ -29,7 +29,7 @@ describe('OneSpanSign', () => {
         name: 'mock package',
       };
 
-      await oneSpan.createPackage(payload);
+      await oneSpan.packages.create(payload);
 
       expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
     });
@@ -46,7 +46,7 @@ describe('OneSpanSign', () => {
       };
       const packageId = 'mockId';
 
-      await oneSpan.uploadDocument(packageId, payload, data);
+      await oneSpan.documents.create(packageId, payload, data);
 
       // Had to compare the values this way instead of using a snapshot because the boundary value is different each time
       expect(mockedFetch.mock.calls[0][0]).toEqual(`${MOCK_API_URL}/api/packages/${packageId}/documents`);

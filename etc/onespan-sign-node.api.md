@@ -6,6 +6,8 @@
 
 /// <reference types="node" />
 
+import { Readable } from 'stream';
+
 // @alpha (undocumented)
 export type Address = {};
 
@@ -181,6 +183,11 @@ export interface DocumentPage {
     width: Nullable<number>;
 }
 
+// @public
+export class DocumentResource extends Resource {
+    create(packageId: string, payload: UploadDocumentRequestPayload, documentBody: Buffer | Readable): Promise<DocumentMetadata>;
+}
+
 // @public (undocumented)
 interface External_2 {
     // (undocumented)
@@ -270,8 +277,10 @@ export type Nullable<T> = T | null;
 // @public
 export class OneSpanSign {
     constructor(apiKey: string, apiUrl: string);
-    createPackage(payload: CreatePackageRequestPayload): Promise<CreatePackageResponsePayload>;
-    uploadDocument(packageId: string, payload: UploadDocumentRequestPayload, documentBody: Buffer | ReadableStream): Promise<DocumentMetadata>;
+    // (undocumented)
+    documents: DocumentResource;
+    // (undocumented)
+    packages: PackageResource;
 }
 
 // @public (undocumented)
@@ -345,6 +354,11 @@ export interface Package {
 export interface PackageArtifactsLimits {
 }
 
+// @public
+export class PackageResource extends Resource {
+    create(payload: CreatePackageRequestPayload): Promise<CreatePackageResponsePayload>;
+}
+
 // @alpha (undocumented)
 export interface PackageSettings {
     // (undocumented)
@@ -376,6 +390,15 @@ export type ProfessionalIdentityField = {};
 export type RecursivePartial<T> = {
     [P in keyof T]?: RecursivePartial<T[P]>;
 };
+
+// @public
+export abstract class Resource {
+    constructor(apiKey: string, apiUrl: string);
+    // (undocumented)
+    protected readonly apiKey: string;
+    // (undocumented)
+    protected readonly apiUrl: string;
+}
 
 // @alpha (undocumented)
 export type Role = {
