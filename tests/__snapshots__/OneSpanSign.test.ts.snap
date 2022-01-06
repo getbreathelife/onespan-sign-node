@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OneSpanSign createPackage sends the provided payload as request body 1`] = `
+Array [
+  "http://demo.com/api/packages",
+  Object {
+    "body": "{\\"name\\":\\"mock package\\"}",
+    "headers": Object {
+      "accept": "application/json",
+      "authorization": "Basic demoKey",
+      "content-type": "application/json",
+    },
+    "method": "POST",
+  },
+]
+`;

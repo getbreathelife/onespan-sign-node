@@ -15,8 +15,8 @@ export class BaseRequestBuilder {
     // By default, we send data in JSON format and expects the API response to
     // also be in JSON
     this.requestHeaders = {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
+      accept: 'application/json',
+      'content-type': 'application/json',
     };
     this.requestOptions = {
       method,
@@ -28,13 +28,13 @@ export class BaseRequestBuilder {
     throw new HttpResponseError(response);
   }
 
-  public withAuthorizationHeader(value: string) {
-    this.requestHeaders.Authorization = value;
+  public withAuthorizationHeader(value: string): this {
+    this.requestHeaders.authorization = value;
     return this;
   }
 
-  public withAcceptHeader(value: string) {
-    this.requestHeaders.Accept = value;
+  public withAcceptHeader(value: string): this {
+    this.requestHeaders.accept = value;
     return this;
   }
 
