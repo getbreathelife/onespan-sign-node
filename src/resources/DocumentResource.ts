@@ -1,7 +1,6 @@
 import FormData from 'form-data';
 import { Readable } from 'stream';
 
-import { Api } from '../api';
 import { DocumentMetadata, UploadDocumentRequestPayload } from '../types';
 import { Resource } from './Resource';
 
@@ -34,10 +33,7 @@ export class DocumentResource extends Resource {
     formData.append('file', documentBody, { filename: payload.name });
     formData.append('payload', JSON.stringify(payload));
 
-    const response = await Api.post(`${this.apiUrl}/api/packages/${packageId}/documents`)
-      .withAuthorizationHeader(`Basic ${this.apiKey}`)
-      .withBody(formData)
-      .fetch();
+    const response = await this.api.post(`/api/packages/${packageId}/documents`).withBody(formData).fetch();
 
     return (await response.json()) as DocumentMetadata;
   }

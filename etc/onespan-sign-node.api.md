@@ -6,10 +6,34 @@
 
 /// <reference types="node" />
 
+import { default as FormData_2 } from 'form-data';
 import { Readable } from 'stream';
+import { RequestInit as RequestInit_2 } from 'node-fetch';
+import { Response as Response_2 } from 'node-fetch';
 
 // @alpha (undocumented)
 export type Address = {};
+
+// @public
+export class Api {
+    constructor(apiKey: string, apiUrl: string);
+    // (undocumented)
+    protected readonly apiKey: string;
+    // (undocumented)
+    protected readonly apiUrl: string;
+    // Warning: (ae-forgotten-export) The symbol "DeleteRequestBuilder" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    delete(url: string): DeleteRequestBuilder;
+    // Warning: (ae-forgotten-export) The symbol "GetRequestBuilder" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    get(url: string): GetRequestBuilder;
+    // Warning: (ae-forgotten-export) The symbol "PostRequestBuilder" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    post(url: string): PostRequestBuilder;
+}
 
 // @public
 export interface CreatePackageRequestPayload {
@@ -357,6 +381,10 @@ export interface PackageArtifactsLimits {
 // @public
 export class PackageResource extends Resource {
     create(payload: CreatePackageRequestPayload): Promise<CreatePackageResponsePayload>;
+    // (undocumented)
+    get(): Promise<Package[]>;
+    // (undocumented)
+    get(id: string): Promise<Package>;
 }
 
 // @alpha (undocumented)
@@ -393,11 +421,9 @@ export type RecursivePartial<T> = {
 
 // @public
 export abstract class Resource {
-    constructor(apiKey: string, apiUrl: string);
+    constructor(api: Api);
     // (undocumented)
-    protected readonly apiKey: string;
-    // (undocumented)
-    protected readonly apiUrl: string;
+    protected api: Api;
 }
 
 // @alpha (undocumented)
