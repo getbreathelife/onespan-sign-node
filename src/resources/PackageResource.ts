@@ -4,6 +4,7 @@ import {
   Package,
   GetAllPackagesRequestParameters,
 } from '../types';
+import { serializeDate } from '../utils/serializeDate';
 import { Resource } from './Resource';
 
 /**
@@ -34,7 +35,7 @@ export class PackageResource extends Resource {
    * Retrieves all packages (transactions).
    *
    * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post | REST API documentation (OneSpan)}
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.get | REST API documentation (OneSpan)}
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/retrieving-list-transactions | Retrieving a List of Transactions (OneSpan)}
    */
@@ -43,8 +44,8 @@ export class PackageResource extends Resource {
 
     const queryParameters = {
       ...params,
-      lastUpdatedStartDate: lastUpdatedStartDate ? lastUpdatedStartDate.toString() : undefined,
-      lastUpdatedEndDate: lastUpdatedEndDate ? lastUpdatedEndDate.toString() : undefined,
+      lastUpdatedStartDate: serializeDate(lastUpdatedStartDate),
+      lastUpdatedEndDate: serializeDate(lastUpdatedEndDate),
     };
 
     const response = await this.api.get('/api/packages').withQueryParams(queryParameters).fetch();
