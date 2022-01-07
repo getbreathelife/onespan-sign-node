@@ -28,7 +28,7 @@ export class Api {
    * @public
    */
   public get(url: string): GetRequestBuilder {
-    return new GetRequestBuilder(`${this.apiUrl}/${url}`).withAuthorizationHeader(`Basic ${this.apiKey}`);
+    return new GetRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(`Basic ${this.apiKey}`);
   }
 
   /**
@@ -39,7 +39,18 @@ export class Api {
    * @public
    */
   public post(url: string): PostRequestBuilder {
-    return new PostRequestBuilder(`${this.apiUrl}/${url}`).withAuthorizationHeader(`Basic ${this.apiKey}`);
+    return new PostRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(`Basic ${this.apiKey}`);
+  }
+
+  /**
+   * Sends a `PUT` request.
+   *
+   * @param url - URL of the request.
+   *
+   * @public
+   */
+  public put(url: string): PostRequestBuilder {
+    return new PostRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(`Basic ${this.apiKey}`);
   }
 
   /**
@@ -50,6 +61,6 @@ export class Api {
    * @public
    */
   public delete(url: string): DeleteRequestBuilder {
-    return new DeleteRequestBuilder(`${this.apiUrl}/${url}`).withAuthorizationHeader(`Basic ${this.apiKey}`);
+    return new DeleteRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(`Basic ${this.apiKey}`);
   }
 }
