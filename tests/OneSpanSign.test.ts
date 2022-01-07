@@ -1,7 +1,7 @@
 import { Response } from 'node-fetch';
 import { Readable } from 'stream';
 
-import { OneSpanSign, CreatePackageRequestPayload, UploadDocumentRequestPayload } from '../src';
+import { OneSpanSign, PackageRequestPayload, UploadDocumentRequestPayload } from '../src';
 import { mockedFetch } from './setup/mockNodeFetch';
 
 const MOCK_API_KEY = 'demoKey';
@@ -25,7 +25,7 @@ describe('OneSpanSign', () => {
 
   describe('createPackage', () => {
     it('sends the provided payload as request body', async () => {
-      const payload: CreatePackageRequestPayload = {
+      const payload: PackageRequestPayload = {
         name: 'mock package',
       };
 

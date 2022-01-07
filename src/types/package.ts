@@ -88,12 +88,12 @@ export interface Package {
  * TODO: support uploading documents during package creation
  *
  * @remarks
- * Request payload should at least contain {@link CreatePackageRequestPayload.name | 'name'} property.
+ * Request payload should at least contain {@link PackageRequestPayload.name | 'name'} property.
  * See {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post | REST API documentation} for more information.
  *
  * @public
  */
-export interface CreatePackageRequestPayload {
+export interface PackageRequestPayload {
   id?: string;
   name: string;
   roles?: Role[];
@@ -126,4 +126,22 @@ export interface CreatePackageRequestPayload {
 /** @public */
 export interface CreatePackageResponsePayload {
   id: string;
+}
+
+export interface GetAllPackagesRequestParameters {
+  query?: 'drafts' | 'inbox' | 'trashed';
+  type?: 'TEMPLATE';
+  search?: string;
+  searchType?: 'exact' | 'exactname';
+  predefined?: 'all' | 'awaitingSignature' | 'sent' | 'completed' | 'expiringSoon';
+  visibility?: PackageVisibility;
+  lastUpdatedStartDate?: Date | string;
+  lastUpdatedEndDate?: Date | string;
+  from?: number;
+  to?: number;
+  sort?: 'created' | 'completed' | 'updated' | 'due' | 'name' | 'status';
+  dir?: 'asc' | 'desc';
+  fields?: 'id';
+  ownerUserId?: string;
+  ownerEmail?: string;
 }
