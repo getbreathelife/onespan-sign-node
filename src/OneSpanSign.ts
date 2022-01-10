@@ -7,8 +7,7 @@ import { DocumentResource, PackageResource } from './resources';
  * @public
  */
 export class OneSpanSign {
-  public documents: DocumentResource;
-  public packages: PackageResource;
+  protected api: Api;
 
   /**
    * Constructs an instance of the `OneSpanSign` class.
@@ -22,9 +21,39 @@ export class OneSpanSign {
    * - A list of server URLs can be found at {@link https://community.onespan.com/documentation/onespan-sign/guides/quick-start-guides/developer/environment-urls-ip-addresses | Environment URLs & IP Addresses (OneSpan)}.
    */
   constructor(apiKey: string, apiUrl: string) {
-    const api = new Api(apiKey, apiUrl);
+    this.api = new Api(apiKey, apiUrl);
+  }
 
-    this.documents = new DocumentResource(api);
-    this.packages = new PackageResource(api);
+  /**
+   * Individual resource objects are lazily initialized. When a getter for the resource is called,
+   * the resource object will be initialized and shadows the getter function as an object property.
+   *
+   * Inspiration: https://stackoverflow.com/a/37978698/14163928
+   */
+
+  /**
+   * Document resource
+   */
+  public get documents(): DocumentResource {
+    const documents = new DocumentResource(this.api);
+    Object.defineProperty(this, 'documents', {
+      value: documents,
+      writable: false,
+      configurable: false,
+    });
+    return documents;
+  }
+
+  /**
+   * Package resource
+   */
+  public get packages(): PackageResource {
+    const packages = new PackageResource(this.api);
+    Object.defineProperty(this, 'packages', {
+      value: packages,
+      writable: false,
+      configurable: false,
+    });
+    return packages;
   }
 }
