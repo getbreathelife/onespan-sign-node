@@ -1,3 +1,5 @@
+import { URL } from 'node:url';
+
 import { DeleteRequestBuilder, GetRequestBuilder, PostRequestBuilder } from './requestBuilders';
 
 /**

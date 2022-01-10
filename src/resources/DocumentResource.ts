@@ -1,5 +1,5 @@
 import FormData from 'form-data';
-import { Readable } from 'stream';
+import { Readable } from 'node:stream';
 
 import { DocumentMetadata, UploadDocumentRequestPayload } from '../types';
 import { Resource } from './Resource';

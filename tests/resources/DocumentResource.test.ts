@@ -1,4 +1,4 @@
-import { Readable } from 'stream';
+import { Readable } from 'node:stream';
 
 import { Api, DocumentResource, UploadDocumentRequestPayload } from '../../src';
 import { mockedFetch, mockFetchHappyPath } from '../setup/mockNodeFetch';
