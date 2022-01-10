@@ -1,5 +1,5 @@
+import { Nullable, RecursivePartial } from '../utils';
 import { External } from './external';
-import { Nullable, RecursivePartial } from './utils';
 
 /** @public */
 export type ExtractionType = 'TEXT_TAGS' | 'ACROFIELDS';

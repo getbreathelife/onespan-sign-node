@@ -1,6 +1,6 @@
+import { Nullable } from '../utils';
 import { External } from './external';
 import { Translation } from './translation';
-import { Nullable } from './utils';
 
 /**
  * @privateRemarks
