@@ -1,6 +1,7 @@
 import { URL } from 'node:url';
 
 import { DeleteRequestBuilder, GetRequestBuilder, PostRequestBuilder } from './requestBuilders';
+import { PutRequestBuilder } from './requestBuilders/PutRequestBuilder';
 
 /**
  * Factory class to create RequestBuilders based on the request method.
@@ -52,7 +53,7 @@ export class Api {
    * @public
    */
   public put(url: string): PostRequestBuilder {
-    return new PostRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(`Basic ${this.apiKey}`);
+    return new PutRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(`Basic ${this.apiKey}`);
   }
 
   /**
