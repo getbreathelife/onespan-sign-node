@@ -12,6 +12,7 @@ export type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLIN
 /** @public */
 export type PackageVisibility = 'ACCOUNT' | 'SENDER';
 
+/** @public */
 export type AuditEventTargetType =
   | 'Document'
   | 'Package'
@@ -23,6 +24,7 @@ export type AuditEventTargetType =
   | 'EMAIL_LINK'
   | 'Knowledge Based Authentication';
 
+/** @public */
 export type AuditEventType =
   | 'Accept'
   | 'Click To Sign'
@@ -66,9 +68,7 @@ export interface PackageArtifactsLimits {}
 /** @alpha */
 export interface SignedDocumentDelivery {}
 
-/**
- * @public
- */
+/** @public */
 export interface Package {
   id: string;
   name: string;
@@ -107,6 +107,7 @@ export interface Package {
   bulkSendable: Nullable<boolean>;
 }
 
+/** @public */
 export interface AuditEvent {
   /** The target type. */
   'target-type': Nullable<AuditEventTargetType>;
@@ -133,6 +134,7 @@ export interface AuditEvent {
   data: Nullable<string>;
 }
 
+/** @public */
 export interface ExportedAuditTrail {
   /** The package id. */
   'package-id': Nullable<string>;
