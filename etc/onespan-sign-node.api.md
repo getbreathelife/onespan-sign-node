@@ -7,7 +7,7 @@
 /// <reference types="node" />
 
 import { default as FormData_2 } from 'form-data';
-import { Readable } from 'stream';
+import { Readable } from 'node:stream';
 import { RequestInit as RequestInit_2 } from 'node-fetch';
 import { Response as Response_2 } from 'node-fetch';
 
@@ -21,92 +21,42 @@ export class Api {
     protected readonly apiKey: string;
     // (undocumented)
     protected readonly apiUrl: string;
-    // Warning: (ae-forgotten-export) The symbol "DeleteRequestBuilder" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     delete(url: string): DeleteRequestBuilder;
-    // Warning: (ae-forgotten-export) The symbol "GetRequestBuilder" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     get(url: string): GetRequestBuilder;
-    // Warning: (ae-forgotten-export) The symbol "PostRequestBuilder" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
     post(url: string): PostRequestBuilder;
-}
-
-// @public
-export interface CreatePackageRequestPayload {
-    // (undocumented)
-    autocomplete?: boolean;
-    // (undocumented)
-    bulkSendable?: boolean;
-    // (undocumented)
-    completed?: string;
-    // (undocumented)
-    consent?: string;
-    // (undocumented)
-    created?: string;
-    // (undocumented)
-    data?: Record<string, any>;
-    // (undocumented)
-    description?: string;
-    // (undocumented)
-    documents?: DocumentMetadata[];
-    // (undocumented)
-    due?: string;
-    // (undocumented)
-    emailMessage?: string;
-    // (undocumented)
-    id?: string;
-    // (undocumented)
-    language?: string;
-    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
-    //
-    // (undocumented)
-    limits?: PackageArtifactsLimits;
-    // (undocumented)
-    messages?: Message[];
-    // (undocumented)
-    name: string;
-    // (undocumented)
-    notarized?: boolean;
-    // (undocumented)
-    notaryRoleId?: string;
-    // Warning: (ae-incompatible-release-tags) The symbol "roles" is marked as @public, but its signature references "Role" which is marked as @alpha
-    //
-    // (undocumented)
-    roles?: Role[];
-    // Warning: (ae-incompatible-release-tags) The symbol "sender" is marked as @public, but its signature references "Sender" which is marked as @alpha
-    //
-    // (undocumented)
-    sender?: Sender;
-    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
-    //
-    // (undocumented)
-    settings?: PackageSettings;
-    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
-    //
-    // (undocumented)
-    signedDocumentDelivery?: SignedDocumentDelivery;
-    // (undocumented)
-    status?: PackageStatus;
-    // (undocumented)
-    timezoneId?: string;
-    // (undocumented)
-    trashed?: boolean;
-    // (undocumented)
-    type?: PackageType;
-    // (undocumented)
-    updated?: string;
-    // (undocumented)
-    visibility?: PackageVisibility;
+    put(url: string): PostRequestBuilder;
 }
 
 // @public (undocumented)
-export interface CreatePackageResponsePayload {
+export interface AuditEvent {
+    'date-time': Nullable<string>;
+    'target-type': Nullable<AuditEventTargetType>;
+    'user-email': Nullable<string>;
+    'user-ip': Nullable<string>;
+    data: Nullable<string>;
+    target: Nullable<string>;
+    type: Nullable<AuditEventType>;
+    user: Nullable<string>;
+}
+
+// @public (undocumented)
+export type AuditEventTargetType = 'Document' | 'Package' | 'AuthMethod' | 'Account' | 'CHALLENGE' | 'SMS' | 'SSO' | 'EMAIL_LINK' | 'Knowledge Based Authentication';
+
+// @public (undocumented)
+export type AuditEventType = 'Accept' | 'Click To Sign' | 'Click To Initial' | 'Capture Signature' | 'Confirm' | 'Download' | 'Download Zip' | 'Form Field' | 'Login' | 'View' | 'Opt Out' | 'Signing Session For Recipient' | 'Decline';
+
+// @public (undocumented)
+interface CreatePackage {
     // (undocumented)
     id: string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "BaseRequestBuilder" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+class DeleteRequestBuilder extends BaseRequestBuilder {
+    // (undocumented)
+    protected method: string;
 }
 
 // @public (undocumented)
@@ -213,6 +163,12 @@ export class DocumentResource extends Resource {
 }
 
 // @public (undocumented)
+export interface ExportedAuditTrail {
+    'audit-events': Nullable<AuditEvent[]>;
+    'package-id': Nullable<string>;
+}
+
+// @public (undocumented)
 interface External_2 {
     // (undocumented)
     data: Nullable<Record<string, any>>;
@@ -276,6 +232,31 @@ export interface FieldValidation {
     required: Nullable<boolean>;
 }
 
+// @public
+export interface GetAllPackagesParameters {
+    dir?: 'asc' | 'desc';
+    fields?: 'id';
+    from?: number;
+    lastUpdatedEndDate?: Date | string;
+    lastUpdatedStartDate?: Date | string;
+    ownerEmail?: string;
+    ownerUserId?: string;
+    predefined?: 'all' | 'awaitingSignature' | 'sent' | 'completed' | 'expiringSoon';
+    query?: 'drafts' | 'inbox' | 'trashed';
+    search?: string;
+    searchtype?: 'exact' | 'exactname';
+    sort?: 'created' | 'completed' | 'updated' | 'due' | 'name' | 'status';
+    to?: number;
+    type?: 'TEMPLATE';
+    visibility?: PackageVisibility;
+}
+
+// @public (undocumented)
+class GetRequestBuilder extends BaseRequestBuilder {
+    // (undocumented)
+    protected method: string;
+}
+
 // @public (undocumented)
 export interface Message {
     // (undocumented)
@@ -302,9 +283,9 @@ export type Nullable<T> = T | null;
 export class OneSpanSign {
     constructor(apiKey: string, apiUrl: string);
     // (undocumented)
-    documents: DocumentResource;
-    // (undocumented)
-    packages: PackageResource;
+    protected api: Api;
+    get documents(): DocumentResource;
+    get packages(): PackageResource;
 }
 
 // @public (undocumented)
@@ -379,12 +360,87 @@ export interface PackageArtifactsLimits {
 }
 
 // @public
+export interface PackageData {
+    // (undocumented)
+    autocomplete?: boolean;
+    // (undocumented)
+    bulkSendable?: boolean;
+    // (undocumented)
+    completed?: string;
+    // (undocumented)
+    consent?: string;
+    // (undocumented)
+    created?: string;
+    // (undocumented)
+    data?: Record<string, any>;
+    // (undocumented)
+    description?: string;
+    // (undocumented)
+    documents?: DocumentMetadata[];
+    // (undocumented)
+    due?: string;
+    // (undocumented)
+    emailMessage?: string;
+    // (undocumented)
+    id?: string;
+    // (undocumented)
+    language?: string;
+    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
+    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
+    //
+    // (undocumented)
+    limits?: PackageArtifactsLimits;
+    // (undocumented)
+    messages?: Message[];
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    notarized?: boolean;
+    // (undocumented)
+    notaryRoleId?: string;
+    // Warning: (ae-incompatible-release-tags) The symbol "roles" is marked as @public, but its signature references "Role" which is marked as @alpha
+    // Warning: (ae-incompatible-release-tags) The symbol "roles" is marked as @public, but its signature references "Role" which is marked as @alpha
+    //
+    // (undocumented)
+    roles?: Role[];
+    // Warning: (ae-incompatible-release-tags) The symbol "sender" is marked as @public, but its signature references "Sender" which is marked as @alpha
+    // Warning: (ae-incompatible-release-tags) The symbol "sender" is marked as @public, but its signature references "Sender" which is marked as @alpha
+    //
+    // (undocumented)
+    sender?: Sender;
+    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
+    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
+    //
+    // (undocumented)
+    settings?: PackageSettings;
+    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
+    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
+    //
+    // (undocumented)
+    signedDocumentDelivery?: SignedDocumentDelivery;
+    // (undocumented)
+    status?: PackageStatus;
+    // (undocumented)
+    timezoneId?: string;
+    // (undocumented)
+    trashed?: boolean;
+    // (undocumented)
+    type?: PackageType;
+    // (undocumented)
+    updated?: string;
+    // (undocumented)
+    visibility?: PackageVisibility;
+}
+
+// @public
 export class PackageResource extends Resource {
-    create(payload: CreatePackageRequestPayload): Promise<CreatePackageResponsePayload>;
-    // (undocumented)
-    get(): Promise<Package[]>;
-    // (undocumented)
-    get(id: string): Promise<Package>;
+    create(payload: Requests.PackageData): Promise<Responses.CreatePackage>;
+    delete(packageId: string): Promise<void>;
+    getAll(params: Requests.GetAllPackagesParameters): Promise<Package[]>;
+    getAuditTrail(packageId: string): Promise<ExportedAuditTrail>;
+    getEvidenceSummary(packageId: string): Promise<Response_2>;
+    getOne(packageId: string): Promise<Package>;
+    update(packageId: string, payload: Requests.PackageData): Promise<void>;
 }
 
 // @alpha (undocumented)
@@ -411,13 +467,45 @@ export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
 // @public (undocumented)
 export type PackageVisibility = 'ACCOUNT' | 'SENDER';
 
+// @public (undocumented)
+class PostRequestBuilder extends BaseRequestBuilder {
+    // (undocumented)
+    protected method: string;
+    // (undocumented)
+    withBody(body: Record<string, any> | FormData_2 | string): this;
+}
+
 // @alpha (undocumented)
 export type ProfessionalIdentityField = {};
+
+// @public (undocumented)
+class PutRequestBuilder extends PostRequestBuilder {
+    // (undocumented)
+    protected method: string;
+}
 
 // @public
 export type RecursivePartial<T> = {
     [P in keyof T]?: RecursivePartial<T[P]>;
 };
+
+declare namespace RequestBuilders {
+    export {
+        GetRequestBuilder,
+        PostRequestBuilder,
+        PutRequestBuilder,
+        DeleteRequestBuilder
+    }
+}
+export { RequestBuilders }
+
+declare namespace Requests {
+    export {
+        GetAllPackagesParameters,
+        PackageData
+    }
+}
+export { Requests }
 
 // @public
 export abstract class Resource {
@@ -425,6 +513,13 @@ export abstract class Resource {
     // (undocumented)
     protected api: Api;
 }
+
+declare namespace Responses {
+    export {
+        CreatePackage
+    }
+}
+export { Responses }
 
 // @alpha (undocumented)
 export type Role = {

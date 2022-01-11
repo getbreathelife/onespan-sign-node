@@ -108,7 +108,7 @@ export class PackageResource extends Resource {
    * Retrieves Evidence Summary information for a specified package (transaction).
    *
    * @param packageId - Package ID
-   * @returns A {@link https://www.npmjs.com/package/node-fetch#class-response | `node-fetch` Response} object that exposes
+   * @returns A {@link https://github.com/node-fetch/node-fetch/tree/2.x#class-response | `node-fetch` Response} object that exposes
    *          properties such as `body` or functions such as `arrayBuffer()` or `blob()` to retrieve the response data.
    *
    * @remarks

@@ -17,3 +17,4 @@ export { OneSpanSign } from './OneSpanSign';
 export * from './api';
 export * from './resources';
 export * from './types';
+export * from './types/requests';
