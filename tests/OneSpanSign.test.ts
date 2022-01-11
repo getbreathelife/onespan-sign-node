@@ -13,8 +13,8 @@ describe('OneSpanSign', () => {
     resource       | type
     ${'packages'}  | ${PackageResource}
     ${'documents'} | ${DocumentResource}
-  `('defines $resource resource property as getter function on its prototype', ({ resource, type }) => {
-    it(`defines ${resource} resource property as getter function on its prototype`, () => {
+  `('$resource resource', ({ resource, type }) => {
+    it(`defines ${resource} resource property as getter function on the prototype`, () => {
       expect(Object.getOwnPropertyDescriptor(prototype, resource)).toStrictEqual(
         expect.objectContaining({
           get: expect.any(Function),
@@ -22,7 +22,7 @@ describe('OneSpanSign', () => {
       );
     });
 
-    it(`lazily initializes ${resource} resource and shadows the getter function with object property`, () => {
+    it(`lazily initializes ${resource} resource and shadows the getter function with an object property`, () => {
       expect(Reflect.get(oneSpanSign, resource)).toStrictEqual(expect.any(type));
       expect(Object.getOwnPropertyDescriptor(oneSpanSign, resource)).toStrictEqual(
         expect.objectContaining({
