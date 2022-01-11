@@ -7,17 +7,17 @@ Node.js library for the OneSpan Sign API
 ## Feature Support
 
 ### Packages (Transactions)
-| Endpoints                                                | `GET`              | `POST`             | `PUT` | `DELETE` |
-|----------------------------------------------------------|--------------------|--------------------|-------|----------|
-| `/api/packages`                                          | :white_check_mark: | :white_check_mark: | -     | -        |
-| `/api/packages/{packageId}`                              | :white_check_mark: | -                  | :x:   | :x:      |
-| `/api/packages/{packageId}/audit`                        | :x:                | -                  | -     | -        |
-| `/api/packages/{packageId}/clone`                        | -                  | :x:                | -     | -        |
-| `/api/packages/{packageId}/evidence/summary`             | :x:                | -                  | -     | -        |
-| `/api/packages/{packageId}/fieldSummary`                 | :x:                | -                  | -     | -        |
-| `/api/packages/{packageId}/referencedConditions`         | :x:                | -                  | -     | -        |
-| `/api/packages/{packageId}/signers/{signerId}/approvals` | :x:                | -                  | -     | -        |
-| `/api/packages/{packageId}/signingStatus`                | :x:                | -                  | -     | -        |
+| Endpoints                                                | `GET`              | `POST`             | `PUT`              | `DELETE`           |
+|----------------------------------------------------------|--------------------|--------------------|--------------------|--------------------|
+| `/api/packages`                                          | :white_check_mark: | :white_check_mark: | -                  | -                  |
+| `/api/packages/{packageId}`                              | :white_check_mark: | -                  | :white_check_mark: | :white_check_mark: |
+| `/api/packages/{packageId}/audit`                        | :white_check_mark: | -                  | -                  | -                  |
+| `/api/packages/{packageId}/clone`                        | -                  | :x:                | -                  | -                  |
+| `/api/packages/{packageId}/evidence/summary`             | :white_check_mark: | -                  | -                  | -                  |
+| `/api/packages/{packageId}/fieldSummary`                 | :x:                | -                  | -                  | -                  |
+| `/api/packages/{packageId}/referencedConditions`         | :x:                | -                  | -                  | -                  |
+| `/api/packages/{packageId}/signers/{signerId}/approvals` | :x:                | -                  | -                  | -                  |
+| `/api/packages/{packageId}/signingStatus`                | :x:                | -                  | -                  | -                  |
 
 ### Documents
 | Endpoints                                                        | `GET` | `POST`             | `PUT` | `DELETE` |
