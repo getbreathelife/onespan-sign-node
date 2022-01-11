@@ -2,6 +2,10 @@ import fetch, { RequestInit, Response } from 'node-fetch';
 
 import { HttpResponseError } from '../error';
 
+/**
+ * Builder class to construct an api request.
+ * @public
+ */
 export class BaseRequestBuilder {
   protected readonly method: string = 'GET';
   protected requestHeaders: Record<string, string>;

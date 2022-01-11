@@ -2,6 +2,7 @@ import FormData from 'form-data';
 
 import { BaseRequestBuilder } from './BaseRequestBuilder';
 
+/** @public */
 export class PostRequestBuilder extends BaseRequestBuilder {
   protected override method = 'POST';
 
