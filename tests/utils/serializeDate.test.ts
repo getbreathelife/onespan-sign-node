@@ -13,4 +13,8 @@ describe('serializeDate', () => {
     const date = new Date(1641853087684);
     expect(serializeDate(date)).toEqual(date.toISOString());
   });
+
+  it('throws an error if the provided parameter is an invalid type', () => {
+    expect(() => serializeDate(null as any as Date)).toThrowErrorMatchingSnapshot();
+  });
 });

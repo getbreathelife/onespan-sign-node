@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serializeDate throws an error if the provided parameter is an invalid type 1`] = `"Invalid parameter provided! Expect to be an instance of Date, string or undefined"`;
