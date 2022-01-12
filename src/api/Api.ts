@@ -1,7 +1,6 @@
 import { URL } from 'node:url';
 
-import { DeleteRequestBuilder, GetRequestBuilder, PostRequestBuilder } from './requestBuilders';
-import { PutRequestBuilder } from './requestBuilders/PutRequestBuilder';
+import { DeleteRequestBuilder, GetRequestBuilder, PostRequestBuilder, PutRequestBuilder } from './requestBuilders';
 
 /**
  * Factory class to create RequestBuilders based on the request method.
