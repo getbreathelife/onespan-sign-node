@@ -12,40 +12,58 @@ A library to interact with OneSpan Sign's API.
 ```ts
 const oneSpanSign = new OneSpanSign(API_KEY, API_URL);
 
-const { id: packageId } = await oneSpanSign.createPackage({...});
+const { id: packageId } = await oneSpanSign.packages.create({...});
 
-await oneSpanSign.uploadDocument(packageId, ...)
+await oneSpanSign.documents.create(packageId, ...)
 ```
 
 ## Classes
 
 |  Class | Description |
 |  --- | --- |
-|  [OneSpanSign](./onespan-sign-node.onespansign.md) | Main class to interact with OneSpan Sign's API |
+|  [Api](./onespan-sign-node.api.md) | Factory class to create RequestBuilders based on the request method. |
+|  [DocumentResource](./onespan-sign-node.documentresource.md) | Resource class to interact with [documents](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents)<!-- -->. |
+|  [OneSpanSign](./onespan-sign-node.onespansign.md) | Main class to interact with OneSpan Sign's API. This class is a collection of resource objects used to interact with OneSpan Sign's API. |
+|  [PackageResource](./onespan-sign-node.packageresource.md) | Resource class to interact with [packages (transactions)](https://community.onespan.com/documentation/onespan-sign/guides/sender-guides/user/transactions)<!-- -->. |
+|  [Resource](./onespan-sign-node.resource.md) | Base class for resources. Resource classes are used to call endpoints specific to the resource (entity) on OneSpan Sign. |
 
 ## Interfaces
 
 |  Interface | Description |
 |  --- | --- |
-|  [CreatePackageRequestPayload](./onespan-sign-node.createpackagerequestpayload.md) | Request payload for package creation operations. |
-|  [CreatePackageResponsePayload](./onespan-sign-node.createpackageresponsepayload.md) |  |
+|  [AuditEvent](./onespan-sign-node.auditevent.md) |  |
 |  [DocumentApproval](./onespan-sign-node.documentapproval.md) |  |
+|  [DocumentData](./onespan-sign-node.documentdata.md) | Request payload for create/update document operations. |
 |  [DocumentField](./onespan-sign-node.documentfield.md) |  |
 |  [DocumentMetadata](./onespan-sign-node.documentmetadata.md) |  |
 |  [DocumentPage](./onespan-sign-node.documentpage.md) |  |
+|  [ExportedAuditTrail](./onespan-sign-node.exportedaudittrail.md) |  |
 |  [External\_2](./onespan-sign-node.external_2.md) |  |
 |  [ExtractAnchor](./onespan-sign-node.extractanchor.md) |  |
 |  [FieldValidation](./onespan-sign-node.fieldvalidation.md) |  |
+|  [GetAllPackagesParameters](./onespan-sign-node.getallpackagesparameters.md) | Request parameters for the get all packages operation. The parameters will be appended to the URL when the API request is made. |
 |  [Message](./onespan-sign-node.message.md) |  |
 |  [Package](./onespan-sign-node.package.md) |  |
-|  [UploadDocumentRequestPayload](./onespan-sign-node.uploaddocumentrequestpayload.md) | Request payload for upload document operations. |
+|  [PackageData](./onespan-sign-node.packagedata.md) | Request payload for package creation/replacement operations. |
 |  [User](./onespan-sign-node.user.md) |  |
 |  [UserCustomField](./onespan-sign-node.usercustomfield.md) |  |
+
+## Namespaces
+
+|  Namespace | Description |
+|  --- | --- |
+|  [RequestBuilders](./onespan-sign-node.requestbuilders.md) |  |
+|  [Requests](./onespan-sign-node.requests.md) |  |
+|  [Responses](./onespan-sign-node.responses.md) |  |
 
 ## Type Aliases
 
 |  Type Alias | Description |
 |  --- | --- |
+|  [AuditEventTargetType](./onespan-sign-node.auditeventtargettype.md) |  |
+|  [AuditEventType](./onespan-sign-node.auditeventtype.md) |  |
+|  [CreateDocumentData](./onespan-sign-node.createdocumentdata.md) | Request payload for create/update document operations. |
+|  [CreatePackageData](./onespan-sign-node.createpackagedata.md) | Request payload for package creation/replacement operations. |
 |  [ExtractionType](./onespan-sign-node.extractiontype.md) |  |
 |  [FieldSubtype](./onespan-sign-node.fieldsubtype.md) |  |
 |  [FieldType](./onespan-sign-node.fieldtype.md) |  |
@@ -58,4 +76,5 @@ await oneSpanSign.uploadDocument(packageId, ...)
 |  [RoleType](./onespan-sign-node.roletype.md) |  |
 |  [SignerStatus](./onespan-sign-node.signerstatus.md) |  |
 |  [SpecialUserType](./onespan-sign-node.specialusertype.md) |  |
+|  [UpdatePackageData](./onespan-sign-node.updatepackagedata.md) | Request payload for package creation/replacement operations. |
 

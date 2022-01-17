@@ -4,7 +4,7 @@
 
 ## OneSpanSign class
 
-Main class to interact with OneSpan Sign's API
+Main class to interact with OneSpan Sign's API. This class is a collection of resource objects used to interact with OneSpan Sign's API.
 
 <b>Signature:</b>
 
@@ -18,10 +18,11 @@ export declare class OneSpanSign
 |  --- | --- | --- |
 |  [(constructor)(apiKey, apiUrl)](./onespan-sign-node.onespansign._constructor_.md) |  | Constructs an instance of the <code>OneSpanSign</code> class. |
 
-## Methods
+## Properties
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [createPackage(payload)](./onespan-sign-node.onespansign.createpackage.md) |  | Creates a package (transaction). |
-|  [uploadDocument(packageId, payload, documentBody)](./onespan-sign-node.onespansign.uploaddocument.md) |  | Uploads a document to an existing package. |
+|  Property | Modifiers | Type | Description |
+|  --- | --- | --- | --- |
+|  [api](./onespan-sign-node.onespansign.api.md) |  | [Api](./onespan-sign-node.api.md) |  |
+|  [documents](./onespan-sign-node.onespansign.documents.md) |  | [DocumentResource](./onespan-sign-node.documentresource.md) | Document resource |
+|  [packages](./onespan-sign-node.onespansign.packages.md) |  | [PackageResource](./onespan-sign-node.packageresource.md) | Package resource |
 
