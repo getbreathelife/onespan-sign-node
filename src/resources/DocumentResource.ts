@@ -26,7 +26,7 @@ export class DocumentResource extends Resource {
    */
   public async create(
     packageId: string,
-    payload: Requests.DocumentData,
+    payload: Requests.CreateDocumentData,
     documentBody: Buffer | Readable
   ): Promise<DocumentMetadata> {
     const formData = new FormData();

@@ -1,7 +1,6 @@
 import { Readable } from 'node:stream';
 
-import { Api, DocumentResource } from '../../src';
-import { Requests } from '../../src/types';
+import { Api, DocumentResource, Requests } from '../../src';
 import { mockedFetch, mockFetchHappyPath } from '../setup/mockNodeFetch';
 
 const MOCK_API_KEY = 'demoKey';
@@ -29,7 +28,7 @@ describe('DocumentResource', () => {
       ${'buffer'} | ${Buffer.from('abc1234')}   | ${(data: any) => data}
       ${'stream'} | ${Readable.from('abc1234')} | ${(data: any) => expect.objectContaining({ source: data })}
     `('sends the provided payload and $type as request body', async ({ data, expectMatcher }) => {
-      const payload: Requests.DocumentData = {
+      const payload: Requests.CreateDocumentData = {
         name: 'mock document',
       };
       const packageId = 'mockId';

@@ -116,3 +116,15 @@ export interface PackageData {
   signedDocumentDelivery?: SignedDocumentDelivery;
   bulkSendable?: boolean;
 }
+
+/**
+ * {@inheritDoc PackageData}
+ * @public
+ */
+export type CreatePackageData = PackageData;
+
+/**
+ * {@inheritDoc PackageData}
+ * @public
+ */
+export type UpdatePackageData = PackageData;

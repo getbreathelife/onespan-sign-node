@@ -22,7 +22,7 @@ describe('PackageResource', () => {
 
   describe('create', () => {
     it('sends the provided payload as request body', async () => {
-      const payload: Requests.PackageData = {
+      const payload: Requests.CreatePackageData = {
         name: 'mock package',
       };
 
@@ -75,7 +75,7 @@ describe('PackageResource', () => {
 
   describe('update', () => {
     it('sends the provided payload as request body', async () => {
-      const payload: Requests.PackageData = {
+      const payload: Requests.UpdatePackageData = {
         name: 'mock package update',
         status: 'ARCHIVED',
       };

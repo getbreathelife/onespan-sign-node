@@ -45,11 +45,17 @@ export type AuditEventTargetType = 'Document' | 'Package' | 'AuthMethod' | 'Acco
 // @public (undocumented)
 export type AuditEventType = 'Accept' | 'Click To Sign' | 'Click To Initial' | 'Capture Signature' | 'Confirm' | 'Download' | 'Download Zip' | 'Form Field' | 'Login' | 'View' | 'Opt Out' | 'Signing Session For Recipient' | 'Decline';
 
+// @public
+export type CreateDocumentData = DocumentData;
+
 // @public (undocumented)
 interface CreatePackage {
     // (undocumented)
     id: string;
 }
+
+// @public
+export type CreatePackageData = PackageData;
 
 // Warning: (ae-forgotten-export) The symbol "BaseRequestBuilder" needs to be exported by the entry point index.d.ts
 //
@@ -185,7 +191,7 @@ export interface DocumentPage {
 
 // @public
 export class DocumentResource extends Resource {
-    create(packageId: string, payload: Requests.DocumentData, documentBody: Buffer | Readable): Promise<DocumentMetadata>;
+    create(packageId: string, payload: Requests.CreateDocumentData, documentBody: Buffer | Readable): Promise<DocumentMetadata>;
 }
 
 // @public (undocumented)
@@ -460,13 +466,13 @@ export interface PackageData {
 
 // @public
 export class PackageResource extends Resource {
-    create(payload: Requests.PackageData): Promise<Responses.CreatePackage>;
+    create(payload: Requests.CreatePackageData): Promise<Responses.CreatePackage>;
     delete(packageId: string): Promise<void>;
     getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]>;
     getAuditTrail(packageId: string): Promise<ExportedAuditTrail>;
     getEvidenceSummary(packageId: string): Promise<Response_2>;
     getOne(packageId: string): Promise<Package>;
-    update(packageId: string, payload: Requests.PackageData): Promise<void>;
+    update(packageId: string, payload: Requests.UpdatePackageData): Promise<void>;
 }
 
 // @alpha (undocumented)
@@ -529,7 +535,10 @@ declare namespace Requests {
     export {
         GetAllPackagesParameters,
         PackageData,
-        DocumentData
+        CreatePackageData,
+        UpdatePackageData,
+        DocumentData,
+        CreateDocumentData
     }
 }
 export { Requests }
@@ -598,6 +607,9 @@ export type SpecialUserType = 'NOTARY';
 
 // @alpha (undocumented)
 export type Translation = {};
+
+// @public
+export type UpdatePackageData = PackageData;
 
 // @public (undocumented)
 export interface User {

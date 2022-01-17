@@ -59,3 +59,9 @@ export interface DocumentData {
   /** {@inheritDoc DocumentMetadata.signerVerificationToken} */
   signerVerificationToken?: string;
 }
+
+/**
+ * {@inheritDoc DocumentData}
+ * @public
+ */
+export type CreateDocumentData = DocumentData;

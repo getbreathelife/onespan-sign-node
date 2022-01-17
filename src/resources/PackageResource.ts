@@ -22,7 +22,7 @@ export class PackageResource extends Resource {
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/creating-transaction-sender | Creating a Transaction for a Sender (OneSpan)}
    */
-  public async create(payload: Requests.PackageData): Promise<Responses.CreatePackage> {
+  public async create(payload: Requests.CreatePackageData): Promise<Responses.CreatePackage> {
     const response = await this.api.post('/api/packages').withBody(payload).fetch();
     return (await response.json()) as Responses.CreatePackage;
   }
@@ -79,7 +79,7 @@ export class PackageResource extends Resource {
    * @remarks
    *- {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages._packageId.post | REST API documentation (OneSpan)}
    */
-  public async update(packageId: string, payload: Requests.PackageData): Promise<void> {
+  public async update(packageId: string, payload: Requests.UpdatePackageData): Promise<void> {
     await this.api.put(`/api/packages/${packageId}`).withBody(payload).fetch();
   }
 
