@@ -2,14 +2,17 @@ import fetch, { RequestInit, Response } from 'node-fetch';
 
 import { HttpResponseError } from '../error';
 
-type RequestMethod = 'GET' | 'POST' | 'DELETE'; // can add more if needed
-
+/**
+ * Builder class to construct an api request.
+ * @public
+ */
 export class BaseRequestBuilder {
+  protected readonly method: string = 'GET';
   protected requestHeaders: Record<string, string>;
-  protected requestOptions: RequestInit;
-  protected url: string;
+  protected requestOptions: RequestInit = {};
+  protected url: URL;
 
-  constructor(method: RequestMethod = 'GET', url: string) {
+  constructor(url: URL) {
     this.url = url;
 
     // By default, we send data in JSON format and expects the API response to
@@ -17,9 +20,6 @@ export class BaseRequestBuilder {
     this.requestHeaders = {
       accept: 'application/json',
       'content-type': 'application/json',
-    };
-    this.requestOptions = {
-      method,
     };
   }
 
@@ -38,9 +38,33 @@ export class BaseRequestBuilder {
     return this;
   }
 
+  /**
+   * Replaces the query parameters in the request URL
+   * @param params - Dictionary containing the query parameters
+   *
+   * @public
+   */
+  public withQueryParams(params: Record<string, string | number | null | undefined>): this {
+    // Clean up null or undefined entries, and convert number values to strings
+    const filteredParams = Object.fromEntries(
+      Object.entries(params)
+        // Cannot use is operator to assert non-null or non-undefined type on
+        // destructured object: https://github.com/microsoft/TypeScript/issues/41173
+        .filter(([, val]) => typeof val !== 'undefined' && val !== null)
+        .map(([key, val]) => {
+          return [key, (val as string | number).toString()];
+        })
+    );
+
+    const search = new URLSearchParams(filteredParams);
+    this.url.search = search.toString();
+    return this;
+  }
+
   public async fetch(): Promise<Response> {
     const response = await fetch(this.url, {
       ...this.requestOptions,
+      method: this.method,
       headers: this.requestHeaders,
     });
 

@@ -1,19 +1,14 @@
-import FormData from 'form-data';
-import { Readable } from 'stream';
-
 import { Api } from './api';
-import {
-  CreatePackageRequestPayload,
-  CreatePackageResponsePayload,
-  DocumentMetadata,
-  UploadDocumentRequestPayload,
-} from './types';
+import { DocumentResource, PackageResource } from './resources';
 
 /**
- * Main class to interact with OneSpan Sign's API
+ * Main class to interact with OneSpan Sign's API. This class is a
+ * collection of resource objects used to interact with OneSpan Sign's API.
  * @public
  */
 export class OneSpanSign {
+  protected api: Api;
+
   /**
    * Constructs an instance of the `OneSpanSign` class.
    *
@@ -25,55 +20,40 @@ export class OneSpanSign {
    *
    * - A list of server URLs can be found at {@link https://community.onespan.com/documentation/onespan-sign/guides/quick-start-guides/developer/environment-urls-ip-addresses | Environment URLs & IP Addresses (OneSpan)}.
    */
-  constructor(private readonly apiKey: string, private readonly apiUrl: string) {}
-
-  /**
-   * Creates a package (transaction).
-   *
-   * @param payload - Package initial information
-   * @returns A payload that contains the ID of the newly created package
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post | REST API documentation (OneSpan)}
-   *
-   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/creating-transaction-sender | Creating a Transaction for a Sender (OneSpan)}
-   */
-  public async createPackage(payload: CreatePackageRequestPayload): Promise<CreatePackageResponsePayload> {
-    const response = await Api.post(`${this.apiUrl}/api/packages`)
-      .withAuthorizationHeader(`Basic ${this.apiKey}`)
-      .withBody(payload)
-      .fetch();
-
-    return (await response.json()) as CreatePackageResponsePayload;
+  constructor(apiKey: string, apiUrl: string) {
+    this.api = new Api(apiKey, apiUrl);
   }
 
   /**
-   * Uploads a document to an existing package.
+   * Individual resource objects are lazily initialized. When a getter for the resource is called,
+   * the resource object will be initialized and shadows the getter function as an object property.
    *
-   * @param packageId - Package ID
-   * @param payload - Metadata of the to-be-uploaded document
-   * @param documentBody - Data of the document
-   * @returns Metadata of the uploaded document
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation (OneSpan)}
-   *
-   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   * Inspiration: https://stackoverflow.com/a/37978698/14163928
    */
-  public async uploadDocument(
-    packageId: string,
-    payload: UploadDocumentRequestPayload,
-    documentBody: Buffer | Readable
-  ): Promise<DocumentMetadata> {
-    const formData = new FormData();
-    formData.append('file', documentBody, { filename: payload.name });
-    formData.append('payload', JSON.stringify(payload));
 
-    const response = await Api.post(`${this.apiUrl}/api/packages/${packageId}/documents`)
-      .withAuthorizationHeader(`Basic ${this.apiKey}`)
-      .withBody(formData)
-      .fetch();
+  /**
+   * Document resource
+   */
+  public get documents(): DocumentResource {
+    const documents = new DocumentResource(this.api);
+    Object.defineProperty(this, 'documents', {
+      value: documents,
+      writable: false,
+      configurable: false,
+    });
+    return documents;
+  }
 
-    return (await response.json()) as DocumentMetadata;
+  /**
+   * Package resource
+   */
+  public get packages(): PackageResource {
+    const packages = new PackageResource(this.api);
+    Object.defineProperty(this, 'packages', {
+      value: packages,
+      writable: false,
+      configurable: false,
+    });
+    return packages;
   }
 }

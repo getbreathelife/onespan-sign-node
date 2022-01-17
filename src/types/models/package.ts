@@ -1,7 +1,7 @@
+import { Nullable } from '../utils';
 import { DocumentMetadata } from './document';
 import { Message } from './message';
 import { Role, Sender } from './role';
-import { Nullable } from './utils';
 
 /** @public */
 export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
@@ -11,6 +11,34 @@ export type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLIN
 
 /** @public */
 export type PackageVisibility = 'ACCOUNT' | 'SENDER';
+
+/** @public */
+export type AuditEventTargetType =
+  | 'Document'
+  | 'Package'
+  | 'AuthMethod'
+  | 'Account'
+  | 'CHALLENGE'
+  | 'SMS'
+  | 'SSO'
+  | 'EMAIL_LINK'
+  | 'Knowledge Based Authentication';
+
+/** @public */
+export type AuditEventType =
+  | 'Accept'
+  | 'Click To Sign'
+  | 'Click To Initial'
+  | 'Capture Signature'
+  | 'Confirm'
+  | 'Download'
+  | 'Download Zip'
+  | 'Form Field'
+  | 'Login'
+  | 'View'
+  | 'Opt Out'
+  | 'Signing Session For Recipient'
+  | 'Decline';
 
 /**
  * @privateRemarks
@@ -40,9 +68,7 @@ export interface PackageArtifactsLimits {}
 /** @alpha */
 export interface SignedDocumentDelivery {}
 
-/**
- * @public
- */
+/** @public */
 export interface Package {
   id: string;
   name: string;
@@ -81,49 +107,38 @@ export interface Package {
   bulkSendable: Nullable<boolean>;
 }
 
-/**
- * Request payload for package creation operations.
- *
- * @privateRemarks
- * TODO: support uploading documents during package creation
- *
- * @remarks
- * Request payload should at least contain {@link CreatePackageRequestPayload.name | 'name'} property.
- * See {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post | REST API documentation} for more information.
- *
- * @public
- */
-export interface CreatePackageRequestPayload {
-  id?: string;
-  name: string;
-  roles?: Role[];
-  status?: PackageStatus;
-  messages?: Message[];
-  data?: Record<string, any>;
-  description?: string;
-  language?: string;
-  autocomplete?: boolean;
-  type?: PackageType;
-  due?: string;
-  visibility?: PackageVisibility;
-  settings?: PackageSettings;
-  consent?: string;
-  notaryRoleId?: string;
-  trashed?: boolean;
-  notarized?: boolean;
-  timezoneId?: string;
-  documents?: DocumentMetadata[];
-  emailMessage?: string;
-  created?: string;
-  updated?: string;
-  completed?: string;
-  sender?: Sender;
-  limits?: PackageArtifactsLimits;
-  signedDocumentDelivery?: SignedDocumentDelivery;
-  bulkSendable?: boolean;
+/** @public */
+export interface AuditEvent {
+  /** The target type. */
+  'target-type': Nullable<AuditEventTargetType>;
+
+  /** The time the event happened. */
+  'date-time': Nullable<string>;
+
+  /** The audit type. */
+  type: Nullable<AuditEventType>;
+
+  /** The audit target. */
+  target: Nullable<string>;
+
+  /** The signer's full name. */
+  user: Nullable<string>;
+
+  /** The signer's email. */
+  'user-email': Nullable<string>;
+
+  /** The signer's IP address. */
+  'user-ip': Nullable<string>;
+
+  /** The data signer entered. */
+  data: Nullable<string>;
 }
 
 /** @public */
-export interface CreatePackageResponsePayload {
-  id: string;
+export interface ExportedAuditTrail {
+  /** The package id. */
+  'package-id': Nullable<string>;
+
+  /** Audit events */
+  'audit-events': Nullable<AuditEvent[]>;
 }

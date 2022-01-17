@@ -4,9 +4,46 @@
 
 Node.js library for the OneSpan Sign API
 
+## Feature Support
+
+### Packages (Transactions)
+| Endpoints                                                | `GET`              | `POST`             | `PUT`              | `DELETE`           |
+|----------------------------------------------------------|--------------------|--------------------|--------------------|--------------------|
+| `/api/packages`                                          | :white_check_mark: | :white_check_mark: | -                  | -                  |
+| `/api/packages/{packageId}`                              | :white_check_mark: | -                  | :white_check_mark: | :white_check_mark: |
+| `/api/packages/{packageId}/audit`                        | :white_check_mark: | -                  | -                  | -                  |
+| `/api/packages/{packageId}/clone`                        | -                  | :x:                | -                  | -                  |
+| `/api/packages/{packageId}/evidence/summary`             | :white_check_mark: | -                  | -                  | -                  |
+| `/api/packages/{packageId}/fieldSummary`                 | :x:                | -                  | -                  | -                  |
+| `/api/packages/{packageId}/referencedConditions`         | :x:                | -                  | -                  | -                  |
+| `/api/packages/{packageId}/signers/{signerId}/approvals` | :x:                | -                  | -                  | -                  |
+| `/api/packages/{packageId}/signingStatus`                | :x:                | -                  | -                  | -                  |
+
+### Documents
+| Endpoints                                                        | `GET` | `POST`             | `PUT` | `DELETE` |
+|------------------------------------------------------------------|-------|--------------------|-------|----------|
+| `/api/packages/{packageId}/documents`                            | -     | :white_check_mark: | :x:   | :x:      |
+| `/api/packages/{packageId}/documents/zip`                        | :x:   | -                  | -     | -        |
+| `/api/packages/{packageId}/documents/signConfirm`                | -     | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/signed_documents`           | -     | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/visibility`                 | :x:   | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}`               | :x:   | :x:                | :x:   | :x:      |
+| `/api/packages/{packageId}/documents/{documentId}/original`      | :x:   | -                  | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}/pdf`           | :x:   | -                  | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}/layout`        | -     | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :x:   | -                  | -     | -        |
+
+Any other resources not mentioned in this document are currently **unsupported**.
+
 ## API Documentation
 
 You can view the latest documentation [here](./docs/index.md).
+
+## Tests
+
+### Unit tests using [Jest](https://jestjs.io/)
+
+Run `yarn test` from the project root.
 
 ### Manually Testing using REPL
 

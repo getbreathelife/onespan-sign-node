@@ -2,10 +2,9 @@ import FormData from 'form-data';
 
 import { BaseRequestBuilder } from './BaseRequestBuilder';
 
+/** @public */
 export class PostRequestBuilder extends BaseRequestBuilder {
-  constructor(url: string) {
-    super('POST', url);
-  }
+  protected override method = 'POST';
 
   public withBody(body: Record<string, any> | FormData | string): this {
     switch (typeof body) {

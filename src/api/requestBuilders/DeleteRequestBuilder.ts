@@ -1,7 +1,6 @@
 import { BaseRequestBuilder } from './BaseRequestBuilder';
 
+/** @public */
 export class DeleteRequestBuilder extends BaseRequestBuilder {
-  constructor(url: string) {
-    super('DELETE', url);
-  }
+  protected override method = 'DELETE';
 }
