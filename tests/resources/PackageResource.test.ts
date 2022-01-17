@@ -45,6 +45,12 @@ describe('PackageResource', () => {
       expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
     });
 
+    it('does not append any query parameter if no parameter is passed in', async () => {
+      await packages.getAll();
+
+      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+    });
+
     it('serializes Date objects into ISO strings', async () => {
       const params: Requests.GetAllPackagesParameters = {
         query: 'inbox',

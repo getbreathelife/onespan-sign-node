@@ -12,7 +12,8 @@ import {
 } from '../models';
 
 /**
- * Request parameters for the get all packages operation.
+ * Request parameters for the get all packages operation. The parameters will be appended
+ * to the URL when the API request is made.
  *
  * @remarks
  * See {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.get | REST API documentation (OneSpan)}

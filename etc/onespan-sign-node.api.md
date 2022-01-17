@@ -81,6 +81,32 @@ export interface DocumentApproval {
     signed: Nullable<string>;
 }
 
+// @public
+export interface DocumentData {
+    // (undocumented)
+    approvals?: RecursivePartial<DocumentApproval>[];
+    data?: Record<string, any>;
+    description?: string;
+    // (undocumented)
+    external?: Partial<External_2>;
+    extract?: boolean;
+    extractionTypes?: ExtractionType[];
+    fields?: RecursivePartial<DocumentField>[];
+    id?: string;
+    index?: number;
+    name: string;
+    // (undocumented)
+    pages?: RecursivePartial<DocumentPage>[];
+    // (undocumented)
+    signedHash?: string;
+    // (undocumented)
+    signerVerificationToken?: string;
+    size?: number;
+    status?: string;
+    // (undocumented)
+    tagged?: boolean;
+}
+
 // @public (undocumented)
 export interface DocumentField {
     // (undocumented)
@@ -159,7 +185,7 @@ export interface DocumentPage {
 
 // @public
 export class DocumentResource extends Resource {
-    create(packageId: string, payload: UploadDocumentRequestPayload, documentBody: Buffer | Readable): Promise<DocumentMetadata>;
+    create(packageId: string, payload: Requests.DocumentData, documentBody: Buffer | Readable): Promise<DocumentMetadata>;
 }
 
 // @public (undocumented)
@@ -436,7 +462,7 @@ export interface PackageData {
 export class PackageResource extends Resource {
     create(payload: Requests.PackageData): Promise<Responses.CreatePackage>;
     delete(packageId: string): Promise<void>;
-    getAll(params: Requests.GetAllPackagesParameters): Promise<Package[]>;
+    getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]>;
     getAuditTrail(packageId: string): Promise<ExportedAuditTrail>;
     getEvidenceSummary(packageId: string): Promise<Response_2>;
     getOne(packageId: string): Promise<Package>;
@@ -502,7 +528,8 @@ export { RequestBuilders }
 declare namespace Requests {
     export {
         GetAllPackagesParameters,
-        PackageData
+        PackageData,
+        DocumentData
     }
 }
 export { Requests }
@@ -571,32 +598,6 @@ export type SpecialUserType = 'NOTARY';
 
 // @alpha (undocumented)
 export type Translation = {};
-
-// @public
-export interface UploadDocumentRequestPayload {
-    // (undocumented)
-    approvals?: RecursivePartial<DocumentApproval>[];
-    data?: Record<string, any>;
-    description?: string;
-    // (undocumented)
-    external?: Partial<External_2>;
-    extract?: boolean;
-    extractionTypes?: ExtractionType[];
-    fields?: RecursivePartial<DocumentField>[];
-    id?: string;
-    index?: number;
-    name: string;
-    // (undocumented)
-    pages?: RecursivePartial<DocumentPage>[];
-    // (undocumented)
-    signedHash?: string;
-    // (undocumented)
-    signerVerificationToken?: string;
-    size?: number;
-    status?: string;
-    // (undocumented)
-    tagged?: boolean;
-}
 
 // @public (undocumented)
 export interface User {

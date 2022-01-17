@@ -1,7 +1,7 @@
 import FormData from 'form-data';
 import { Readable } from 'node:stream';
 
-import { DocumentMetadata, UploadDocumentRequestPayload } from '../types';
+import { DocumentMetadata, Requests } from '../types';
 import { Resource } from './Resource';
 
 /**
@@ -26,7 +26,7 @@ export class DocumentResource extends Resource {
    */
   public async create(
     packageId: string,
-    payload: UploadDocumentRequestPayload,
+    payload: Requests.DocumentData,
     documentBody: Buffer | Readable
   ): Promise<DocumentMetadata> {
     const formData = new FormData();

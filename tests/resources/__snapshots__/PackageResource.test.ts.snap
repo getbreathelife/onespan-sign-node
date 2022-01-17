@@ -29,6 +29,20 @@ Array [
 ]
 `;
 
+exports[`PackageResource getAll does not append any query parameter if no parameter is passed in 1`] = `
+Array [
+  "http://demo.com/api/packages",
+  Object {
+    "headers": Object {
+      "accept": "application/json",
+      "authorization": "Basic demoKey",
+      "content-type": "application/json",
+    },
+    "method": "GET",
+  },
+]
+`;
+
 exports[`PackageResource getAll sends the provided parameters as query parameters 1`] = `
 Array [
   "http://demo.com/api/packages?query=inbox&predefined=all",

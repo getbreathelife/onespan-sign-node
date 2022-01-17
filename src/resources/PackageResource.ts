@@ -35,16 +35,22 @@ export class PackageResource extends Resource {
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/retrieving-list-transactions | Retrieving a List of Transactions (OneSpan)}
    */
-  public async getAll(params: Requests.GetAllPackagesParameters): Promise<Package[]> {
-    const { lastUpdatedEndDate, lastUpdatedStartDate } = params;
+  public async getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]> {
+    const request = await this.api.get('/api/packages');
 
-    const queryParameters = {
-      ...params,
-      lastUpdatedStartDate: serializeDate(lastUpdatedStartDate),
-      lastUpdatedEndDate: serializeDate(lastUpdatedEndDate),
-    };
+    if (params) {
+      const { lastUpdatedEndDate, lastUpdatedStartDate } = params;
 
-    const response = await this.api.get('/api/packages').withQueryParams(queryParameters).fetch();
+      const queryParameters = {
+        ...params,
+        lastUpdatedStartDate: serializeDate(lastUpdatedStartDate),
+        lastUpdatedEndDate: serializeDate(lastUpdatedEndDate),
+      };
+
+      request.withQueryParams(queryParameters);
+    }
+
+    const response = await request.fetch();
     return (await response.json()) as Package[];
   }
 
