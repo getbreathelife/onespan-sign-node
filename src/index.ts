@@ -3,7 +3,11 @@
  *
  * @example
  * ```ts
- * const oneSpanSign = new OneSpanSign(API_KEY, API_URL);
+ * const oneSpanSign = new OneSpanSign({
+ *   clientId: CLIENT_ID,
+ *   secret: CLIENT_SECRET,
+ *   type: 'OWNER',   // or 'SENDER'
+ * });
  *
  * const { id: packageId } = await oneSpanSign.packages.create({...});
  *

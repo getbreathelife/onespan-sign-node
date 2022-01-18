@@ -1,5 +1,6 @@
 import { Api } from './api';
 import { DocumentResource, PackageResource } from './resources';
+import { AccessTokenOwnerConfig, AccessTokenSenderConfig } from './types';
 
 /**
  * Main class to interact with OneSpan Sign's API. This class is a
@@ -12,16 +13,17 @@ export class OneSpanSign {
   /**
    * Constructs an instance of the `OneSpanSign` class.
    *
-   * @param apiKey - API key to interact with OneSpan Sign's API
-   * @param apiUrl - Url for the OneSpan Sign API server
+   * @param accessTokenConfig - Configuration to retrieve access tokens to authenticate API requests.
+   * @param apiUrl - Url for the OneSpan Sign API server.
    *
    * @remarks
-   * - For information on how to retrieve your API key, see {@link https://community.onespan.com/documentation/onespan-sign/guides/admin-guides/user/integration | Integration (OneSpan)}.
+   * - For information on how to create a Client App and retrieve the ID and secret,
+   *   see {@link https://community.onespan.com/documentation/onespan-sign/guides/admin-guides/user/integration | Integration (OneSpan)}.
    *
    * - A list of server URLs can be found at {@link https://community.onespan.com/documentation/onespan-sign/guides/quick-start-guides/developer/environment-urls-ip-addresses | Environment URLs & IP Addresses (OneSpan)}.
    */
-  constructor(apiKey: string, apiUrl: string) {
-    this.api = new Api(apiKey, apiUrl);
+  constructor(accessTokenConfig: AccessTokenOwnerConfig | AccessTokenSenderConfig, apiUrl: string) {
+    this.api = new Api(accessTokenConfig, apiUrl);
   }
 
   /**
