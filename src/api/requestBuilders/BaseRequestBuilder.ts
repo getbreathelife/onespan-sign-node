@@ -8,7 +8,9 @@ import { HttpResponseError } from '../error';
  */
 export class BaseRequestBuilder {
   protected readonly method: string = 'GET';
-  protected requestHeaders: Record<string, string>;
+  protected requestHeaders: Record<string, string> & {
+    authorization?: string | (() => string) | (() => Promise<string>);
+  };
   protected requestOptions: RequestInit = {};
   protected url: URL;
 
@@ -23,12 +25,10 @@ export class BaseRequestBuilder {
     };
   }
 
-  protected handleResponse(response: Response): Response {
-    if (response.ok) return response;
-    throw new HttpResponseError(response);
-  }
-
-  public withAuthorizationHeader(value: string): this {
+  public withAuthorizationHeader(value: string): this;
+  public withAuthorizationHeader(value: () => string): this;
+  public withAuthorizationHeader(value: () => Promise<string>): this;
+  public withAuthorizationHeader(value: string | (() => string) | (() => Promise<string>)): this {
     this.requestHeaders.authorization = value;
     return this;
   }
@@ -61,11 +61,30 @@ export class BaseRequestBuilder {
     return this;
   }
 
+  protected async createHeaders(): Promise<Record<string, string>> {
+    const { authorization, ...headers } = this.requestHeaders;
+
+    if (authorization) {
+      if (typeof authorization === 'function') {
+        headers.authorization = await authorization();
+      } else {
+        headers.authorization = authorization;
+      }
+    }
+
+    return headers;
+  }
+
+  protected handleResponse(response: Response): Response {
+    if (response.ok) return response;
+    throw new HttpResponseError(response);
+  }
+
   public async fetch(): Promise<Response> {
     const response = await fetch(this.url, {
       ...this.requestOptions,
       method: this.method,
-      headers: this.requestHeaders,
+      headers: await this.createHeaders(),
     });
 
     return this.handleResponse(response);
