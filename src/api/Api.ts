@@ -37,7 +37,7 @@ export class Api {
    * @internal
    */
   protected isAccessTokenInvalid(): boolean {
-    return !this.accessToken || !this.tokenExpiry || this.tokenExpiry >= Date.now();
+    return !this.accessToken || !this.tokenExpiry || this.tokenExpiry <= Date.now();
   }
 
   /**
