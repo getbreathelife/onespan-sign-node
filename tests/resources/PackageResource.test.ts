@@ -1,18 +1,26 @@
-import { PackageResource, Requests, Api } from '../../src';
+import { PackageResource, Requests, Api, AccessTokenOwnerConfig } from '../../src';
+import { mockApiHappyPath, MockedApi, restoreMockedApi } from '../setup/mockApi';
 import { mockedFetch, mockFetchHappyPath } from '../setup/mockNodeFetch';
 
-const MOCK_API_KEY = 'demoKey';
+const MOCK_TOKEN_CONFIG: AccessTokenOwnerConfig = {
+  type: 'OWNER',
+  clientId: 'clientId',
+  secret: 'secret',
+};
 const MOCK_API_URL = 'http://demo.com';
 
 describe('PackageResource', () => {
+  let mockedApi: MockedApi;
   let packages: PackageResource;
 
   beforeAll(() => {
     mockFetchHappyPath();
-    packages = new PackageResource(new Api(MOCK_API_KEY, MOCK_API_URL));
+    mockedApi = mockApiHappyPath();
+    packages = new PackageResource(new Api(MOCK_TOKEN_CONFIG, MOCK_API_URL));
   });
 
   afterAll(() => {
+    restoreMockedApi(mockedApi);
     mockedFetch.mockReset();
   });
 
