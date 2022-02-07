@@ -30,8 +30,12 @@ export class Api {
     protected readonly apiUrl: string
   ) {}
 
+  protected isAccessTokenInvalid(): boolean {
+    return !this.accessToken || !this.tokenExpiry || this.tokenExpiry >= Date.now();
+  }
+
   protected async getAuthorizationHeader(): Promise<string> {
-    if (!this.accessToken || !this.tokenExpiry || this.tokenExpiry >= Date.now()) {
+    if (this.isAccessTokenInvalid()) {
       const request = new PostRequestBuilder(new URL('/apitoken/clientApp/accessToken', this.apiUrl))
         .withBody(this.accessTokenConfig)
         .fetch();
