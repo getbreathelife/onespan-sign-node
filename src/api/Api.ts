@@ -30,10 +30,27 @@ export class Api {
     protected readonly apiUrl: string
   ) {}
 
+  /**
+   * Helper function to determine if the currently stored access token is invalid.
+   * An invalid access token is either undefined or expired.
+   *
+   * @internal
+   */
   protected isAccessTokenInvalid(): boolean {
     return !this.accessToken || !this.tokenExpiry || this.tokenExpiry >= Date.now();
   }
 
+  /**
+   * Helper function to return the proper Authorization header for a request.
+   *
+   * If the access token is {@link isAccessTokenInvalid | invalid}, it'll attempt to
+   * fetch a new token from OneSpan's access token endpoint.
+   *
+   * @remarks
+   * See {@link https://www.onespan.com/blog/onespan-sign-release-1134-api-token-client-application | API Token for Client Application (OneSpan)}.
+   *
+   * @internal
+   */
   protected async getAuthorizationHeader(): Promise<string> {
     if (this.isAccessTokenInvalid()) {
       const request = new PostRequestBuilder(new URL('/apitoken/clientApp/accessToken', this.apiUrl))
