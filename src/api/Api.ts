@@ -74,7 +74,9 @@ export class Api {
    * @public
    */
   public get(url: string): GetRequestBuilder {
-    return new GetRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(this.getAuthorizationHeader);
+    return new GetRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(
+      this.getAuthorizationHeader.bind(this)
+    );
   }
 
   /**
@@ -85,7 +87,9 @@ export class Api {
    * @public
    */
   public post(url: string): PostRequestBuilder {
-    return new PostRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(this.getAuthorizationHeader);
+    return new PostRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(
+      this.getAuthorizationHeader.bind(this)
+    );
   }
 
   /**
@@ -96,7 +100,9 @@ export class Api {
    * @public
    */
   public put(url: string): PostRequestBuilder {
-    return new PutRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(this.getAuthorizationHeader);
+    return new PutRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(
+      this.getAuthorizationHeader.bind(this)
+    );
   }
 
   /**
@@ -107,6 +113,8 @@ export class Api {
    * @public
    */
   public delete(url: string): DeleteRequestBuilder {
-    return new DeleteRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(this.getAuthorizationHeader);
+    return new DeleteRequestBuilder(new URL(url, this.apiUrl)).withAuthorizationHeader(
+      this.getAuthorizationHeader.bind(this)
+    );
   }
 }
