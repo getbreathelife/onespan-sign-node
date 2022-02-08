@@ -26,7 +26,7 @@ describe('Api', () => {
     });
 
     it('attempts to fetch an access token if access token is not yet fetched (undefined)', async () => {
-      await api.get('http://test.com').fetch();
+      await api.get('/test').fetch();
       expect(mockedFetch.mock.calls.length).toStrictEqual(2);
       expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
     });
@@ -36,11 +36,12 @@ describe('Api', () => {
         value: 'token',
       });
       Object.defineProperty(api, 'tokenExpiry', {
-        value: Date.now() + 1,
+        value: Date.now() + 5,
       });
 
-      await api.get('http://test.com').fetch();
+      await api.get('/test').fetch();
       expect(mockedFetch.mock.calls.length).toStrictEqual(1);
+      expect(mockedFetch.mock.calls[0][0]).toStrictEqual(new URL('/test', MOCK_API_URL));
     });
 
     it.each`
@@ -55,8 +56,9 @@ describe('Api', () => {
         value: tokenExpiryGetter(),
       });
 
-      await api.get('http://test.com').fetch();
+      await api.get('/test').fetch();
       expect(mockedFetch.mock.calls.length).toStrictEqual(2);
+      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
     });
   });
 });

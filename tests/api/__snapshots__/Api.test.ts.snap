@@ -1,5 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Api Authorization header attempts to fetch an access token if access token is expired 1`] = `
+Array [
+  "http://demo.com/apitoken/clientApp/accessToken",
+  Object {
+    "body": "{\\"type\\":\\"OWNER\\",\\"clientId\\":\\"clientId\\",\\"secret\\":\\"secret\\"}",
+    "headers": Object {
+      "accept": "application/json",
+      "content-type": "application/json",
+    },
+    "method": "POST",
+  },
+]
+`;
+
+exports[`Api Authorization header attempts to fetch an access token if access token is expired 2`] = `
+Array [
+  "http://demo.com/apitoken/clientApp/accessToken",
+  Object {
+    "body": "{\\"type\\":\\"OWNER\\",\\"clientId\\":\\"clientId\\",\\"secret\\":\\"secret\\"}",
+    "headers": Object {
+      "accept": "application/json",
+      "content-type": "application/json",
+    },
+    "method": "POST",
+  },
+]
+`;
+
 exports[`Api Authorization header attempts to fetch an access token if access token is not yet fetched (undefined) 1`] = `
 Array [
   "http://demo.com/apitoken/clientApp/accessToken",
