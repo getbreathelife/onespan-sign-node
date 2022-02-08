@@ -25,14 +25,38 @@ export class BaseRequestBuilder {
     };
   }
 
+  /**
+   * Sets the `Authorization` header of the request.
+   * @param value - A static string value for the header
+   *
+   * @public
+   */
   public withAuthorizationHeader(value: string): this;
+  /**
+   * Sets the `Authorization` header of the request.
+   * @param value - A callback that returns the value for the header
+   *
+   * @public
+   */
   public withAuthorizationHeader(value: () => string): this;
+  /**
+   * Sets the `Authorization` header of the request.
+   * @param value - A callback that returns the value for the header
+   *
+   * @public
+   */
   public withAuthorizationHeader(value: () => Promise<string>): this;
   public withAuthorizationHeader(value: string | (() => string) | (() => Promise<string>)): this {
     this.requestHeaders.authorization = value;
     return this;
   }
 
+  /**
+   * Sets the `Accept` header of the request.
+   * @param value - A static string value for the header
+   *
+   * @public
+   */
   public withAcceptHeader(value: string): this {
     this.requestHeaders.accept = value;
     return this;
@@ -61,6 +85,10 @@ export class BaseRequestBuilder {
     return this;
   }
 
+  /**
+   * Constructs the header dictionary for the request.
+   * @internal
+   */
   protected async createHeaders(): Promise<Record<string, string>> {
     const { authorization, ...headers } = this.requestHeaders;
 
@@ -75,11 +103,24 @@ export class BaseRequestBuilder {
     return headers;
   }
 
+  /**
+   * Handles the response of the HTTP request by throwing an appropriate error
+   * or return the response as-is if the request is successful.
+   *
+   * @param response - `node-fetch` Response object returned after making the
+   *                    configured request.
+   *
+   * @internal
+   */
   protected handleResponse(response: Response): Response {
     if (response.ok) return response;
     throw new HttpResponseError(response);
   }
 
+  /**
+   * Initiates the configured request.
+   * @public
+   */
   public async fetch(): Promise<Response> {
     const response = await fetch(this.url, {
       ...this.requestOptions,
