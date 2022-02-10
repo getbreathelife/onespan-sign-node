@@ -7,7 +7,7 @@
  *   clientId: CLIENT_ID,
  *   secret: CLIENT_SECRET,
  *   type: 'OWNER',   // or 'SENDER'
- * });
+ * }, API_URL);
  *
  * const { id: packageId } = await oneSpanSign.packages.create({...});
  *
