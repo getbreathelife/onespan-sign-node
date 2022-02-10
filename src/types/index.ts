@@ -2,6 +2,7 @@
 import * as Requests from './requests';
 import * as Responses from './responses';
 
+export * from './api';
 export * from './models';
 export * from './utils';
 export { Requests, Responses };

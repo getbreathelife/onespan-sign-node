@@ -4,6 +4,12 @@
 
 Node.js library for the OneSpan Sign API
 
+If you wish to contribute to this project, please read the [contribution guidelines](./CONTRIBUTING.md).
+
+## API Documentation
+
+You can view the latest documentation [here](./docs/index.md).
+
 ## Feature Support
 
 ### Packages (Transactions)
@@ -34,10 +40,6 @@ Node.js library for the OneSpan Sign API
 | `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :x:   | -                  | -     | -        |
 
 Any other resources not mentioned in this document are currently **unsupported**.
-
-## API Documentation
-
-You can view the latest documentation [here](./docs/index.md).
 
 ## Tests
 

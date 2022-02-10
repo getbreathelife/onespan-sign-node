@@ -5,7 +5,14 @@ describe('OneSpanSign', () => {
   let prototype: any;
 
   beforeAll(() => {
-    oneSpanSign = new OneSpanSign('mock-api-key', 'https://demo.com');
+    oneSpanSign = new OneSpanSign(
+      {
+        type: 'OWNER',
+        clientId: 'clientId',
+        secret: 'secret',
+      },
+      'https://demo.com'
+    );
     prototype = Object.getPrototypeOf(oneSpanSign);
   });
 

@@ -11,20 +11,50 @@ import { Readable } from 'node:stream';
 import { RequestInit as RequestInit_2 } from 'node-fetch';
 import { Response as Response_2 } from 'node-fetch';
 
+// @public
+export interface AccessTokenOwnerConfig {
+    // (undocumented)
+    clientId: string;
+    // (undocumented)
+    secret: string;
+    // (undocumented)
+    type: 'OWNER';
+}
+
+// @public
+export interface AccessTokenSenderConfig {
+    // (undocumented)
+    clientId: string;
+    // (undocumented)
+    email: string;
+    // (undocumented)
+    secret: string;
+    // (undocumented)
+    type: 'SENDER';
+}
+
 // @alpha (undocumented)
 export type Address = {};
 
 // @public
 export class Api {
-    constructor(apiKey: string, apiUrl: string);
+    constructor(accessTokenConfig: AccessTokenOwnerConfig | AccessTokenSenderConfig, apiUrl: string);
     // (undocumented)
-    protected readonly apiKey: string;
+    protected accessToken?: string;
+    // (undocumented)
+    protected readonly accessTokenConfig: AccessTokenOwnerConfig | AccessTokenSenderConfig;
     // (undocumented)
     protected readonly apiUrl: string;
     delete(url: string): DeleteRequestBuilder;
     get(url: string): GetRequestBuilder;
+    // @internal
+    protected getAuthorizationHeader(): Promise<string>;
+    // @internal
+    protected isAccessTokenInvalid(): boolean;
     post(url: string): PostRequestBuilder;
     put(url: string): PostRequestBuilder;
+    // (undocumented)
+    protected tokenExpiry?: number;
 }
 
 // @public (undocumented)
@@ -313,7 +343,7 @@ export type Nullable<T> = T | null;
 
 // @public
 export class OneSpanSign {
-    constructor(apiKey: string, apiUrl: string);
+    constructor(accessTokenConfig: AccessTokenOwnerConfig | AccessTokenSenderConfig, apiUrl: string);
     // (undocumented)
     protected api: Api;
     get documents(): DocumentResource;

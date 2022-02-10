@@ -1,20 +1,28 @@
 import { Readable } from 'node:stream';
 
-import { Api, DocumentResource, Requests } from '../../src';
+import { AccessTokenOwnerConfig, Api, DocumentResource, Requests } from '../../src';
+import { mockApiHappyPath, MockedApi, restoreMockedApi } from '../setup/mockApi';
 import { mockedFetch, mockFetchHappyPath } from '../setup/mockNodeFetch';
 
-const MOCK_API_KEY = 'demoKey';
+const MOCK_TOKEN_CONFIG: AccessTokenOwnerConfig = {
+  type: 'OWNER',
+  clientId: 'clientId',
+  secret: 'secret',
+};
 const MOCK_API_URL = 'http://demo.com';
 
 describe('DocumentResource', () => {
+  let mockedApi: MockedApi;
   let documents: DocumentResource;
 
   beforeAll(() => {
     mockFetchHappyPath();
-    documents = new DocumentResource(new Api(MOCK_API_KEY, MOCK_API_URL));
+    mockedApi = mockApiHappyPath();
+    documents = new DocumentResource(new Api(MOCK_TOKEN_CONFIG, MOCK_API_URL));
   });
 
   afterAll(() => {
+    restoreMockedApi(mockedApi);
     mockedFetch.mockReset();
   });
 
@@ -41,7 +49,7 @@ describe('DocumentResource', () => {
       expect(mockedFetch.mock.calls[0][1]).toEqual({
         headers: {
           accept: 'application/json',
-          authorization: `Basic ${MOCK_API_KEY}`,
+          authorization: expect.stringMatching(/^Bearer/),
           'content-type': expect.stringMatching(/^multipart\/form-data; boundary=.+/),
         },
         method: 'POST',

@@ -7,7 +7,7 @@ Array [
     "body": "{\\"name\\":\\"mock package\\"}",
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "POST",
@@ -21,7 +21,7 @@ Array [
   Object {
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "DELETE",
@@ -35,7 +35,7 @@ Array [
   Object {
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "GET",
@@ -49,7 +49,7 @@ Array [
   Object {
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "GET",
@@ -63,7 +63,7 @@ Array [
   Object {
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "GET",
@@ -77,7 +77,7 @@ Array [
   Object {
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "GET",
@@ -91,7 +91,7 @@ Array [
   Object {
     "headers": Object {
       "accept": "application/pdf",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "GET",
@@ -105,7 +105,7 @@ Array [
   Object {
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "GET",
@@ -120,7 +120,7 @@ Array [
     "body": "{\\"name\\":\\"mock package update\\",\\"status\\":\\"ARCHIVED\\"}",
     "headers": Object {
       "accept": "application/json",
-      "authorization": "Basic demoKey",
+      "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },
     "method": "PUT",
