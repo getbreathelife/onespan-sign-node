@@ -10,7 +10,11 @@ A library to interact with OneSpan Sign's API.
 
 
 ```ts
-const oneSpanSign = new OneSpanSign(API_KEY, API_URL);
+const oneSpanSign = new OneSpanSign({
+  clientId: CLIENT_ID,
+  secret: CLIENT_SECRET,
+  type: 'OWNER',   // or 'SENDER'
+}, API_URL);
 
 const { id: packageId } = await oneSpanSign.packages.create({...});
 
@@ -31,6 +35,8 @@ await oneSpanSign.documents.create(packageId, ...)
 
 |  Interface | Description |
 |  --- | --- |
+|  [AccessTokenOwnerConfig](./onespan-sign-node.accesstokenownerconfig.md) | Configuration to retrieve the access token for a user with the <code>OWNER</code> type. |
+|  [AccessTokenSenderConfig](./onespan-sign-node.accesstokensenderconfig.md) | Configuration to retrieve the access token for a user with the <code>SENDER</code> type. |
 |  [AuditEvent](./onespan-sign-node.auditevent.md) |  |
 |  [DocumentApproval](./onespan-sign-node.documentapproval.md) |  |
 |  [DocumentData](./onespan-sign-node.documentdata.md) | Request payload for create/update document operations. |

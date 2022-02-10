@@ -16,7 +16,7 @@ export declare class OneSpanSign
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(apiKey, apiUrl)](./onespan-sign-node.onespansign._constructor_.md) |  | Constructs an instance of the <code>OneSpanSign</code> class. |
+|  [(constructor)(accessTokenConfig, apiUrl)](./onespan-sign-node.onespansign._constructor_.md) |  | Constructs an instance of the <code>OneSpanSign</code> class. |
 
 ## Properties
 

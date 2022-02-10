@@ -9,19 +9,19 @@ Constructs an instance of the `Api` class.
 <b>Signature:</b>
 
 ```typescript
-constructor(apiKey: string, apiUrl: string);
+constructor(accessTokenConfig: AccessTokenOwnerConfig | AccessTokenSenderConfig, apiUrl: string);
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  apiKey | string | API key to interact with OneSpan Sign's API. This value is added to the <code>authorization</code> header at every request. |
+|  accessTokenConfig | [AccessTokenOwnerConfig](./onespan-sign-node.accesstokenownerconfig.md) \| [AccessTokenSenderConfig](./onespan-sign-node.accesstokensenderconfig.md) | Configuration to retrieve access tokens to authenticate API requests. |
 |  apiUrl | string | Url for the OneSpan Sign API server. This is the base URL for every request. |
 
 ## Remarks
 
-- For information on how to retrieve your API key, see [Integration (OneSpan)](https://community.onespan.com/documentation/onespan-sign/guides/admin-guides/user/integration)<!-- -->.
+- For information on how to create a Client App and retrieve the ID and secret, see [Integration (OneSpan)](https://community.onespan.com/documentation/onespan-sign/guides/admin-guides/user/integration)<!-- -->.
 
 - A list of server URLs can be found at [Environment URLs &amp; IP Addresses (OneSpan)](https://community.onespan.com/documentation/onespan-sign/guides/quick-start-guides/developer/environment-urls-ip-addresses)<!-- -->.
 

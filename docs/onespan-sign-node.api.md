@@ -16,14 +16,16 @@ export declare class Api
 
 |  Constructor | Modifiers | Description |
 |  --- | --- | --- |
-|  [(constructor)(apiKey, apiUrl)](./onespan-sign-node.api._constructor_.md) |  | Constructs an instance of the <code>Api</code> class. |
+|  [(constructor)(accessTokenConfig, apiUrl)](./onespan-sign-node.api._constructor_.md) |  | Constructs an instance of the <code>Api</code> class. |
 
 ## Properties
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [apiKey](./onespan-sign-node.api.apikey.md) |  | string |  |
+|  [accessToken?](./onespan-sign-node.api.accesstoken.md) |  | string | <i>(Optional)</i> |
+|  [accessTokenConfig](./onespan-sign-node.api.accesstokenconfig.md) |  | [AccessTokenOwnerConfig](./onespan-sign-node.accesstokenownerconfig.md) \| [AccessTokenSenderConfig](./onespan-sign-node.accesstokensenderconfig.md) |  |
 |  [apiUrl](./onespan-sign-node.api.apiurl.md) |  | string |  |
+|  [tokenExpiry?](./onespan-sign-node.api.tokenexpiry.md) |  | number | <i>(Optional)</i> |
 
 ## Methods
 
