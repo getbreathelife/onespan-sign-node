@@ -68,7 +68,7 @@ export class BaseRequestBuilder {
    *
    * @public
    */
-  public withQueryParams(params: Record<string, string | number | null | undefined>): this {
+  public withQueryParams(params: Record<string, string | number | boolean | null | undefined>): this {
     // Clean up null or undefined entries, and convert number values to strings
     const filteredParams = Object.fromEntries(
       Object.entries(params)
@@ -76,7 +76,7 @@ export class BaseRequestBuilder {
         // destructured object: https://github.com/microsoft/TypeScript/issues/41173
         .filter(([, val]) => typeof val !== 'undefined' && val !== null)
         .map(([key, val]) => {
-          return [key, (val as string | number).toString()];
+          return [key, (val as string | number | boolean).toString()];
         })
     );
 
