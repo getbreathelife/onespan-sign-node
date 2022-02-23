@@ -120,7 +120,7 @@ export class PackageResource extends Resource {
   public async getEvidenceSummary(packageId: string): Promise<Responses.Response> {
     return await this.api
       .get(`/api/packages/${packageId}/evidence/summary`)
-      .withAcceptHeader('application/pdf')
+      .withAcceptHeader('application/json, application/pdf')
       .fetch();
   }
 }
