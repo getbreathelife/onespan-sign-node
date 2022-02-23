@@ -1,5 +1,3 @@
-import { Response } from 'node-fetch';
-
 import { ExportedAuditTrail, Package, Requests, Responses } from '../types';
 import { serializeDate } from '../utils/serializeDate';
 import { Resource } from './Resource';
@@ -114,13 +112,12 @@ export class PackageResource extends Resource {
    * Retrieves Evidence Summary information for a specified package (transaction).
    *
    * @param packageId - Package ID
-   * @returns A {@link https://github.com/node-fetch/node-fetch/tree/2.x#class-response | `node-fetch` Response} object that exposes
-   *          properties such as `body` or functions such as `arrayBuffer()` or `blob()` to retrieve the response data.
+   * @returns An object that implements the {@link Responses.Response | Response} interface
    *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages._packageId.evidence.summary.get | REST API documentation (OneSpan)}
    */
-  public async getEvidenceSummary(packageId: string): Promise<Response> {
+  public async getEvidenceSummary(packageId: string): Promise<Responses.Response> {
     return await this.api
       .get(`/api/packages/${packageId}/evidence/summary`)
       .withAcceptHeader('application/pdf')
