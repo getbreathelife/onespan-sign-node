@@ -26,18 +26,18 @@ You can view the latest documentation [here](./docs/index.md).
 | `/api/packages/{packageId}/signingStatus`                | :x:                | -                  | -                  | -                  |
 
 ### Documents
-| Endpoints                                                        | `GET` | `POST`             | `PUT` | `DELETE` |
-|------------------------------------------------------------------|-------|--------------------|-------|----------|
-| `/api/packages/{packageId}/documents`                            | -     | :white_check_mark: | :x:   | :x:      |
-| `/api/packages/{packageId}/documents/zip`                        | :x:   | -                  | -     | -        |
-| `/api/packages/{packageId}/documents/signConfirm`                | -     | :x:                | -     | -        |
-| `/api/packages/{packageId}/documents/signed_documents`           | -     | :x:                | -     | -        |
-| `/api/packages/{packageId}/documents/visibility`                 | :x:   | :x:                | -     | -        |
-| `/api/packages/{packageId}/documents/{documentId}`               | :x:   | :x:                | :x:   | :x:      |
-| `/api/packages/{packageId}/documents/{documentId}/original`      | :x:   | -                  | -     | -        |
-| `/api/packages/{packageId}/documents/{documentId}/pdf`           | :x:   | -                  | -     | -        |
-| `/api/packages/{packageId}/documents/{documentId}/layout`        | -     | :x:                | -     | -        |
-| `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :x:   | -                  | -     | -        |
+| Endpoints                                                        | `GET`              | `POST`             | `PUT` | `DELETE` |
+|------------------------------------------------------------------|--------------------|--------------------|-------|----------|
+| `/api/packages/{packageId}/documents`                            | -                  | :white_check_mark: | :x:   | :x:      |
+| `/api/packages/{packageId}/documents/zip`                        | :white_check_mark: | -                  | -     | -        |
+| `/api/packages/{packageId}/documents/signConfirm`                | -                  | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/signed_documents`           | -                  | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/visibility`                 | :x:                | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}`               | :white_check_mark: | :white_check_mark: | :x:   | :x:      |
+| `/api/packages/{packageId}/documents/{documentId}/original`      | :x:                | -                  | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}/pdf`           | :x:                | -                  | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}/layout`        | -                  | :x:                | -     | -        |
+| `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :x:                | -                  | -     | -        |
 
 Any other resources not mentioned in this document are currently **unsupported**.
 
