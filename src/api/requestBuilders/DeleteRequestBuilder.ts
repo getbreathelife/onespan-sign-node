@@ -1,6 +1,6 @@
-import { BaseRequestBuilder } from './BaseRequestBuilder';
+import { PostRequestBuilder } from './PostRequestBuilder';
 
 /** @public */
-export class DeleteRequestBuilder extends BaseRequestBuilder {
+export class DeleteRequestBuilder extends PostRequestBuilder {
   protected override method = 'DELETE';
 }

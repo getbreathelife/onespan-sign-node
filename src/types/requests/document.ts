@@ -87,6 +87,7 @@ export interface CreateDocumentData {
  * Only {@link BulkCreateDocumentData.name | 'name'} is required.
  * See:
  * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation}
+ *
  * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents} (Uploading Multiple Documents)
  *
  * @public

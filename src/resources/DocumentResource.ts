@@ -113,9 +113,11 @@ export class DocumentResource extends Resource {
    * @returns Updated metadata of the document
    *
    * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.put | REST API documentation (OneSpan)}
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.post | REST API documentation (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
    */
-  public async updateOne(
+  public async update(
     packageId: string,
     documentId: string,
     payload: Partial<Omit<DocumentMetadata, 'id'>>,
@@ -134,5 +136,35 @@ export class DocumentResource extends Resource {
     const response = await request.fetch();
 
     return (await response.json()) as DocumentMetadata;
+  }
+
+  /**
+   * Deletes the specified document.
+   *
+   * @param packageId - Package ID
+   * @param documentId - ID of the document to be deleted
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.delete | REST API documentation (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   */
+  public async delete(packageId: string, documentId: string): Promise<void> {
+    await this.api.delete(`/api/packages/${packageId}/documents/${documentId}`).fetch();
+  }
+
+  /**
+   * Deletes multiple documents.
+   *
+   * @param packageId - Package ID
+   * @param documentIds - ID of the documents to be deleted
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.delete | REST API documentation (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   */
+  public async bulkDelete(packageId: string, documentIds: string[]): Promise<void> {
+    await this.api.delete(`/api/packages/${packageId}/documents`).withBody(documentIds).fetch();
   }
 }
