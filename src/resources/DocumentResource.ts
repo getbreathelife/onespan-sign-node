@@ -89,12 +89,13 @@ export class DocumentResource extends Resource {
    * @param packageId - Package ID
    * @param documentId - Document ID
    * @param option - (Optional) Option to specify the format and parameters to retrieve the document.
-   *                 Defaults to original format.
+   *                 Defaults to original format
    * @returns Document body
    *
    * @remarks
    * REST API documentation (OneSpan):
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.original.get | Retrieve document in original format}
+   *
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pdf.get | Retrieve document in PDF format}
    */
   public async getBody(
@@ -111,6 +112,24 @@ export class DocumentResource extends Resource {
     }
 
     return await request.fetch();
+  }
+
+  /**
+   * Retrieves a specific document page. The page is retrieved as a .png image file.
+   *
+   * @param packageId - Package ID
+   * @param documentId - Document ID
+   * @param pageIndex - Page index in the document
+   * @returns PNG image data of the specified document page
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pages._index.get | REST API documentation (OneSpan)}
+   */
+  public async getPage(packageId: string, documentId: string, pageIndex: number): Promise<Responses.Response> {
+    return await this.api
+      .get(`/api/packages${packageId}/documents/${documentId}/pages/${pageIndex}`)
+      .withAcceptHeader('image/png, application/json')
+      .fetch();
   }
 
   /**

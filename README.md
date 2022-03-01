@@ -37,7 +37,7 @@ You can view the latest documentation [here](./docs/index.md).
 | `/api/packages/{packageId}/documents/{documentId}/original`      | :white_check_mark: | -                   | -     | -                  |
 | `/api/packages/{packageId}/documents/{documentId}/pdf`           | :white_check_mark: | -                   | -     | -                  |
 | `/api/packages/{packageId}/documents/{documentId}/layout`        | -                  | :x:                 | -     | -                  |
-| `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :x:                | -                   | -     | -                  |
+| `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :white_check_mark: | -                   | -     | -                  |
 
 Any other resources not mentioned in this document are currently **unsupported**.
 
