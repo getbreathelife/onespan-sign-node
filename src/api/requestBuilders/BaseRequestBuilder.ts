@@ -1,6 +1,6 @@
-import fetch, { RequestInit, Response } from 'node-fetch';
+import fetch, { FetchError, RequestInit, Response } from 'node-fetch';
 
-import { HttpResponseError } from '../error';
+import { ClientError, OneSpanResponseError } from '../error';
 
 /**
  * Builder class to construct an api request.
@@ -104,30 +104,27 @@ export class BaseRequestBuilder {
   }
 
   /**
-   * Handles the response of the HTTP request by throwing an appropriate error
-   * or return the response as-is if the request is successful.
-   *
-   * @param response - `node-fetch` Response object returned after making the
-   *                    configured request.
-   *
-   * @internal
-   */
-  protected handleResponse(response: Response): Response {
-    if (response.ok) return response;
-    throw new HttpResponseError(response);
-  }
-
-  /**
    * Initiates the configured request.
    * @public
    */
   public async fetch(): Promise<Response> {
-    const response = await fetch(this.url, {
-      ...this.requestOptions,
-      method: this.method,
-      headers: await this.createHeaders(),
-    });
+    try {
+      const response = await fetch(this.url, {
+        ...this.requestOptions,
+        method: this.method,
+        headers: await this.createHeaders(),
+      });
 
-    return this.handleResponse(response);
+      // Return response if response status code is >= 200 && < 300
+      if (response.ok) return response;
+
+      // Otherwise, throw a OneSpanResponseError based on the response
+      throw new OneSpanResponseError(await response.json(), response.status);
+    } catch (err) {
+      if (err instanceof FetchError || (err as any).name === 'AbortError') {
+        throw new ClientError(err as Error);
+      }
+      throw err;
+    }
   }
 }
