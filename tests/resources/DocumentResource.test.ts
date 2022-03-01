@@ -82,7 +82,7 @@ describe('DocumentResource', () => {
 
       await documents.bulkCreate(packageId, payload);
 
-      expect(mockedFetch.mock.calls[0][0]).toMatchSnapshot();
+      expect(mockedFetch.mock.calls[0][0]).toMatchInlineSnapshot(`"http://demo.com/api/packages/mockId/documents"`);
 
       expect(mockedFetch.mock.calls[0][1]).toEqual({
         headers: {
@@ -103,6 +103,96 @@ describe('DocumentResource', () => {
           ]),
         }),
       });
+    });
+  });
+
+  describe('getMetadata', () => {
+    it('sends the request to the correct URL', async () => {
+      await documents.getMetadata('package-id', 'documentId');
+
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package-id/documents/documentId",
+          Object {
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
+    });
+  });
+
+  describe('getBody', () => {
+    it('sends the request to fetch original document correctly', async () => {
+      await documents.getBody('package-id', 'documentId', { format: 'original' });
+
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package-id/documents/original",
+          Object {
+            "headers": Object {
+              "accept": "application/octet-stream, application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
+    });
+
+    it('sends the request to fetch PDF document correctly', async () => {
+      await documents.getBody('package-id', 'documentId', { format: 'pdf', flatten: true });
+
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package-id/documents/pdf?flatten=true",
+          Object {
+            "headers": Object {
+              "accept": "application/octet-stream, application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
+
+      await documents.getBody('package-id', 'documentId', { format: 'pdf', flatten: false });
+
+      expect(mockedFetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package-id/documents/pdf?flatten=false",
+          Object {
+            "headers": Object {
+              "accept": "application/octet-stream, application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
+
+      await documents.getBody('package-id', 'documentId', { format: 'pdf' });
+
+      expect(mockedFetch.mock.calls[2]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package-id/documents/pdf",
+          Object {
+            "headers": Object {
+              "accept": "application/octet-stream, application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
     });
   });
 });
