@@ -84,6 +84,36 @@ export class DocumentResource extends Resource {
   }
 
   /**
+   * Retrieves the document in the original or PDF version.
+   *
+   * @param packageId - Package ID
+   * @param documentId - Document ID
+   * @param option - (Optional) Option to specify the format and parameters to retrieve the document.
+   *                 Defaults to original format.
+   * @returns Document body
+   *
+   * @remarks
+   * REST API documentation (OneSpan):
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.original.get | Retrieve document in original format}
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pdf.get | Retrieve document in PDF format}
+   */
+  public async getBody(
+    packageId: string,
+    documentId: string,
+    option: Requests.GetDocumentBodyOption = { format: 'original' }
+  ): Promise<Responses.Response> {
+    const request = this.api
+      .get(`/api/packages/${packageId}/documents/${option.format}`)
+      .withAcceptHeader('application/octet-stream, application/json');
+
+    if (option.format === 'pdf' && option.flatten) {
+      request.withQueryParams({ flatten: option.flatten });
+    }
+
+    return await request.fetch();
+  }
+
+  /**
    * Retrieves all documents of a package in a zipped file.
    *
    * @param packageId - Package ID
@@ -99,7 +129,7 @@ export class DocumentResource extends Resource {
       .withQueryParams({
         flatten,
       })
-      .withAcceptHeader('application/json, application/zip')
+      .withAcceptHeader('application/zip, application/json')
       .fetch();
   }
 
