@@ -76,7 +76,57 @@ export type AuditEventTargetType = 'Document' | 'Package' | 'AuthMethod' | 'Acco
 export type AuditEventType = 'Accept' | 'Click To Sign' | 'Click To Initial' | 'Capture Signature' | 'Confirm' | 'Download' | 'Download Zip' | 'Form Field' | 'Login' | 'View' | 'Opt Out' | 'Signing Session For Recipient' | 'Decline';
 
 // @public
-export type CreateDocumentData = DocumentData;
+export interface BulkCreateDocumentData {
+    // (undocumented)
+    approvals?: RecursivePartial<DocumentApproval>[];
+    data?: Record<string, any>;
+    description?: string;
+    documentBody: DocumentBody;
+    // (undocumented)
+    external?: Partial<External_2>;
+    extract?: boolean;
+    extractionTypes?: ExtractionType[];
+    fields?: RecursivePartial<DocumentField>[];
+    id?: string;
+    index?: number;
+    name: string;
+    // (undocumented)
+    pages?: RecursivePartial<DocumentPage>[];
+    // (undocumented)
+    signedHash?: string;
+    // (undocumented)
+    signerVerificationToken?: string;
+    size?: number;
+    status?: string;
+    // (undocumented)
+    tagged?: boolean;
+}
+
+// @public
+export interface CreateDocumentData {
+    // (undocumented)
+    approvals?: RecursivePartial<DocumentApproval>[];
+    data?: Record<string, any>;
+    description?: string;
+    // (undocumented)
+    external?: Partial<External_2>;
+    extract?: boolean;
+    extractionTypes?: ExtractionType[];
+    fields?: RecursivePartial<DocumentField>[];
+    id?: string;
+    index?: number;
+    name: string;
+    // (undocumented)
+    pages?: RecursivePartial<DocumentPage>[];
+    // (undocumented)
+    signedHash?: string;
+    // (undocumented)
+    signerVerificationToken?: string;
+    size?: number;
+    status?: string;
+    // (undocumented)
+    tagged?: boolean;
+}
 
 // @public (undocumented)
 interface CreatePackage {
@@ -87,10 +137,8 @@ interface CreatePackage {
 // @public
 export type CreatePackageData = PackageData;
 
-// Warning: (ae-forgotten-export) The symbol "BaseRequestBuilder" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-class DeleteRequestBuilder extends BaseRequestBuilder {
+class DeleteRequestBuilder extends PostRequestBuilder {
     // (undocumented)
     protected method: string;
 }
@@ -118,29 +166,9 @@ export interface DocumentApproval {
 }
 
 // @public
-export interface DocumentData {
-    // (undocumented)
-    approvals?: RecursivePartial<DocumentApproval>[];
-    data?: Record<string, any>;
-    description?: string;
-    // (undocumented)
-    external?: Partial<External_2>;
-    extract?: boolean;
-    extractionTypes?: ExtractionType[];
-    fields?: RecursivePartial<DocumentField>[];
-    id?: string;
-    index?: number;
-    name: string;
-    // (undocumented)
-    pages?: RecursivePartial<DocumentPage>[];
-    // (undocumented)
-    signedHash?: string;
-    // (undocumented)
-    signerVerificationToken?: string;
-    size?: number;
-    status?: string;
-    // (undocumented)
-    tagged?: boolean;
+export interface DocumentBody {
+    body: Buffer | Readable;
+    filename: string;
 }
 
 // @public (undocumented)
@@ -221,7 +249,36 @@ export interface DocumentPage {
 
 // @public
 export class DocumentResource extends Resource {
-    create(packageId: string, payload: Requests.CreateDocumentData, documentBody: Buffer | Readable): Promise<DocumentMetadata>;
+    bulkCreate(packageId: string, documents: Requests.BulkCreateDocumentData[]): Promise<DocumentMetadata[]>;
+    bulkDelete(packageId: string, documentIds: string[]): Promise<void>;
+    create(packageId: string, payload: Requests.CreateDocumentData, documentBody: Requests.DocumentBody): Promise<DocumentMetadata>;
+    delete(packageId: string, documentId: string): Promise<void>;
+    getBody(packageId: string, documentId: string, option?: Requests.GetDocumentBodyOption): Promise<Responses.Response>;
+    getMetadata(packageId: string, documentId: string): Promise<DocumentMetadata>;
+    getPage(packageId: string, documentId: string, pageIndex: number): Promise<Responses.Response>;
+    getVisibilityInfo(packageId: string): Promise<DocumentVisibility>;
+    getZipped(packageId: string, flatten?: boolean): Promise<Responses.Response>;
+    update(packageId: string, documentId: string, payload: Partial<DocumentMetadata>, documentBody?: Requests.DocumentBody): Promise<DocumentMetadata>;
+    updateVisibilityInfo(packageId: string, payload: RecursivePartial<DocumentVisibility>): Promise<DocumentVisibility>;
+}
+
+// @public
+export interface DocumentVisibility {
+    configurations: Nullable<DocumentVisibilityConfiguration[]>;
+    data: Nullable<Record<string, any>>;
+    // (undocumented)
+    id: Nullable<string>;
+    // (undocumented)
+    name: Nullable<string>;
+}
+
+// @public
+export interface DocumentVisibilityConfiguration {
+    data: Nullable<Record<string, any>>;
+    documentUid: Nullable<string>;
+    id: Nullable<string>;
+    name: Nullable<string>;
+    roleUids: Nullable<string[]>;
 }
 
 // @public (undocumented)
@@ -313,6 +370,16 @@ export interface GetAllPackagesParameters {
     visibility?: PackageVisibility;
 }
 
+// @public (undocumented)
+export type GetDocumentBodyOption = {
+    format: 'original';
+} | {
+    format: 'pdf';
+    flatten?: boolean;
+};
+
+// Warning: (ae-forgotten-export) The symbol "BaseRequestBuilder" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
 class GetRequestBuilder extends BaseRequestBuilder {
     // (undocumented)
@@ -500,7 +567,7 @@ export class PackageResource extends Resource {
     delete(packageId: string): Promise<void>;
     getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]>;
     getAuditTrail(packageId: string): Promise<ExportedAuditTrail>;
-    getEvidenceSummary(packageId: string): Promise<Response_2>;
+    getEvidenceSummary(packageId: string): Promise<Responses.Response>;
     getOne(packageId: string): Promise<Package>;
     update(packageId: string, payload: Requests.UpdatePackageData): Promise<void>;
 }
@@ -567,8 +634,10 @@ declare namespace Requests {
         PackageData,
         CreatePackageData,
         UpdatePackageData,
-        DocumentData,
-        CreateDocumentData
+        DocumentBody,
+        CreateDocumentData,
+        BulkCreateDocumentData,
+        GetDocumentBodyOption
     }
 }
 export { Requests }
@@ -580,8 +649,19 @@ export abstract class Resource {
     protected api: Api;
 }
 
+// @public (undocumented)
+interface Response_3 {
+    // (undocumented)
+    arrayBuffer: () => Promise<ArrayBuffer>;
+    // (undocumented)
+    body: NodeJS.ReadableStream;
+    // (undocumented)
+    buffer: () => Promise<Buffer>;
+}
+
 declare namespace Responses {
     export {
+        Response_3 as Response,
         CreatePackage
     }
 }
