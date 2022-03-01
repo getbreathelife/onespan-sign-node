@@ -47,7 +47,7 @@ Any other resources not mentioned in this document are currently **unsupported**
 
 Run `yarn test` from the project root.
 
-### Manually Testing using REPL
+### Manual tests using REPL
 
 To start in repl mode run `yarn repl`. This will start an interactive repl, in which you can invoke and test the OneSpanSign class
 
