@@ -90,7 +90,7 @@ Array [
   "http://demo.com/api/packages/package1/evidence/summary",
   Object {
     "headers": Object {
-      "accept": "application/pdf",
+      "accept": "application/pdf, application/json",
       "authorization": "Bearer mockedToken",
       "content-type": "application/json",
     },

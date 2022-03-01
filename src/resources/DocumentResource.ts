@@ -37,7 +37,7 @@ export class DocumentResource extends Resource {
   }
 
   /**
-   * Uploads a document to an existing package.
+   * Uploads multiple documents to an existing package.
    *
    * @param packageId - Package ID
    * @param documents - Metadata and data of the to-be-uploaded documents
@@ -107,7 +107,7 @@ export class DocumentResource extends Resource {
       .get(`/api/packages/${packageId}/documents/${option.format}`)
       .withAcceptHeader('application/octet-stream, application/json');
 
-    if (option.format === 'pdf' && option.flatten) {
+    if (option.format === 'pdf' && option.flatten !== undefined) {
       request.withQueryParams({ flatten: option.flatten });
     }
 

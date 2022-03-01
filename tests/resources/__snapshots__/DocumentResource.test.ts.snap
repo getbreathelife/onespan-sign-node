@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DocumentResource bulkCreate converts the parameters into proper request body 1`] = `"http://demo.com/api/packages/mockId/documents"`;
+
 exports[`DocumentResource create sends the provided payload and buffer as request body 1`] = `"http://demo.com/api/packages/mockId/documents"`;
 
 exports[`DocumentResource create sends the provided payload and stream as request body 1`] = `"http://demo.com/api/packages/mockId/documents"`;
