@@ -8,16 +8,10 @@ import { RecursivePartial } from '../utils';
  * @public
  */
 export interface DocumentBody {
-  /**
-   * Data of the document
-   * @public
-   */
+  /** Data of the document */
   body: Buffer | Readable;
 
-  /**
-   * Filename of the document
-   * @public
-   */
+  /** Filename of the document */
   filename: string;
 }
 

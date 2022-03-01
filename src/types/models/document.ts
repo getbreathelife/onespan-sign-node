@@ -146,3 +146,47 @@ export interface DocumentMetadata {
   signedHash: Nullable<string>;
   signerVerificationToken: Nullable<string>;
 }
+
+/**
+ * Document visibility configuration (i.e. who can view the document).
+ * @public
+ */
+export interface DocumentVisibilityConfiguration {
+  /** Document Id */
+  documentUid: Nullable<string>;
+
+  /** List of role Ids that can view the identified document */
+  roleUids: Nullable<string[]>;
+
+  /** Configuration Id */
+  id: Nullable<string>;
+
+  /** Additional data */
+  data: Nullable<Record<string, any>>;
+
+  /** Configuration name */
+  name: Nullable<string>;
+}
+
+/**
+ * Contains a list of {@link DocumentVisibilityConfiguration | document visibility configurations}.
+ *
+ * @remarks
+ * Documents not present in the configurations are visible to all recipients. The package owner
+ * can always see all documents in the package, regardless of its document visibility configuration.
+ *
+ * See: {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.visibility.post | REST API documentation (OneSpan)}
+ *
+ * @public
+ */
+export interface DocumentVisibility {
+  /** List of {@link DocumentVisibilityConfiguration} */
+  configurations: Nullable<DocumentVisibilityConfiguration[]>;
+
+  /** Additional data */
+  data: Nullable<Record<string, any>>;
+
+  id: Nullable<string>;
+
+  name: Nullable<string>;
+}

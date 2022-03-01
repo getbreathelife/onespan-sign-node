@@ -1,6 +1,6 @@
 import FormData from 'form-data';
 
-import { DocumentMetadata, Requests, Responses } from '../types';
+import { DocumentMetadata, DocumentVisibility, Requests, Responses } from '../types';
 import { Resource } from './Resource';
 
 /**
@@ -104,6 +104,20 @@ export class DocumentResource extends Resource {
   }
 
   /**
+   * Retrieves information about which recipients can view specific documents in a package during a Signing Ceremony.
+   *
+   * @param packageId - Package ID
+   * @returns Document visibility information
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.visibility.get | REST API documentation (OneSpan)}
+   */
+  public async getVisibilityInfo(packageId: string): Promise<DocumentVisibility> {
+    const response = await this.api.get(`/api/packages/${packageId}/documents/visibility`).fetch();
+    return (await response.json()) as DocumentVisibility;
+  }
+
+  /**
    * Updates the specified document.
    *
    * @param packageId - Package ID
@@ -136,6 +150,24 @@ export class DocumentResource extends Resource {
     const response = await request.fetch();
 
     return (await response.json()) as DocumentMetadata;
+  }
+
+  /**
+   * Updates information about which recipients can view specific documents in a package during a Signing Ceremony.
+   *
+   * @param packageId - Package ID
+   * @param payload - Updated document visibility information
+   * @returns Document visibility information
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.visibility.post | REST API documentation (OneSpan)}
+   */
+  public async updateVisibilityInfo(
+    packageId: string,
+    payload: Partial<DocumentVisibility>
+  ): Promise<DocumentVisibility> {
+    const response = await this.api.post(`/api/packages/${packageId}/documents/visibility`).withBody(payload).fetch();
+    return (await response.json()) as DocumentVisibility;
   }
 
   /**
