@@ -1,6 +1,6 @@
 import FormData from 'form-data';
 
-import { DocumentMetadata, DocumentVisibility, Requests, Responses } from '../types';
+import { DocumentMetadata, DocumentVisibility, RecursivePartial, Requests, Responses } from '../types';
 import { Resource } from './Resource';
 
 /**
@@ -142,7 +142,7 @@ export class DocumentResource extends Resource {
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.zip.get | REST API documentation (OneSpan)}
    */
-  public async getAll(packageId: string, flatten?: boolean): Promise<Responses.Response> {
+  public async getZipped(packageId: string, flatten?: boolean): Promise<Responses.Response> {
     return await this.api
       .get(`/api/packages/${packageId}/documents/zip`)
       .withQueryParams({
@@ -183,17 +183,19 @@ export class DocumentResource extends Resource {
   public async update(
     packageId: string,
     documentId: string,
-    payload: Partial<Omit<DocumentMetadata, 'id'>>,
+    payload: Partial<DocumentMetadata>,
     documentBody?: Requests.DocumentBody
   ): Promise<DocumentMetadata> {
     const request = await this.api.post(`/api/packages/${packageId}/documents/${documentId}`);
 
     if (!documentBody) {
-      request.withBody(JSON.stringify(payload));
+      request.withBody(payload);
     } else {
       const formData = new FormData();
       formData.append('file', documentBody.body, { filename: documentBody.filename });
       formData.append('payload', JSON.stringify(payload));
+
+      request.withBody(formData);
     }
 
     const response = await request.fetch();
@@ -213,7 +215,7 @@ export class DocumentResource extends Resource {
    */
   public async updateVisibilityInfo(
     packageId: string,
-    payload: Partial<DocumentVisibility>
+    payload: RecursivePartial<DocumentVisibility>
   ): Promise<DocumentVisibility> {
     const response = await this.api.post(`/api/packages/${packageId}/documents/visibility`).withBody(payload).fetch();
     return (await response.json()) as DocumentVisibility;
