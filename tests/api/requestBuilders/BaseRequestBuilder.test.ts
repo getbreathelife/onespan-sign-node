@@ -1,3 +1,6 @@
+import { FetchError, Response } from 'node-fetch';
+
+import { ClientError, OneSpanResponseError } from '../../../src';
 import { BaseRequestBuilder } from '../../../src/api/requestBuilders/BaseRequestBuilder';
 import { mockedFetch, mockFetchHappyPath } from '../../setup/mockNodeFetch';
 
@@ -91,6 +94,67 @@ describe('BaseRequestBuilder', () => {
         .fetch();
 
       expect(mockedFetch.mock.calls[0][0]).toMatchInlineSnapshot(`"http://test.com/index?test=true&number=1"`);
+    });
+  });
+
+  describe('fetch', () => {
+    afterEach(() => {
+      mockFetchHappyPath();
+    });
+
+    it('throws a OneSpanResponseError if the API response is not successful', async () => {
+      const errorResponsePayload = {
+        code: 123,
+        message: 'API error message',
+        messageKey: 'APIError',
+      };
+
+      mockedFetch.mockResolvedValue({
+        ok: false,
+        json: () => Promise.resolve(errorResponsePayload),
+      } as Response);
+
+      expect.assertions(4);
+
+      try {
+        await requestBuilder.fetch();
+      } catch (err) {
+        expect(err).toBeInstanceOf(OneSpanResponseError);
+        expect((err as any).code).toStrictEqual(errorResponsePayload.code);
+        expect((err as any).message).toStrictEqual(errorResponsePayload.message);
+        expect((err as any).messageKey).toStrictEqual(errorResponsePayload.messageKey);
+      }
+    });
+
+    it.each`
+      name            | error                                                      | isAborted
+      ${'FetchError'} | ${new FetchError('error', 'error')}                        | ${false}
+      ${'AbortError'} | ${Object.create(Error, { name: { value: 'AbortError' } })} | ${true}
+    `('throws a ClientError if a $name is thrown during the request', async ({ error, isAborted }) => {
+      mockedFetch.mockImplementation(async () => {
+        throw error;
+      });
+
+      expect.assertions(4);
+
+      try {
+        await requestBuilder.fetch();
+      } catch (err) {
+        expect(err).toBeInstanceOf(ClientError);
+        expect((err as any).message).toStrictEqual('An error occurred on the client.');
+        expect((err as any).isAborted).toStrictEqual(isAborted);
+        expect((err as any).originalError).toStrictEqual(error);
+      }
+    });
+
+    it('rethrows errors if no special handling has been specified', async () => {
+      const error = new Error();
+
+      mockedFetch.mockImplementation(async () => {
+        throw error;
+      });
+
+      await expect(requestBuilder.fetch()).rejects.toThrow(error);
     });
   });
 });
