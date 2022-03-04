@@ -26,7 +26,9 @@ await oneSpanSign.documents.create(packageId, ...)
 |  Class | Description |
 |  --- | --- |
 |  [Api](./onespan-sign-node.api.md) | Factory class to create RequestBuilders based on the request method. |
+|  [ClientError](./onespan-sign-node.clienterror.md) | Error thrown when there's an error on the client. For example, operational errors or aborted requests. |
 |  [DocumentResource](./onespan-sign-node.documentresource.md) | Resource class to interact with [documents](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents)<!-- -->. |
+|  [OneSpanResponseError](./onespan-sign-node.onespanresponseerror.md) | Error thrown when there's an unsuccessful response from OneSpan Sign's API. More specifically, API responses with status code &amp;gt;= 200 &amp;&amp; &amp;lt; 300. |
 |  [OneSpanSign](./onespan-sign-node.onespansign.md) | Main class to interact with OneSpan Sign's API. This class is a collection of resource objects used to interact with OneSpan Sign's API. |
 |  [PackageResource](./onespan-sign-node.packageresource.md) | Resource class to interact with [packages (transactions)](https://community.onespan.com/documentation/onespan-sign/guides/sender-guides/user/transactions)<!-- -->. |
 |  [Resource](./onespan-sign-node.resource.md) | Base class for resources. Resource classes are used to call endpoints specific to the resource (entity) on OneSpan Sign. |
