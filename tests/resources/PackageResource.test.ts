@@ -36,7 +36,20 @@ describe('PackageResource', () => {
 
       await packages.create(payload);
 
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages",
+          Object {
+            "body": "{\\"name\\":\\"mock package\\"}",
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "POST",
+          },
+        ]
+      `);
     });
   });
 
@@ -50,13 +63,37 @@ describe('PackageResource', () => {
 
       await packages.getAll(params);
 
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages?query=inbox&predefined=all",
+          Object {
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
     });
 
     it('does not append any query parameter if no parameter is passed in', async () => {
       await packages.getAll();
 
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages",
+          Object {
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
     });
 
     it('serializes Date objects into ISO strings', async () => {
@@ -70,14 +107,39 @@ describe('PackageResource', () => {
 
       await packages.getAll(params);
 
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages?query=inbox&predefined=all&lastUpdatedStartDate=2022-01-10T22%3A05%3A02.242Z&lastUpdatedEndDate=2022-01-10T22%3A05%3A02.242Z",
+          Object {
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
     });
   });
 
   describe('getOne', () => {
     it('sends request to the correct URL', async () => {
       await packages.getOne('package1');
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package1",
+          Object {
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
     });
   });
 
@@ -90,28 +152,80 @@ describe('PackageResource', () => {
 
       await packages.update('package1', payload);
 
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package1",
+          Object {
+            "body": "{\\"name\\":\\"mock package update\\",\\"status\\":\\"ARCHIVED\\"}",
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "PUT",
+          },
+        ]
+      `);
     });
   });
 
   describe('delete', () => {
     it('sends request to the correct URL', async () => {
       await packages.delete('package1');
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package1",
+          Object {
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "DELETE",
+          },
+        ]
+      `);
     });
   });
 
   describe('getAuditTrail', () => {
     it('sends request to the correct URL', async () => {
       await packages.getAuditTrail('package1');
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package1/audit",
+          Object {
+            "headers": Object {
+              "accept": "application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
     });
   });
 
   describe('getEvidenceSummary', () => {
     it('sends request to the correct URL', async () => {
       await packages.getEvidenceSummary('package1');
-      expect(mockedFetch.mock.calls[0]).toMatchSnapshot();
+
+      expect(mockedFetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "http://demo.com/api/packages/package1/evidence/summary",
+          Object {
+            "headers": Object {
+              "accept": "application/pdf, application/json",
+              "authorization": "Bearer mockedToken",
+              "content-type": "application/json",
+            },
+            "method": "GET",
+          },
+        ]
+      `);
     });
   });
 });
