@@ -9,4 +9,5 @@
 |  Interface | Description |
 |  --- | --- |
 |  [CreatePackage](./onespan-sign-node.responses.createpackage.md) |  |
+|  [Response](./onespan-sign-node.responses.response.md) |  |
 

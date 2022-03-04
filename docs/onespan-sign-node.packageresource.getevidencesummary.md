@@ -9,7 +9,7 @@ Retrieves Evidence Summary information for a specified package (transaction).
 <b>Signature:</b>
 
 ```typescript
-getEvidenceSummary(packageId: string): Promise<Response>;
+getEvidenceSummary(packageId: string): Promise<Responses.Response>;
 ```
 
 ## Parameters
@@ -20,9 +20,9 @@ getEvidenceSummary(packageId: string): Promise<Response>;
 
 <b>Returns:</b>
 
-Promise&lt;Response&gt;
+Promise&lt;Responses.Response&gt;
 
-A [\`node-fetch\` Response](https://github.com/node-fetch/node-fetch/tree/2.x#class-response) object that exposes properties such as `body` or functions such as `arrayBuffer()` or `blob()` to retrieve the response data.
+An object that implements the [Response](./onespan-sign-node.responses.response.md) interface
 
 ## Remarks
 

@@ -38,11 +38,15 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [AccessTokenOwnerConfig](./onespan-sign-node.accesstokenownerconfig.md) | Configuration to retrieve the access token for a user with the <code>OWNER</code> type. |
 |  [AccessTokenSenderConfig](./onespan-sign-node.accesstokensenderconfig.md) | Configuration to retrieve the access token for a user with the <code>SENDER</code> type. |
 |  [AuditEvent](./onespan-sign-node.auditevent.md) |  |
+|  [BulkCreateDocumentData](./onespan-sign-node.bulkcreatedocumentdata.md) | Request payload for each entry in the bulk create document operations. |
+|  [CreateDocumentData](./onespan-sign-node.createdocumentdata.md) | Request payload for create document operations. |
 |  [DocumentApproval](./onespan-sign-node.documentapproval.md) |  |
-|  [DocumentData](./onespan-sign-node.documentdata.md) | Request payload for create/update document operations. |
+|  [DocumentBody](./onespan-sign-node.documentbody.md) | Data and filename of a document for resource creation/update purpose |
 |  [DocumentField](./onespan-sign-node.documentfield.md) |  |
 |  [DocumentMetadata](./onespan-sign-node.documentmetadata.md) |  |
 |  [DocumentPage](./onespan-sign-node.documentpage.md) |  |
+|  [DocumentVisibility](./onespan-sign-node.documentvisibility.md) | Contains a list of [document visibility configurations](./onespan-sign-node.documentvisibilityconfiguration.md)<!-- -->. |
+|  [DocumentVisibilityConfiguration](./onespan-sign-node.documentvisibilityconfiguration.md) | Document visibility configuration (i.e. who can view the document). |
 |  [ExportedAuditTrail](./onespan-sign-node.exportedaudittrail.md) |  |
 |  [External\_2](./onespan-sign-node.external_2.md) |  |
 |  [ExtractAnchor](./onespan-sign-node.extractanchor.md) |  |
@@ -68,11 +72,11 @@ await oneSpanSign.documents.create(packageId, ...)
 |  --- | --- |
 |  [AuditEventTargetType](./onespan-sign-node.auditeventtargettype.md) |  |
 |  [AuditEventType](./onespan-sign-node.auditeventtype.md) |  |
-|  [CreateDocumentData](./onespan-sign-node.createdocumentdata.md) | Request payload for create/update document operations. |
 |  [CreatePackageData](./onespan-sign-node.createpackagedata.md) | Request payload for package creation/replacement operations. |
 |  [ExtractionType](./onespan-sign-node.extractiontype.md) |  |
 |  [FieldSubtype](./onespan-sign-node.fieldsubtype.md) |  |
 |  [FieldType](./onespan-sign-node.fieldtype.md) |  |
+|  [GetDocumentBodyOption](./onespan-sign-node.getdocumentbodyoption.md) |  |
 |  [MessageStatus](./onespan-sign-node.messagestatus.md) |  |
 |  [Nullable](./onespan-sign-node.nullable.md) | Make <code>T</code> either its own type or null |
 |  [PackageStatus](./onespan-sign-node.packagestatus.md) |  |

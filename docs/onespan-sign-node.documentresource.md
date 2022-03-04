@@ -17,5 +17,15 @@ export declare class DocumentResource extends Resource
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
+|  [bulkCreate(packageId, documents)](./onespan-sign-node.documentresource.bulkcreate.md) |  | Uploads multiple documents to an existing package. |
+|  [bulkDelete(packageId, documentIds)](./onespan-sign-node.documentresource.bulkdelete.md) |  | Deletes multiple documents. |
 |  [create(packageId, payload, documentBody)](./onespan-sign-node.documentresource.create.md) |  | Uploads a document to an existing package. |
+|  [delete(packageId, documentId)](./onespan-sign-node.documentresource.delete.md) |  | Deletes the specified document. |
+|  [getBody(packageId, documentId, option)](./onespan-sign-node.documentresource.getbody.md) |  | Retrieves the document in the original or PDF version. |
+|  [getMetadata(packageId, documentId)](./onespan-sign-node.documentresource.getmetadata.md) |  | Retrieves metadata related to a given document. |
+|  [getPage(packageId, documentId, pageIndex)](./onespan-sign-node.documentresource.getpage.md) |  | Retrieves a specific document page. The page is retrieved as a .png image file. |
+|  [getVisibilityInfo(packageId)](./onespan-sign-node.documentresource.getvisibilityinfo.md) |  | Retrieves information about which recipients can view specific documents in a package during a Signing Ceremony. |
+|  [getZipped(packageId, flatten)](./onespan-sign-node.documentresource.getzipped.md) |  | Retrieves all documents of a package in a zipped file. |
+|  [update(packageId, documentId, payload, documentBody)](./onespan-sign-node.documentresource.update.md) |  | Updates the specified document. |
+|  [updateVisibilityInfo(packageId, payload)](./onespan-sign-node.documentresource.updatevisibilityinfo.md) |  | Updates information about which recipients can view specific documents in a package during a Signing Ceremony. |
 

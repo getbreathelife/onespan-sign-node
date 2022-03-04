@@ -2,18 +2,38 @@
 
 [Home](./index.md) &gt; [onespan-sign-node](./onespan-sign-node.md) &gt; [CreateDocumentData](./onespan-sign-node.createdocumentdata.md)
 
-## CreateDocumentData type
+## CreateDocumentData interface
 
-Request payload for create/update document operations.
+Request payload for create document operations.
 
 <b>Signature:</b>
 
 ```typescript
-export declare type CreateDocumentData = DocumentData;
+export interface CreateDocumentData 
 ```
-<b>References:</b> [DocumentData](./onespan-sign-node.documentdata.md)
 
 ## Remarks
 
-Only ['name'](./onespan-sign-node.documentdata.name.md) is required. See [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post) for more information.
+Only ['name'](./onespan-sign-node.createdocumentdata.name.md) is required. See [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post) for more information.
+
+## Properties
+
+|  Property | Type | Description |
+|  --- | --- | --- |
+|  [approvals?](./onespan-sign-node.createdocumentdata.approvals.md) | [RecursivePartial](./onespan-sign-node.recursivepartial.md)<!-- -->&lt;[DocumentApproval](./onespan-sign-node.documentapproval.md)<!-- -->&gt;\[\] | <i>(Optional)</i> |
+|  [data?](./onespan-sign-node.createdocumentdata.data.md) | Record&lt;string, any&gt; | <i>(Optional)</i> Custom data that is passed through. |
+|  [description?](./onespan-sign-node.createdocumentdata.description.md) | string | <i>(Optional)</i> Document description |
+|  [external?](./onespan-sign-node.createdocumentdata.external.md) | Partial&lt;External&gt; | <i>(Optional)</i> |
+|  [extract?](./onespan-sign-node.createdocumentdata.extract.md) | boolean | <i>(Optional)</i> Enable/disable extraction on the document |
+|  [extractionTypes?](./onespan-sign-node.createdocumentdata.extractiontypes.md) | [ExtractionType](./onespan-sign-node.extractiontype.md)<!-- -->\[\] | <i>(Optional)</i> Types of extraction for this document. |
+|  [fields?](./onespan-sign-node.createdocumentdata.fields.md) | [RecursivePartial](./onespan-sign-node.recursivepartial.md)<!-- -->&lt;[DocumentField](./onespan-sign-node.documentfield.md)<!-- -->&gt;\[\] | <i>(Optional)</i> Document fields |
+|  [id?](./onespan-sign-node.createdocumentdata.id.md) | string | <i>(Optional)</i> Document ID |
+|  [index?](./onespan-sign-node.createdocumentdata.index.md) | number | <i>(Optional)</i> Document index |
+|  [name](./onespan-sign-node.createdocumentdata.name.md) | string | Document name |
+|  [pages?](./onespan-sign-node.createdocumentdata.pages.md) | [RecursivePartial](./onespan-sign-node.recursivepartial.md)<!-- -->&lt;[DocumentPage](./onespan-sign-node.documentpage.md)<!-- -->&gt;\[\] | <i>(Optional)</i> |
+|  [signedHash?](./onespan-sign-node.createdocumentdata.signedhash.md) | string | <i>(Optional)</i> |
+|  [signerVerificationToken?](./onespan-sign-node.createdocumentdata.signerverificationtoken.md) | string | <i>(Optional)</i> |
+|  [size?](./onespan-sign-node.createdocumentdata.size.md) | number | <i>(Optional)</i> Document data size |
+|  [status?](./onespan-sign-node.createdocumentdata.status.md) | string | <i>(Optional)</i> Document status |
+|  [tagged?](./onespan-sign-node.createdocumentdata.tagged.md) | boolean | <i>(Optional)</i> |
 

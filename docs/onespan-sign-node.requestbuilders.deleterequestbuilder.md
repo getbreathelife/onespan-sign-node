@@ -8,9 +8,9 @@
 <b>Signature:</b>
 
 ```typescript
-export declare class DeleteRequestBuilder extends BaseRequestBuilder 
+export declare class DeleteRequestBuilder extends PostRequestBuilder 
 ```
-<b>Extends:</b> BaseRequestBuilder
+<b>Extends:</b> PostRequestBuilder
 
 ## Properties
 

@@ -9,7 +9,7 @@ Uploads a document to an existing package.
 <b>Signature:</b>
 
 ```typescript
-create(packageId: string, payload: Requests.CreateDocumentData, documentBody: Buffer | Readable): Promise<DocumentMetadata>;
+create(packageId: string, payload: Requests.CreateDocumentData, documentBody: Requests.DocumentBody): Promise<DocumentMetadata>;
 ```
 
 ## Parameters
@@ -18,7 +18,7 @@ create(packageId: string, payload: Requests.CreateDocumentData, documentBody: Bu
 |  --- | --- | --- |
 |  packageId | string | Package ID |
 |  payload | Requests.[CreateDocumentData](./onespan-sign-node.createdocumentdata.md) | Metadata of the to-be-uploaded document |
-|  documentBody | Buffer \| Readable | Data of the document |
+|  documentBody | Requests.[DocumentBody](./onespan-sign-node.documentbody.md) | Data of the document |
 
 <b>Returns:</b>
 
