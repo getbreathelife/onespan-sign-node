@@ -103,6 +103,17 @@ export interface BulkCreateDocumentData {
 }
 
 // @public
+export class ClientError extends Error {
+    constructor(error: Error);
+    // (undocumented)
+    readonly isAborted: boolean;
+    // (undocumented)
+    readonly name = "ClientError";
+    // (undocumented)
+    readonly originalError: Error;
+}
+
+// @public
 export interface CreateDocumentData {
     // (undocumented)
     approvals?: RecursivePartial<DocumentApproval>[];
@@ -407,6 +418,19 @@ export type MessageStatus = 'NEW' | 'READ' | 'TRASHED';
 
 // @public
 export type Nullable<T> = T | null;
+
+// @public
+export class OneSpanResponseError extends Error {
+    constructor(response: Record<string, any>, statusCode: number);
+    // (undocumented)
+    readonly code?: number;
+    // (undocumented)
+    readonly messageKey?: string;
+    // (undocumented)
+    readonly name = "OneSpanResponseError";
+    // (undocumented)
+    readonly statusCode: number;
+}
 
 // @public
 export class OneSpanSign {
