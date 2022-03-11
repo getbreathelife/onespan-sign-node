@@ -40,14 +40,14 @@ You can view the latest documentation [here](./docs/index.md).
 | `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :white_check_mark: | -                   | -     | -                  |
 
 ### [Senders](https://community.onespan.com/products/onespan-sign/sandbox#/Senders)
-| Endpoints                                         | `GET` | `POST` | `PUT` | `DELETE` |
-|---------------------------------------------------|-------|--------|-------|----------|
-| `/api/account/senders`                            | :x:   | :x:    | -     | -        |
-| `/api/account/senders/{senderId}`                 | :x:   | :x:    | -     | :x:      |
-| `/api/account/senders/{senderId}/invite`          | -     | :x:    | -     | -        |
-| `/api/account/senders/{senderId}/password`        | -     | :x:    | -     | -        |
-| `/api/account/senders/{senderId}/resetpassword`   | -     | :x:    | -     | -        |
-| `/api/account/senders/{senderId}/signature/image` | :x:   | :x:    | -     | :x:      |
+| Endpoints                                         | `GET`              | `POST`             | `PUT` | `DELETE` |
+|---------------------------------------------------|--------------------|--------------------|-------|----------|
+| `/api/account/senders`                            | :white_check_mark: | :white_check_mark: | -     | -        |
+| `/api/account/senders/{senderId}`                 | :x:                | :x:                | -     | :x:      |
+| `/api/account/senders/{senderId}/invite`          | -                  | :x:                | -     | -        |
+| `/api/account/senders/{senderId}/password`        | -                  | :x:                | -     | -        |
+| `/api/account/senders/{senderId}/resetpassword`   | -                  | :x:                | -     | -        |
+| `/api/account/senders/{senderId}/signature/image` | :x:                | :x:                | -     | :x:      |
 
 Any other resources not mentioned in this document are currently **unsupported**.
 
