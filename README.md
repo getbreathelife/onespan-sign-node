@@ -12,7 +12,7 @@ You can view the latest documentation [here](./docs/index.md).
 
 ## Feature Support
 
-### Packages (Transactions)
+### [Packages (Transactions)](https://community.onespan.com/products/onespan-sign/sandbox#/Packages)
 | Endpoints                                                | `GET`              | `POST`             | `PUT`              | `DELETE`           |
 |----------------------------------------------------------|--------------------|--------------------|--------------------|--------------------|
 | `/api/packages`                                          | :white_check_mark: | :white_check_mark: | -                  | -                  |
@@ -25,7 +25,7 @@ You can view the latest documentation [here](./docs/index.md).
 | `/api/packages/{packageId}/signers/{signerId}/approvals` | :x:                | -                  | -                  | -                  |
 | `/api/packages/{packageId}/signingStatus`                | :x:                | -                  | -                  | -                  |
 
-### Documents
+### [Documents](https://community.onespan.com/products/onespan-sign/sandbox#/Documents)
 | Endpoints                                                        | `GET`              | `POST`              | `PUT` | `DELETE`           |
 |------------------------------------------------------------------|--------------------|---------------------|-------|--------------------|
 | `/api/packages/{packageId}/documents`                            | -                  | :white_check_mark:  | :x:   | :white_check_mark: |
@@ -38,6 +38,16 @@ You can view the latest documentation [here](./docs/index.md).
 | `/api/packages/{packageId}/documents/{documentId}/pdf`           | :white_check_mark: | -                   | -     | -                  |
 | `/api/packages/{packageId}/documents/{documentId}/layout`        | -                  | :x:                 | -     | -                  |
 | `/api/packages/{packageId}/documents/{documentId}/pages/{index}` | :white_check_mark: | -                   | -     | -                  |
+
+### [Senders](https://community.onespan.com/products/onespan-sign/sandbox#/Senders)
+| Endpoints                                         | `GET` | `POST` | `PUT` | `DELETE` |
+|---------------------------------------------------|-------|--------|-------|----------|
+| `/api/account/senders`                            | :x:   | :x:    | -     | -        |
+| `/api/account/senders/{senderId}`                 | :x:   | :x:    | -     | :x:      |
+| `/api/account/senders/{senderId}/invite`          | -     | :x:    | -     | -        |
+| `/api/account/senders/{senderId}/password`        | -     | :x:    | -     | -        |
+| `/api/account/senders/{senderId}/resetpassword`   | -     | :x:    | -     | -        |
+| `/api/account/senders/{senderId}/signature/image` | :x:   | :x:    | -     | :x:      |
 
 Any other resources not mentioned in this document are currently **unsupported**.
 
