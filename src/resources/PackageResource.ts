@@ -33,7 +33,7 @@ export class PackageResource extends Resource {
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/retrieving-list-transactions | Retrieving a List of Transactions (OneSpan)}
    */
-  public async getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]> {
+  public async getAll(params?: Requests.GetAllPackagesParameters): Promise<Responses.GetAllPackages> {
     const request = await this.api.get('/api/packages');
 
     if (params) {
@@ -49,7 +49,7 @@ export class PackageResource extends Resource {
     }
 
     const response = await request.fetch();
-    return (await response.json()) as Package[];
+    return (await response.json()) as Responses.GetAllPackages;
   }
 
   /**
