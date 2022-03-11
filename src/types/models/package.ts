@@ -1,7 +1,8 @@
 import { Nullable } from '../utils';
 import { DocumentMetadata } from './document';
 import { Message } from './message';
-import { Role, Sender } from './role';
+import { Role } from './role';
+import { Sender } from './sender';
 
 /** @public */
 export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';

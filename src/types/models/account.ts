@@ -1,0 +1,2 @@
+/** @public */
+export interface Account {}

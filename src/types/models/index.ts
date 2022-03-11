@@ -5,3 +5,4 @@ export * from './message';
 export * from './role';
 export * from './translation';
 export * from './user';
+export * from './sender';

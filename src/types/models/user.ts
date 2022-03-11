@@ -1,22 +1,8 @@
 import { Nullable } from '../utils';
+import { Address } from './address';
 import { External } from './external';
+import { SignatureStyle } from './signature';
 import { Translation } from './translation';
-
-/**
- * @privateRemarks
- * TODO - #3: Type this
- *
- * @alpha
- */
-export type Address = {};
-
-/**
- * @privateRemarks
- * TODO - #3: Type this
- *
- * @alpha
- */
-export type SignatureStyle = {};
 
 /** @public */
 export interface UserCustomField {
