@@ -1,1 +1,6 @@
-export interface GroupMembership {}
+/** @public */
+export interface GroupMembership {
+  groupId: string;
+  groupName: string;
+  memberType: 'REGULAR' | 'MANAGER';
+}
