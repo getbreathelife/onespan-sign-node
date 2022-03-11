@@ -13,13 +13,16 @@ export interface UserCustomField {
   translations: Nullable<Translation[]>;
 }
 
-/**
- * @privateRemarks
- * TODO - #3: Type this
- *
- * @alpha
- **/
-export type ProfessionalIdentityField = {};
+/** @public */
+export interface ProfessionalIdentityField {
+  id: string;
+  name: string;
+  category: string;
+  translations: Nullable<Translation[]>;
+  type: Nullable<string>;
+  value: Nullable<string>;
+  data: Nullable<Record<string, any>>;
+}
 
 /** @public */
 export type SpecialUserType = 'NOTARY';
