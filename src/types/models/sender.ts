@@ -3,7 +3,7 @@ import { Account } from './account';
 import { Address } from './address';
 import { External } from './external';
 import { GroupMembership } from './group';
-import { DateTimeString, TimeZoneId } from './shared';
+import { CustomData, DateTimeString, TimeZoneId } from './shared';
 import { SignatureStyle } from './signature';
 import { ProfessionalIdentityField, SpecialUserType, UserCustomField } from './user';
 
@@ -25,7 +25,7 @@ export interface Sender {
   account: Nullable<Account>;
   address: Nullable<Address>;
   language: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: CustomData;
   timezoneId: TimeZoneId;
   external: Nullable<External>;
   company: string;

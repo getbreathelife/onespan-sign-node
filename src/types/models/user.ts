@@ -1,6 +1,7 @@
 import { Nullable } from '../utils';
 import { Address } from './address';
 import { External } from './external';
+import { CustomData } from './shared';
 import { SignatureStyle } from './signature';
 import { Translation } from './translation';
 
@@ -9,7 +10,7 @@ export interface UserCustomField {
   id: string;
   name: string;
   value: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: CustomData;
   translations: Nullable<Translation[]>;
 }
 
@@ -21,7 +22,7 @@ export interface ProfessionalIdentityField {
   translations: Nullable<Translation[]>;
   type: Nullable<string>;
   value: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: CustomData;
 }
 
 /** @public */
@@ -41,7 +42,7 @@ export interface User {
   userCustomFields: UserCustomField[];
   address: Nullable<Address>;
   language: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: CustomData;
   signature: Nullable<SignatureStyle>;
   timezoneId: string;
   external: Nullable<External>;

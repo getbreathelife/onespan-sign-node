@@ -1,3 +1,5 @@
+import { Nullable } from '../utils';
+
 /**
  * Timezone IDs as defined in the {@link https://www.iana.org/time-zones | Time Zone Database}.
  *
@@ -12,3 +14,8 @@ export type TimeZoneId = string;
  * String in date-time notation as defined by {@link https://datatracker.ietf.org/doc/html/rfc3339#section-5.6 | RFC 3339, section 5.6}
  */
 export type DateTimeString = string;
+
+/**
+ * Custom data embedded into parent object
+ */
+export type CustomData = Nullable<Record<string, any>>;

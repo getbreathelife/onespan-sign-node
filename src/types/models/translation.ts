@@ -1,4 +1,5 @@
 import { Nullable } from '../utils';
+import { CustomData } from './shared';
 
 /** @public */
 export interface Translation {
@@ -6,5 +7,5 @@ export interface Translation {
   id: Nullable<string>;
   name: Nullable<string>;
   description: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: CustomData;
 }
