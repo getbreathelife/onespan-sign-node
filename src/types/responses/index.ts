@@ -1,4 +1,5 @@
 export * from './package';
+export * from './sender';
 
 /** @public **/
 export interface Response {

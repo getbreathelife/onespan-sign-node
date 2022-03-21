@@ -44,10 +44,10 @@ You can view the latest documentation [here](./docs/index.md).
 |---------------------------------------------------|--------------------|--------------------|-------|--------------------|
 | `/api/account/senders`                            | :white_check_mark: | :white_check_mark: | -     | -                  |
 | `/api/account/senders/{senderId}`                 | :white_check_mark: | :x:                | -     | :white_check_mark: |
-| `/api/account/senders/{senderId}/invite`          | -                  | :x:                | -     | -                  |
+| `/api/account/senders/{senderId}/invite`          | -                  | :white_check_mark: | -     | -                  |
 | `/api/account/senders/{senderId}/password`        | -                  | :x:                | -     | -                  |
 | `/api/account/senders/{senderId}/resetpassword`   | -                  | :x:                | -     | -                  |
-| `/api/account/senders/{senderId}/signature/image` | :x:                | :x:                | -     | :x:                |
+| `/api/account/senders/{senderId}/signature/image` | :white_check_mark: | :white_check_mark: | -     | :white_check_mark: |
 
 Any other resources not mentioned in this document are currently **unsupported**.
 
