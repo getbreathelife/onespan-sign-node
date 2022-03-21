@@ -1,4 +1,6 @@
-export * from './account';
+import * as Account from './account';
+
+export { Account };
 export * from './address';
 export * from './document';
 export * from './external';

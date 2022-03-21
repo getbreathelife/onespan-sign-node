@@ -1,5 +1,5 @@
 import { Nullable } from '../utils';
-import { Account } from './account';
+import Account from './account';
 import { Address } from './address';
 import { External } from './external';
 import { GroupMembership } from './group';
@@ -13,9 +13,7 @@ export type SenderType = 'REGULAR' | 'MANAGER';
 /** @public */
 export type SenderStatus = 'INVITED' | 'ACTIVE' | 'LOCKED';
 
-/**
- * @public
- */
+/** @public */
 export interface Sender {
   id: string;
   name: string;
