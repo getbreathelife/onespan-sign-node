@@ -44,4 +44,33 @@ export class SenderResource extends Resource {
 
     return (await response.json()) as Responses.BulkGetResponse<Sender>;
   }
+
+  /**
+   * Retrieves detailed Account information about a specified user.
+   *
+   * @param id - Unique sender ID
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Senders/api.account.senders._senderId.get | REST API documentation (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/managing-senders | Managing Senders (OneSpan)}
+   */
+  public async getOne(id: string): Promise<Sender> {
+    const response = await this.api.get(`/api/account/senders/${id}`).fetch();
+    return (await response.json()) as Sender;
+  }
+
+  /**
+   * Deletes a specified Sender from an account.
+   *
+   * @param id - Unique sender ID
+   *
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Senders/api.account.senders._senderId.delete | REST API documentation (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/managing-senders | Managing Senders (OneSpan)}
+   */
+  public async delete(id: string): Promise<void> {
+    await this.api.delete(`/api/account/senders/${id}`).fetch();
+  }
 }
