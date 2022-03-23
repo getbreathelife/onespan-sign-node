@@ -33,8 +33,59 @@ export interface AccessTokenSenderConfig {
     type: 'SENDER';
 }
 
-// @alpha (undocumented)
-export type Address = {};
+declare namespace Account {
+    export {
+        Account_2 as default,
+        License,
+        CustomField,
+        Provider,
+        Providers,
+        Company
+    }
+}
+export { Account }
+
+// @public (undocumented)
+interface Account_2 {
+    // (undocumented)
+    company: Company;
+    created: DateTimeString;
+    // (undocumented)
+    customFields: CustomField[];
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    licenses: License.default[];
+    // (undocumented)
+    logoAltTextKey: Nullable<string>;
+    // (undocumented)
+    logoUrl: Nullable<string>;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    owner: string;
+    // (undocumented)
+    providers: Nullable<Providers>;
+    // (undocumented)
+    timezoneId: TimeZoneId;
+    updated: DateTimeString;
+}
+
+// @public (undocumented)
+export interface Address {
+    address1: Nullable<string>;
+    address2: Nullable<string>;
+    // (undocumented)
+    city: Nullable<string>;
+    // (undocumented)
+    country: Nullable<string>;
+    // (undocumented)
+    state: Nullable<string>;
+    // (undocumented)
+    zipCode: Nullable<string>;
+}
 
 // @public
 export class Api {
@@ -76,11 +127,14 @@ export type AuditEventTargetType = 'Document' | 'Package' | 'AuthMethod' | 'Acco
 export type AuditEventType = 'Accept' | 'Click To Sign' | 'Click To Initial' | 'Capture Signature' | 'Confirm' | 'Download' | 'Download Zip' | 'Form Field' | 'Login' | 'View' | 'Opt Out' | 'Signing Session For Recipient' | 'Decline';
 
 // @public
-export interface BulkCreateDocumentData {
+interface BulkCreateDocumentData {
     // (undocumented)
     approvals?: RecursivePartial<DocumentApproval>[];
     data?: Record<string, any>;
     description?: string;
+    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "onespan-sign-node" does not have an export "DocumentBody"
+    //
+    // (undocumented)
     documentBody: DocumentBody;
     // (undocumented)
     external?: Partial<External_2>;
@@ -102,6 +156,14 @@ export interface BulkCreateDocumentData {
     tagged?: boolean;
 }
 
+// @public (undocumented)
+interface BulkGetResponse<T> {
+    // (undocumented)
+    count: number;
+    // (undocumented)
+    results: T[];
+}
+
 // @public
 export class ClientError extends Error {
     constructor(error: Error);
@@ -113,8 +175,20 @@ export class ClientError extends Error {
     readonly originalError: Error;
 }
 
+// @public (undocumented)
+interface Company {
+    // (undocumented)
+    address: Nullable<Address>;
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+}
+
 // @public
-export interface CreateDocumentData {
+interface CreateDocumentData {
     // (undocumented)
     approvals?: RecursivePartial<DocumentApproval>[];
     data?: Record<string, any>;
@@ -145,8 +219,46 @@ interface CreatePackage {
     id: string;
 }
 
+// Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "onespan-sign-node" does not have an export "PackageData"
+//
+// @public (undocumented)
+type CreatePackageData = PackageData;
+
+// @public (undocumented)
+type CreateSenderData = RecursivePartial<Sender>;
+
 // @public
-export type CreatePackageData = PackageData;
+export type CustomData = Nullable<Record<string, any>>;
+
+// @public (undocumented)
+interface CustomField {
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    required: boolean;
+    // (undocumented)
+    translations: Translation[];
+    // (undocumented)
+    value: Nullable<string>;
+}
+
+// @public (undocumented)
+type Cycle = 'DAY' | 'MONTH' | 'YEAR';
+
+// @public (undocumented)
+interface CycleCount {
+    // (undocumented)
+    count: number;
+    // (undocumented)
+    cycle: Cycle;
+}
+
+// @public
+export type DateTimeString = string;
 
 // @public (undocumented)
 class DeleteRequestBuilder extends PostRequestBuilder {
@@ -159,7 +271,7 @@ export interface DocumentApproval {
     // (undocumented)
     accepted: Nullable<string>;
     // (undocumented)
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     // (undocumented)
     enforceCaptureSignature: Nullable<boolean>;
     // (undocumented)
@@ -177,7 +289,7 @@ export interface DocumentApproval {
 }
 
 // @public
-export interface DocumentBody {
+interface DocumentBody {
     body: Buffer | Readable;
     filename: string;
 }
@@ -218,7 +330,7 @@ export interface DocumentField {
 export interface DocumentMetadata {
     // (undocumented)
     approvals: DocumentApproval[];
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     description: string;
     // (undocumented)
     external: Nullable<External_2>;
@@ -276,7 +388,7 @@ export class DocumentResource extends Resource {
 // @public
 export interface DocumentVisibility {
     configurations: Nullable<DocumentVisibilityConfiguration[]>;
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     // (undocumented)
     id: Nullable<string>;
     // (undocumented)
@@ -285,7 +397,7 @@ export interface DocumentVisibility {
 
 // @public
 export interface DocumentVisibilityConfiguration {
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     documentUid: Nullable<string>;
     id: Nullable<string>;
     name: Nullable<string>;
@@ -301,7 +413,7 @@ export interface ExportedAuditTrail {
 // @public (undocumented)
 interface External_2 {
     // (undocumented)
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -363,7 +475,7 @@ export interface FieldValidation {
 }
 
 // @public
-export interface GetAllPackagesParameters {
+interface GetAllPackagesParameters {
     dir?: 'asc' | 'desc';
     fields?: 'id';
     from?: number;
@@ -382,7 +494,15 @@ export interface GetAllPackagesParameters {
 }
 
 // @public (undocumented)
-export type GetDocumentBodyOption = {
+interface GetAllSendersParameters {
+    dir?: 'asc' | 'desc';
+    from?: number;
+    search?: string;
+    to?: number;
+}
+
+// @public (undocumented)
+type GetDocumentBodyOption = {
     format: 'original';
 } | {
     format: 'pdf';
@@ -395,6 +515,42 @@ export type GetDocumentBodyOption = {
 class GetRequestBuilder extends BaseRequestBuilder {
     // (undocumented)
     protected method: string;
+}
+
+// @public (undocumented)
+export interface GroupMembership {
+    // (undocumented)
+    groupId: string;
+    // (undocumented)
+    groupName: string;
+    // (undocumented)
+    memberType: 'REGULAR' | 'MANAGER';
+}
+
+declare namespace License {
+    export {
+        License_2 as default,
+        Plan,
+        Cycle,
+        Transaction,
+        Price,
+        Quota,
+        CycleCount
+    }
+}
+
+// @public (undocumented)
+interface License_2 {
+    // (undocumented)
+    created: DateTimeString;
+    // (undocumented)
+    paidUntil: Nullable<DateTimeString>;
+    // (undocumented)
+    plan: Plan;
+    // (undocumented)
+    status: 'ACTIVE' | 'PENDING' | 'GRACE';
+    // (undocumented)
+    transactions: Transaction[];
 }
 
 // @public (undocumented)
@@ -453,7 +609,7 @@ export interface Package {
     consent: Nullable<string>;
     // (undocumented)
     created: string;
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     // (undocumented)
     description: string;
     // (undocumented)
@@ -482,8 +638,6 @@ export interface Package {
     //
     // (undocumented)
     roles: Role[];
-    // Warning: (ae-incompatible-release-tags) The symbol "sender" is marked as @public, but its signature references "Sender" which is marked as @alpha
-    //
     // (undocumented)
     sender: Nullable<Sender>;
     // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
@@ -513,7 +667,7 @@ export interface PackageArtifactsLimits {
 }
 
 // @public
-export interface PackageData {
+interface PackageData {
     // (undocumented)
     autocomplete?: boolean;
     // (undocumented)
@@ -556,9 +710,6 @@ export interface PackageData {
     //
     // (undocumented)
     roles?: Role[];
-    // Warning: (ae-incompatible-release-tags) The symbol "sender" is marked as @public, but its signature references "Sender" which is marked as @alpha
-    // Warning: (ae-incompatible-release-tags) The symbol "sender" is marked as @public, but its signature references "Sender" which is marked as @alpha
-    //
     // (undocumented)
     sender?: Sender;
     // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
@@ -589,7 +740,7 @@ export interface PackageData {
 export class PackageResource extends Resource {
     create(payload: Requests.CreatePackageData): Promise<Responses.CreatePackage>;
     delete(packageId: string): Promise<void>;
-    getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]>;
+    getAll(params?: Requests.GetAllPackagesParameters): Promise<Responses.BulkGetResponse<Package>>;
     getAuditTrail(packageId: string): Promise<ExportedAuditTrail>;
     getEvidenceSummary(packageId: string): Promise<Responses.Response>;
     getOne(packageId: string): Promise<Package>;
@@ -621,6 +772,34 @@ export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
 export type PackageVisibility = 'ACCOUNT' | 'SENDER';
 
 // @public (undocumented)
+interface Plan {
+    // (undocumented)
+    contract: Nullable<Cycle>;
+    // (undocumented)
+    cycle: Cycle;
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    description: string;
+    // (undocumented)
+    features: CustomData;
+    // (undocumented)
+    freeCycles: Nullable<CycleCount>;
+    // (undocumented)
+    group: string;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    original: Nullable<string>;
+    // (undocumented)
+    price: Price;
+    // (undocumented)
+    quotas: Quota[];
+}
+
+// @public (undocumented)
 class PostRequestBuilder extends BaseRequestBuilder {
     // (undocumented)
     protected method: string;
@@ -628,13 +807,72 @@ class PostRequestBuilder extends BaseRequestBuilder {
     withBody(body: Record<string, any> | FormData_2 | string): this;
 }
 
-// @alpha (undocumented)
-export type ProfessionalIdentityField = {};
+// @public (undocumented)
+interface Price {
+    // (undocumented)
+    amount: number;
+    // (undocumented)
+    currency: {
+        id: string;
+        name: string;
+        data: CustomData;
+    };
+}
+
+// @public (undocumented)
+export interface ProfessionalIdentityField {
+    // (undocumented)
+    category: string;
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    translations: Nullable<Translation[]>;
+    // (undocumented)
+    type: Nullable<string>;
+    // (undocumented)
+    value: Nullable<string>;
+}
+
+// @public (undocumented)
+interface Provider {
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    provides: string;
+}
+
+// @public (undocumented)
+interface Providers {
+    // (undocumented)
+    documents: Provider[];
+    // (undocumented)
+    users: Provider[];
+}
 
 // @public (undocumented)
 class PutRequestBuilder extends PostRequestBuilder {
     // (undocumented)
     protected method: string;
+}
+
+// @public (undocumented)
+interface Quota {
+    // (undocumented)
+    cycle: Nullable<Cycle>;
+    // (undocumented)
+    limit: number;
+    // (undocumented)
+    scope: Nullable<'SENDER' | 'DOCUMENT' | 'PACKAGE' | 'ACCOUNT'>;
+    // (undocumented)
+    target: 'SIGNER' | 'SENDER' | 'DOCUMENT' | 'PACKAGE' | 'STORAGE';
 }
 
 // @public
@@ -661,7 +899,9 @@ declare namespace Requests {
         DocumentBody,
         CreateDocumentData,
         BulkCreateDocumentData,
-        GetDocumentBodyOption
+        GetDocumentBodyOption,
+        GetAllSendersParameters,
+        CreateSenderData
     }
 }
 export { Requests }
@@ -686,7 +926,9 @@ interface Response_3 {
 declare namespace Responses {
     export {
         Response_3 as Response,
-        CreatePackage
+        BulkGetResponse,
+        CreatePackage,
+        SignatureImage
     }
 }
 export { Responses }
@@ -703,11 +945,93 @@ export type Role = {
 // @public (undocumented)
 export type RoleType = 'SIGNER' | 'SENDER';
 
-// @alpha (undocumented)
-export type Sender = null;
+// @public (undocumented)
+export interface Sender {
+    // (undocumented)
+    account: Nullable<Account_2>;
+    activated: Nullable<DateTimeString>;
+    // (undocumented)
+    address: Nullable<Address>;
+    // (undocumented)
+    company: string;
+    created: DateTimeString;
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    email: string;
+    // (undocumented)
+    external: Nullable<External_2>;
+    // (undocumented)
+    firstName: string;
+    // (undocumented)
+    hasDelegates: boolean;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    language: Nullable<string>;
+    // (undocumented)
+    lastName: string;
+    locked: Nullable<DateTimeString>;
+    // (undocumented)
+    memberships: GroupMembership[];
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    phone: Nullable<string>;
+    // (undocumented)
+    professionalIdentityFields: ProfessionalIdentityField[];
+    // (undocumented)
+    signature: Nullable<SignatureStyle>;
+    // (undocumented)
+    specialTypes: SpecialUserType[];
+    // (undocumented)
+    status: SenderStatus;
+    // (undocumented)
+    timezoneId: TimeZoneId;
+    // (undocumented)
+    title: Nullable<string>;
+    // (undocumented)
+    type: SenderType;
+    updated: DateTimeString;
+    // (undocumented)
+    userCustomFields: UserCustomField[];
+}
 
-// @alpha (undocumented)
-export type SignatureStyle = {};
+// @public
+export class SenderResource extends Resource {
+    create(payload: Requests.CreateSenderData): Promise<Sender>;
+    delete(id: string): Promise<void>;
+    deleteDefaultSignature(senderId: string): Promise<void>;
+    getAll(params?: Requests.GetAllSendersParameters): Promise<Responses.BulkGetResponse<Sender>>;
+    getDefaultSignature(senderId: string): Promise<Responses.SignatureImage>;
+    getOne(id: string): Promise<Sender>;
+    invite(senderId: string): Promise<Sender>;
+    setDefaultSignature(senderId: string, signatureImage: Buffer | Readable): Promise<void>;
+}
+
+// @public (undocumented)
+export type SenderStatus = 'INVITED' | 'ACTIVE' | 'LOCKED';
+
+// @public (undocumented)
+export type SenderType = 'REGULAR' | 'MANAGER';
+
+// @public (undocumented)
+interface SignatureImage {
+    // (undocumented)
+    content: Buffer;
+    // (undocumented)
+    fileName: string;
+    // (undocumented)
+    mediaType: string;
+}
+
+// @public (undocumented)
+export interface SignatureStyle {
+    // (undocumented)
+    handdrawn: Nullable<string>;
+    // (undocumented)
+    textual: Nullable<TextualSignatureStyle>;
+}
 
 // @alpha (undocumented)
 export interface SignedDocumentDelivery {
@@ -739,16 +1063,57 @@ export type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'E
 // @public (undocumented)
 export type SpecialUserType = 'NOTARY';
 
-// @alpha (undocumented)
-export type Translation = {};
+// @public (undocumented)
+export interface TextualSignatureStyle {
+    // (undocumented)
+    color: Nullable<string>;
+    // (undocumented)
+    font: Nullable<string>;
+}
 
 // @public
-export type UpdatePackageData = PackageData;
+export type TimeZoneId = string;
+
+// @public (undocumented)
+interface Transaction {
+    // (undocumented)
+    created: DateTimeString;
+    // (undocumented)
+    creditCard: {
+        name: string;
+        type: string;
+        number: number;
+        expiration: {
+            month: number;
+            year: number;
+        };
+        cvv: Nullable<string>;
+    };
+    // (undocumented)
+    price: Price;
+}
+
+// @public (undocumented)
+export interface Translation {
+    // (undocumented)
+    data: CustomData;
+    // (undocumented)
+    description: Nullable<string>;
+    // (undocumented)
+    id: Nullable<string>;
+    // (undocumented)
+    language: string;
+    // (undocumented)
+    name: Nullable<string>;
+}
+
+// Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "onespan-sign-node" does not have an export "PackageData"
+//
+// @public (undocumented)
+type UpdatePackageData = PackageData;
 
 // @public (undocumented)
 export interface User {
-    // Warning: (ae-incompatible-release-tags) The symbol "address" is marked as @public, but its signature references "Address" which is marked as @alpha
-    //
     // (undocumented)
     address: Nullable<Address>;
     // (undocumented)
@@ -756,7 +1121,7 @@ export interface User {
     // (undocumented)
     created: string;
     // (undocumented)
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     // (undocumented)
     email: string;
     // (undocumented)
@@ -773,12 +1138,8 @@ export interface User {
     name: string;
     // (undocumented)
     phone: Nullable<string>;
-    // Warning: (ae-incompatible-release-tags) The symbol "professionalIdentityFields" is marked as @public, but its signature references "ProfessionalIdentityField" which is marked as @alpha
-    //
     // (undocumented)
     professionalIdentityFields: ProfessionalIdentityField[];
-    // Warning: (ae-incompatible-release-tags) The symbol "signature" is marked as @public, but its signature references "SignatureStyle" which is marked as @alpha
-    //
     // (undocumented)
     signature: Nullable<SignatureStyle>;
     // (undocumented)
@@ -796,13 +1157,11 @@ export interface User {
 // @public (undocumented)
 export interface UserCustomField {
     // (undocumented)
-    data: Nullable<Record<string, any>>;
+    data: CustomData;
     // (undocumented)
     id: string;
     // (undocumented)
     name: string;
-    // Warning: (ae-incompatible-release-tags) The symbol "translations" is marked as @public, but its signature references "Translation" which is marked as @alpha
-    //
     // (undocumented)
     translations: Nullable<Translation[]>;
     // (undocumented)
