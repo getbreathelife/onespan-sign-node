@@ -39,11 +39,14 @@ export class SenderResource extends Resource {
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/managing-senders | Managing Senders (OneSpan)}
    */
-  public async getAll(params: Requests.GetAllSendersParameters): Promise<Responses.BulkGetResponse<Sender>> {
-    const response = await this.api
-      .get('/api/account/senders')
-      .withQueryParams({ ...params })
-      .fetch();
+  public async getAll(params?: Requests.GetAllSendersParameters): Promise<Responses.BulkGetResponse<Sender>> {
+    const request = this.api.get('/api/account/senders');
+
+    if (params) {
+      request.withQueryParams({ ...params });
+    }
+
+    const response = await request.fetch();
 
     return (await response.json()) as Responses.BulkGetResponse<Sender>;
   }
@@ -107,7 +110,7 @@ export class SenderResource extends Resource {
     return {
       fileName: response.fileName,
       mediaType: response.mediaType,
-      content: new Buffer(response.content, 'base64'),
+      content: Buffer.from(response.content, 'base64'),
     };
   }
 
