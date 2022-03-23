@@ -132,9 +132,6 @@ interface BulkCreateDocumentData {
     approvals?: RecursivePartial<DocumentApproval>[];
     data?: Record<string, any>;
     description?: string;
-    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "onespan-sign-node" does not have an export "DocumentBody"
-    //
-    // (undocumented)
     documentBody: DocumentBody;
     // (undocumented)
     external?: Partial<External_2>;
@@ -219,9 +216,7 @@ interface CreatePackage {
     id: string;
 }
 
-// Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "onespan-sign-node" does not have an export "PackageData"
-//
-// @public (undocumented)
+// @public
 type CreatePackageData = PackageData;
 
 // @public (undocumented)
@@ -1107,9 +1102,7 @@ export interface Translation {
     name: Nullable<string>;
 }
 
-// Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "onespan-sign-node" does not have an export "PackageData"
-//
-// @public (undocumented)
+// @public
 type UpdatePackageData = PackageData;
 
 // @public (undocumented)
