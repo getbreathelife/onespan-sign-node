@@ -24,7 +24,7 @@ export class SenderResource extends Resource {
    */
   public async create(payload: Requests.CreateSenderData): Promise<Sender> {
     const response = await this.api.post('/api/account/senders').withBody(payload).fetch();
-    return (await response.json()) as Sender;
+    return response.json();
   }
 
   /**
@@ -47,8 +47,7 @@ export class SenderResource extends Resource {
     }
 
     const response = await request.fetch();
-
-    return (await response.json()) as Responses.BulkGetResponse<Sender>;
+    return response.json();
   }
 
   /**
@@ -63,7 +62,7 @@ export class SenderResource extends Resource {
    */
   public async getOne(id: string): Promise<Sender> {
     const response = await this.api.get(`/api/account/senders/${id}`).fetch();
-    return (await response.json()) as Sender;
+    return response.json();
   }
 
   /**
@@ -92,7 +91,7 @@ export class SenderResource extends Resource {
    */
   public async invite(senderId: string): Promise<Sender> {
     const response = await this.api.post(`/api/account/senders/${senderId}/invite`).fetch();
-    return (await response.json()) as Sender;
+    return response.json();
   }
 
   /**

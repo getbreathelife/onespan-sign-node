@@ -22,7 +22,7 @@ export class PackageResource extends Resource {
    */
   public async create(payload: Requests.CreatePackageData): Promise<Responses.CreatePackage> {
     const response = await this.api.post('/api/packages').withBody(payload).fetch();
-    return (await response.json()) as Responses.CreatePackage;
+    return response.json();
   }
 
   /**
@@ -51,7 +51,7 @@ export class PackageResource extends Resource {
     }
 
     const response = await request.fetch();
-    return (await response.json()) as Responses.BulkGetResponse<Package>;
+    return response.json();
   }
 
   /**
@@ -67,7 +67,7 @@ export class PackageResource extends Resource {
    */
   public async getOne(packageId: string): Promise<Package> {
     const response = await this.api.get(`/api/packages/${packageId}`).fetch();
-    return (await response.json()) as Package;
+    return response.json();
   }
 
   /**
@@ -107,7 +107,7 @@ export class PackageResource extends Resource {
    */
   public async getAuditTrail(packageId: string): Promise<ExportedAuditTrail> {
     const response = await this.api.get(`/api/packages/${packageId}/audit`).fetch();
-    return (await response.json()) as ExportedAuditTrail;
+    return response.json();
   }
 
   /**
@@ -120,7 +120,7 @@ export class PackageResource extends Resource {
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages._packageId.evidence.summary.get | REST API documentation (OneSpan)}
    */
   public async getEvidenceSummary(packageId: string): Promise<Responses.Response> {
-    return await this.api
+    return this.api
       .get(`/api/packages/${packageId}/evidence/summary`)
       .withAcceptHeader('application/pdf, application/json')
       .fetch();
