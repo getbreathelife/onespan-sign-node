@@ -43,7 +43,7 @@ export type FieldSubtype =
 export interface DocumentApproval {
   id: Nullable<string>;
   name: Nullable<string>;
-  data: CustomData;
+  data: Nullable<CustomData>;
   role: string;
   signed: Nullable<string>;
   accepted: Nullable<string>;
@@ -139,7 +139,7 @@ export interface DocumentMetadata {
   tagged: boolean;
 
   /** {@inheritDoc Package.data} */
-  data: CustomData;
+  data: Nullable<CustomData>;
 
   approvals: DocumentApproval[];
   pages: DocumentPage[];
@@ -163,7 +163,7 @@ export interface DocumentVisibilityConfiguration {
   id: Nullable<string>;
 
   /** Additional data */
-  data: CustomData;
+  data: Nullable<CustomData>;
 
   /** Configuration name */
   name: Nullable<string>;
@@ -185,7 +185,7 @@ export interface DocumentVisibility {
   configurations: Nullable<DocumentVisibilityConfiguration[]>;
 
   /** Additional data */
-  data: CustomData;
+  data: Nullable<CustomData>;
 
   id: Nullable<string>;
 
