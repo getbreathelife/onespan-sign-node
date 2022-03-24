@@ -34,6 +34,7 @@ describe('SenderResource', () => {
   describe('create', () => {
     it('sends the provided payload as request body', async () => {
       const payload: Requests.CreateSenderData = {
+        email: 'sender@email.com',
         name: 'sender',
         firstName: 'sender first name',
         lastName: 'sender last name',
@@ -45,7 +46,7 @@ describe('SenderResource', () => {
         Array [
           "http://demo.com/api/account/senders",
           Object {
-            "body": "{\\"name\\":\\"sender\\",\\"firstName\\":\\"sender first name\\",\\"lastName\\":\\"sender last name\\"}",
+            "body": "{\\"email\\":\\"sender@email.com\\",\\"name\\":\\"sender\\",\\"firstName\\":\\"sender first name\\",\\"lastName\\":\\"sender last name\\"}",
             "headers": Object {
               "accept": "application/json",
               "authorization": "Bearer mockedToken",
