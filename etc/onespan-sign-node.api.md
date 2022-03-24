@@ -220,7 +220,9 @@ interface CreatePackage {
 type CreatePackageData = PackageData;
 
 // @public (undocumented)
-type CreateSenderData = RecursivePartial<Sender>;
+type CreateSenderData = RecursivePartial<Sender> & {
+    email: string;
+};
 
 // @public
 export type CustomData = Record<string, any>;
