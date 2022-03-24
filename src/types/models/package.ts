@@ -85,7 +85,7 @@ export interface Package {
    * @remarks
    * See {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/custom-transaction-data | Custom Transaction Data (OneSpan)}
    */
-  data: CustomData;
+  data: Nullable<CustomData>;
 
   language: Nullable<string>;
   autocomplete: boolean;

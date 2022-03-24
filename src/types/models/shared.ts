@@ -1,5 +1,3 @@
-import { Nullable } from '../utils';
-
 /**
  * Timezone IDs as defined in the {@link https://www.iana.org/time-zones | Time Zone Database}.
  *
@@ -18,4 +16,4 @@ export type DateTimeString = string;
 /**
  * Custom data embedded into parent object
  */
-export type CustomData = Nullable<Record<string, any>>;
+export type CustomData = Record<string, any>;

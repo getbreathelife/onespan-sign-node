@@ -23,7 +23,7 @@ export interface Sender {
   account: Nullable<Account>;
   address: Nullable<Address>;
   language: Nullable<string>;
-  data: CustomData;
+  data: Nullable<CustomData>;
   timezoneId: TimeZoneId;
   external: Nullable<External>;
   company: string;

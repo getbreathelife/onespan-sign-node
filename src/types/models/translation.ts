@@ -7,5 +7,5 @@ export interface Translation {
   id: Nullable<string>;
   name: Nullable<string>;
   description: Nullable<string>;
-  data: CustomData;
+  data: Nullable<CustomData>;
 }

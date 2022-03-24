@@ -24,7 +24,7 @@ interface Price {
   currency: {
     id: string;
     name: string;
-    data: CustomData;
+    data: Nullable<CustomData>;
   };
 }
 
@@ -53,8 +53,8 @@ interface Plan {
   group: string;
   price: Price;
   quotas: Quota[];
-  features: CustomData;
-  data: CustomData;
+  features: Nullable<CustomData>;
+  data: Nullable<CustomData>;
   contract: Nullable<Cycle>;
   freeCycles: Nullable<CycleCount>;
   original: Nullable<string>;

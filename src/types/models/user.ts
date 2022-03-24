@@ -10,7 +10,7 @@ export interface UserCustomField {
   id: string;
   name: string;
   value: Nullable<string>;
-  data: CustomData;
+  data: Nullable<CustomData>;
   translations: Nullable<Translation[]>;
 }
 
@@ -22,7 +22,7 @@ export interface ProfessionalIdentityField {
   translations: Nullable<Translation[]>;
   type: Nullable<string>;
   value: Nullable<string>;
-  data: CustomData;
+  data: Nullable<CustomData>;
 }
 
 /** @public */
@@ -42,7 +42,7 @@ export interface User {
   userCustomFields: UserCustomField[];
   address: Nullable<Address>;
   language: Nullable<string>;
-  data: CustomData;
+  data: Nullable<CustomData>;
   signature: Nullable<SignatureStyle>;
   timezoneId: string;
   external: Nullable<External>;

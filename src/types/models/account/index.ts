@@ -11,7 +11,7 @@ interface CustomField {
   required: boolean;
   translations: Translation[];
   value: Nullable<string>;
-  data: CustomData;
+  data: Nullable<CustomData>;
 }
 
 /** @public */
@@ -19,7 +19,7 @@ interface Provider {
   id: string;
   name: string;
   provides: string;
-  data: CustomData;
+  data: Nullable<CustomData>;
 }
 
 /** @public */
@@ -33,7 +33,7 @@ interface Company {
   id: string;
   name: string;
   address: Nullable<Address>;
-  data: CustomData;
+  data: Nullable<CustomData>;
 }
 
 /** @public */
@@ -47,7 +47,7 @@ interface Account {
   company: Company;
 
   providers: Nullable<Providers>;
-  data: CustomData;
+  data: Nullable<CustomData>;
   logoUrl: Nullable<string>;
   logoAltTextKey: Nullable<string>;
 
