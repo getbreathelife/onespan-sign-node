@@ -105,11 +105,13 @@ export class SenderResource extends Resource {
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/extracting-images-signatures | Extracting Images of Signatures (OneSpan)}
    */
   public async getDefaultSignature(senderId: string): Promise<Responses.SignatureImage> {
-    const response = await (await this.api.get(`/api/account/senders/${senderId}/signature/image`).fetch()).json();
+    const response = await this.api.get(`/api/account/senders/${senderId}/signature/image`).fetch();
+    const jsonResponse = await response.json();
+
     return {
-      fileName: response.fileName,
-      mediaType: response.mediaType,
-      content: Buffer.from(response.content, 'base64'),
+      fileName: jsonResponse.fileName,
+      mediaType: jsonResponse.mediaType,
+      content: Buffer.from(jsonResponse.content, 'base64'),
     };
   }
 
