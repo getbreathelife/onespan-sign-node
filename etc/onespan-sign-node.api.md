@@ -53,7 +53,7 @@ interface Account_2 {
     // (undocumented)
     customFields: CustomField[];
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -177,7 +177,7 @@ interface Company {
     // (undocumented)
     address: Nullable<Address>;
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -223,12 +223,12 @@ type CreatePackageData = PackageData;
 type CreateSenderData = RecursivePartial<Sender>;
 
 // @public
-export type CustomData = Nullable<Record<string, any>>;
+export type CustomData = Record<string, any>;
 
 // @public (undocumented)
 interface CustomField {
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -266,7 +266,7 @@ export interface DocumentApproval {
     // (undocumented)
     accepted: Nullable<string>;
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     enforceCaptureSignature: Nullable<boolean>;
     // (undocumented)
@@ -325,7 +325,7 @@ export interface DocumentField {
 export interface DocumentMetadata {
     // (undocumented)
     approvals: DocumentApproval[];
-    data: CustomData;
+    data: Nullable<CustomData>;
     description: string;
     // (undocumented)
     external: Nullable<External_2>;
@@ -383,7 +383,7 @@ export class DocumentResource extends Resource {
 // @public
 export interface DocumentVisibility {
     configurations: Nullable<DocumentVisibilityConfiguration[]>;
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: Nullable<string>;
     // (undocumented)
@@ -392,7 +392,7 @@ export interface DocumentVisibility {
 
 // @public
 export interface DocumentVisibilityConfiguration {
-    data: CustomData;
+    data: Nullable<CustomData>;
     documentUid: Nullable<string>;
     id: Nullable<string>;
     name: Nullable<string>;
@@ -408,7 +408,7 @@ export interface ExportedAuditTrail {
 // @public (undocumented)
 interface External_2 {
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -604,7 +604,7 @@ export interface Package {
     consent: Nullable<string>;
     // (undocumented)
     created: string;
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     description: string;
     // (undocumented)
@@ -773,11 +773,11 @@ interface Plan {
     // (undocumented)
     cycle: Cycle;
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     description: string;
     // (undocumented)
-    features: CustomData;
+    features: Nullable<CustomData>;
     // (undocumented)
     freeCycles: Nullable<CycleCount>;
     // (undocumented)
@@ -810,7 +810,7 @@ interface Price {
     currency: {
         id: string;
         name: string;
-        data: CustomData;
+        data: Nullable<CustomData>;
     };
 }
 
@@ -819,7 +819,7 @@ export interface ProfessionalIdentityField {
     // (undocumented)
     category: string;
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -835,7 +835,7 @@ export interface ProfessionalIdentityField {
 // @public (undocumented)
 interface Provider {
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: string;
     // (undocumented)
@@ -951,7 +951,7 @@ export interface Sender {
     company: string;
     created: DateTimeString;
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     email: string;
     // (undocumented)
@@ -1091,7 +1091,7 @@ interface Transaction {
 // @public (undocumented)
 export interface Translation {
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     description: Nullable<string>;
     // (undocumented)
@@ -1114,7 +1114,7 @@ export interface User {
     // (undocumented)
     created: string;
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     email: string;
     // (undocumented)
@@ -1150,7 +1150,7 @@ export interface User {
 // @public (undocumented)
 export interface UserCustomField {
     // (undocumented)
-    data: CustomData;
+    data: Nullable<CustomData>;
     // (undocumented)
     id: string;
     // (undocumented)
