@@ -30,7 +30,7 @@ export class SenderResource extends Resource {
   /**
    * Retrieves a list of the users in an account. Optional query parameters can be used to filter the list.
    * By default, only one sender is retrieved. To retrieve additional users you must modify the “to” and “from” parameters,
-   * where each number in the parameter corresponds to a user. For example: to = 3 from = 10 Will return users 3 to 10 in the user list.
+   * where each number in the parameter corresponds to a user. For example: to = 3 from = 10 will return users 3 to 10 in the user list.
    *
    * @param params - Additional parameters for the query
    *
