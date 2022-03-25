@@ -118,13 +118,21 @@ export interface PackageData {
 }
 
 /**
- * {@inheritDoc PackageData}
+ * Request payload for package creation operations.
+ *
+ * @remarks
+ * See {@link PackageData}.
+ *
  * @public
  */
 export type CreatePackageData = PackageData;
 
 /**
- * {@inheritDoc PackageData}
+ * Request payload for package replacement operations.
+ *
+ * @remarks
+ * See {@link PackageData}.
+ *
  * @public
  */
 export type UpdatePackageData = PackageData;

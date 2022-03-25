@@ -135,7 +135,7 @@ export interface BulkCreateDocumentData {
   /** {@inheritDoc DocumentMetadata.signerVerificationToken} */
   signerVerificationToken?: string;
 
-  /** {@inheritDoc DocumentBody} */
+  /** Data and filename of the document */
   documentBody: DocumentBody;
 }
 

@@ -33,7 +33,7 @@ export class DocumentResource extends Resource {
     formData.append('payload', JSON.stringify(payload));
 
     const response = await this.api.post(`/api/packages/${packageId}/documents`).withBody(formData).fetch();
-    return (await response.json()) as DocumentMetadata;
+    return response.json();
   }
 
   /**
@@ -65,7 +65,7 @@ export class DocumentResource extends Resource {
     formData.append('payload', JSON.stringify(payload));
 
     const response = await this.api.post(`/api/packages/${packageId}/documents`).withBody(formData).fetch();
-    return (await response.json()) as DocumentMetadata[];
+    return response.json();
   }
 
   /**
@@ -80,7 +80,7 @@ export class DocumentResource extends Resource {
    */
   public async getMetadata(packageId: string, documentId: string): Promise<DocumentMetadata> {
     const response = await this.api.get(`/api/packages/${packageId}/documents/${documentId}`).fetch();
-    return (await response.json()) as DocumentMetadata;
+    return response.json();
   }
 
   /**
@@ -111,7 +111,7 @@ export class DocumentResource extends Resource {
       request.withQueryParams({ flatten: option.flatten });
     }
 
-    return await request.fetch();
+    return request.fetch();
   }
 
   /**
@@ -126,7 +126,7 @@ export class DocumentResource extends Resource {
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pages._index.get | REST API documentation (OneSpan)}
    */
   public async getPage(packageId: string, documentId: string, pageIndex: number): Promise<Responses.Response> {
-    return await this.api
+    return this.api
       .get(`/api/packages${packageId}/documents/${documentId}/pages/${pageIndex}`)
       .withAcceptHeader('image/png, application/json')
       .fetch();
@@ -143,7 +143,7 @@ export class DocumentResource extends Resource {
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.zip.get | REST API documentation (OneSpan)}
    */
   public async getZipped(packageId: string, flatten?: boolean): Promise<Responses.Response> {
-    return await this.api
+    return this.api
       .get(`/api/packages/${packageId}/documents/zip`)
       .withQueryParams({
         flatten,
@@ -163,7 +163,7 @@ export class DocumentResource extends Resource {
    */
   public async getVisibilityInfo(packageId: string): Promise<DocumentVisibility> {
     const response = await this.api.get(`/api/packages/${packageId}/documents/visibility`).fetch();
-    return (await response.json()) as DocumentVisibility;
+    return response.json();
   }
 
   /**
@@ -199,8 +199,7 @@ export class DocumentResource extends Resource {
     }
 
     const response = await request.fetch();
-
-    return (await response.json()) as DocumentMetadata;
+    return response.json();
   }
 
   /**
@@ -218,7 +217,7 @@ export class DocumentResource extends Resource {
     payload: RecursivePartial<DocumentVisibility>
   ): Promise<DocumentVisibility> {
     const response = await this.api.post(`/api/packages/${packageId}/documents/visibility`).withBody(payload).fetch();
-    return (await response.json()) as DocumentVisibility;
+    return response.json();
   }
 
   /**

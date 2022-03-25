@@ -1,39 +1,29 @@
 import { Nullable } from '../utils';
+import { Address } from './address';
 import { External } from './external';
+import { CustomData } from './shared';
+import { SignatureStyle } from './signature';
 import { Translation } from './translation';
-
-/**
- * @privateRemarks
- * TODO - #3: Type this
- *
- * @alpha
- */
-export type Address = {};
-
-/**
- * @privateRemarks
- * TODO - #3: Type this
- *
- * @alpha
- */
-export type SignatureStyle = {};
 
 /** @public */
 export interface UserCustomField {
   id: string;
   name: string;
   value: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: Nullable<CustomData>;
   translations: Nullable<Translation[]>;
 }
 
-/**
- * @privateRemarks
- * TODO - #3: Type this
- *
- * @alpha
- **/
-export type ProfessionalIdentityField = {};
+/** @public */
+export interface ProfessionalIdentityField {
+  id: string;
+  name: string;
+  category: string;
+  translations: Nullable<Translation[]>;
+  type: Nullable<string>;
+  value: Nullable<string>;
+  data: Nullable<CustomData>;
+}
 
 /** @public */
 export type SpecialUserType = 'NOTARY';
@@ -52,7 +42,7 @@ export interface User {
   userCustomFields: UserCustomField[];
   address: Nullable<Address>;
   language: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: Nullable<CustomData>;
   signature: Nullable<SignatureStyle>;
   timezoneId: string;
   external: Nullable<External>;

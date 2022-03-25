@@ -1,7 +1,9 @@
 import { Nullable } from '../utils';
 import { DocumentMetadata } from './document';
 import { Message } from './message';
-import { Role, Sender } from './role';
+import { Role } from './role';
+import { Sender } from './sender';
+import { CustomData } from './shared';
 
 /** @public */
 export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
@@ -83,7 +85,7 @@ export interface Package {
    * @remarks
    * See {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/custom-transaction-data | Custom Transaction Data (OneSpan)}
    */
-  data: Nullable<Record<string, any>>;
+  data: Nullable<CustomData>;
 
   language: Nullable<string>;
   autocomplete: boolean;

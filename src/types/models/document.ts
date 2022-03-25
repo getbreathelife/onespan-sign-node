@@ -1,5 +1,6 @@
 import { Nullable } from '../utils';
 import { External } from './external';
+import { CustomData } from './shared';
 
 /** @public */
 export type ExtractionType = 'TEXT_TAGS' | 'ACROFIELDS';
@@ -42,7 +43,7 @@ export type FieldSubtype =
 export interface DocumentApproval {
   id: Nullable<string>;
   name: Nullable<string>;
-  data: Nullable<Record<string, any>>;
+  data: Nullable<CustomData>;
   role: string;
   signed: Nullable<string>;
   accepted: Nullable<string>;
@@ -138,7 +139,7 @@ export interface DocumentMetadata {
   tagged: boolean;
 
   /** {@inheritDoc Package.data} */
-  data: Nullable<Record<string, any>>;
+  data: Nullable<CustomData>;
 
   approvals: DocumentApproval[];
   pages: DocumentPage[];
@@ -162,7 +163,7 @@ export interface DocumentVisibilityConfiguration {
   id: Nullable<string>;
 
   /** Additional data */
-  data: Nullable<Record<string, any>>;
+  data: Nullable<CustomData>;
 
   /** Configuration name */
   name: Nullable<string>;
@@ -184,7 +185,7 @@ export interface DocumentVisibility {
   configurations: Nullable<DocumentVisibilityConfiguration[]>;
 
   /** Additional data */
-  data: Nullable<Record<string, any>>;
+  data: Nullable<CustomData>;
 
   id: Nullable<string>;
 

@@ -22,18 +22,20 @@ export class PackageResource extends Resource {
    */
   public async create(payload: Requests.CreatePackageData): Promise<Responses.CreatePackage> {
     const response = await this.api.post('/api/packages').withBody(payload).fetch();
-    return (await response.json()) as Responses.CreatePackage;
+    return response.json();
   }
 
   /**
    * Retrieves all packages (transactions).
+   *
+   * @param params - Additional parameters for the query
    *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.get | REST API documentation (OneSpan)}
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/retrieving-list-transactions | Retrieving a List of Transactions (OneSpan)}
    */
-  public async getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]> {
+  public async getAll(params?: Requests.GetAllPackagesParameters): Promise<Responses.BulkGetResponse<Package>> {
     const request = await this.api.get('/api/packages');
 
     if (params) {
@@ -49,7 +51,7 @@ export class PackageResource extends Resource {
     }
 
     const response = await request.fetch();
-    return (await response.json()) as Package[];
+    return response.json();
   }
 
   /**
@@ -65,7 +67,7 @@ export class PackageResource extends Resource {
    */
   public async getOne(packageId: string): Promise<Package> {
     const response = await this.api.get(`/api/packages/${packageId}`).fetch();
-    return (await response.json()) as Package;
+    return response.json();
   }
 
   /**
@@ -105,7 +107,7 @@ export class PackageResource extends Resource {
    */
   public async getAuditTrail(packageId: string): Promise<ExportedAuditTrail> {
     const response = await this.api.get(`/api/packages/${packageId}/audit`).fetch();
-    return (await response.json()) as ExportedAuditTrail;
+    return response.json();
   }
 
   /**
@@ -118,7 +120,7 @@ export class PackageResource extends Resource {
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages._packageId.evidence.summary.get | REST API documentation (OneSpan)}
    */
   public async getEvidenceSummary(packageId: string): Promise<Responses.Response> {
-    return await this.api
+    return this.api
       .get(`/api/packages/${packageId}/evidence/summary`)
       .withAcceptHeader('application/pdf, application/json')
       .fetch();

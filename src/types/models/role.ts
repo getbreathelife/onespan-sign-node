@@ -35,14 +35,6 @@ export type Signer = {
  *
  * @alpha
  */
-export type Sender = null;
-
-/**
- * @privateRemarks
- * TODO - #3
- *
- * @alpha
- */
 export type Role = {
   id?: string;
   index: number;
