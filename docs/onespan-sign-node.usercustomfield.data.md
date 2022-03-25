@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-data: Nullable<Record<string, any>>;
+data: Nullable<CustomData>;
 ```

@@ -16,7 +16,7 @@ export interface DocumentApproval
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [accepted](./onespan-sign-node.documentapproval.accepted.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
-|  [data](./onespan-sign-node.documentapproval.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; |  |
+|  [data](./onespan-sign-node.documentapproval.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; |  |
 |  [enforceCaptureSignature](./onespan-sign-node.documentapproval.enforcecapturesignature.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;boolean&gt; |  |
 |  [fields](./onespan-sign-node.documentapproval.fields.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[DocumentField](./onespan-sign-node.documentfield.md)<!-- -->\[\]&gt; |  |
 |  [id](./onespan-sign-node.documentapproval.id.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |

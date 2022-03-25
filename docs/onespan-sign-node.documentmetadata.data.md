@@ -9,7 +9,7 @@ Custom data that is passed through.
 <b>Signature:</b>
 
 ```typescript
-data: Nullable<Record<string, any>>;
+data: Nullable<CustomData>;
 ```
 
 ## Remarks

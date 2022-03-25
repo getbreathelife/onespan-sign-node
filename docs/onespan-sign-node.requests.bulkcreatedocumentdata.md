@@ -14,7 +14,7 @@ export interface BulkCreateDocumentData
 
 ## Remarks
 
-Only ['name'](./onespan-sign-node.bulkcreatedocumentdata.name.md) is required. See: - [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post)
+Only  is required. See: - [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post)
 
 - [Uploading &amp; Deleting Documents](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents) (Uploading Multiple Documents)
 
@@ -25,7 +25,7 @@ Only ['name'](./onespan-sign-node.bulkcreatedocumentdata.name.md) is required. S
 |  [approvals?](./onespan-sign-node.requests.bulkcreatedocumentdata.approvals.md) | [RecursivePartial](./onespan-sign-node.recursivepartial.md)<!-- -->&lt;[DocumentApproval](./onespan-sign-node.documentapproval.md)<!-- -->&gt;\[\] | <i>(Optional)</i> |
 |  [data?](./onespan-sign-node.requests.bulkcreatedocumentdata.data.md) | Record&lt;string, any&gt; | <i>(Optional)</i> Custom data that is passed through. |
 |  [description?](./onespan-sign-node.requests.bulkcreatedocumentdata.description.md) | string | <i>(Optional)</i> Document description |
-|  [documentBody](./onespan-sign-node.requests.bulkcreatedocumentdata.documentbody.md) | [DocumentBody](./onespan-sign-node.documentbody.md) | Data and filename of a document for resource creation/update purpose |
+|  [documentBody](./onespan-sign-node.requests.bulkcreatedocumentdata.documentbody.md) | DocumentBody | Data and filename of the document |
 |  [external?](./onespan-sign-node.requests.bulkcreatedocumentdata.external.md) | Partial&lt;External&gt; | <i>(Optional)</i> |
 |  [extract?](./onespan-sign-node.requests.bulkcreatedocumentdata.extract.md) | boolean | <i>(Optional)</i> Enable/disable extraction on the document |
 |  [extractionTypes?](./onespan-sign-node.requests.bulkcreatedocumentdata.extractiontypes.md) | [ExtractionType](./onespan-sign-node.extractiontype.md)<!-- -->\[\] | <i>(Optional)</i> Types of extraction for this document. |

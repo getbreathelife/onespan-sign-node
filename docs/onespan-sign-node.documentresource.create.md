@@ -17,8 +17,8 @@ create(packageId: string, payload: Requests.CreateDocumentData, documentBody: Re
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  packageId | string | Package ID |
-|  payload | Requests.[CreateDocumentData](./onespan-sign-node.createdocumentdata.md) | Metadata of the to-be-uploaded document |
-|  documentBody | Requests.[DocumentBody](./onespan-sign-node.documentbody.md) | Data of the document |
+|  payload | Requests.CreateDocumentData | Metadata of the to-be-uploaded document |
+|  documentBody | Requests.DocumentBody | Data of the document |
 
 <b>Returns:</b>
 

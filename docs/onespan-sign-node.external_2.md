@@ -15,7 +15,7 @@ export interface External
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [data](./onespan-sign-node.external_2.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; |  |
+|  [data](./onespan-sign-node.external_2.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; |  |
 |  [id](./onespan-sign-node.external_2.id.md) | string |  |
 |  [provider](./onespan-sign-node.external_2.provider.md) | string |  |
 |  [providerName](./onespan-sign-node.external_2.providername.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |

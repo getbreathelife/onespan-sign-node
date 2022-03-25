@@ -32,6 +32,7 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [OneSpanSign](./onespan-sign-node.onespansign.md) | Main class to interact with OneSpan Sign's API. This class is a collection of resource objects used to interact with OneSpan Sign's API. |
 |  [PackageResource](./onespan-sign-node.packageresource.md) | Resource class to interact with [packages (transactions)](https://community.onespan.com/documentation/onespan-sign/guides/sender-guides/user/transactions)<!-- -->. |
 |  [Resource](./onespan-sign-node.resource.md) | Base class for resources. Resource classes are used to call endpoints specific to the resource (entity) on OneSpan Sign. |
+|  [SenderResource](./onespan-sign-node.senderresource.md) | Resource class to interact with [senders](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/managing-senders)<!-- -->. |
 
 ## Interfaces
 
@@ -39,11 +40,9 @@ await oneSpanSign.documents.create(packageId, ...)
 |  --- | --- |
 |  [AccessTokenOwnerConfig](./onespan-sign-node.accesstokenownerconfig.md) | Configuration to retrieve the access token for a user with the <code>OWNER</code> type. |
 |  [AccessTokenSenderConfig](./onespan-sign-node.accesstokensenderconfig.md) | Configuration to retrieve the access token for a user with the <code>SENDER</code> type. |
+|  [Address](./onespan-sign-node.address.md) |  |
 |  [AuditEvent](./onespan-sign-node.auditevent.md) |  |
-|  [BulkCreateDocumentData](./onespan-sign-node.bulkcreatedocumentdata.md) | Request payload for each entry in the bulk create document operations. |
-|  [CreateDocumentData](./onespan-sign-node.createdocumentdata.md) | Request payload for create document operations. |
 |  [DocumentApproval](./onespan-sign-node.documentapproval.md) |  |
-|  [DocumentBody](./onespan-sign-node.documentbody.md) | Data and filename of a document for resource creation/update purpose |
 |  [DocumentField](./onespan-sign-node.documentfield.md) |  |
 |  [DocumentMetadata](./onespan-sign-node.documentmetadata.md) |  |
 |  [DocumentPage](./onespan-sign-node.documentpage.md) |  |
@@ -53,10 +52,14 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [External\_2](./onespan-sign-node.external_2.md) |  |
 |  [ExtractAnchor](./onespan-sign-node.extractanchor.md) |  |
 |  [FieldValidation](./onespan-sign-node.fieldvalidation.md) |  |
-|  [GetAllPackagesParameters](./onespan-sign-node.getallpackagesparameters.md) | Request parameters for the get all packages operation. The parameters will be appended to the URL when the API request is made. |
+|  [GroupMembership](./onespan-sign-node.groupmembership.md) |  |
 |  [Message](./onespan-sign-node.message.md) |  |
 |  [Package](./onespan-sign-node.package.md) |  |
-|  [PackageData](./onespan-sign-node.packagedata.md) | Request payload for package creation/replacement operations. |
+|  [ProfessionalIdentityField](./onespan-sign-node.professionalidentityfield.md) |  |
+|  [Sender](./onespan-sign-node.sender.md) |  |
+|  [SignatureStyle](./onespan-sign-node.signaturestyle.md) |  |
+|  [TextualSignatureStyle](./onespan-sign-node.textualsignaturestyle.md) |  |
+|  [Translation](./onespan-sign-node.translation.md) |  |
 |  [User](./onespan-sign-node.user.md) |  |
 |  [UserCustomField](./onespan-sign-node.usercustomfield.md) |  |
 
@@ -64,6 +67,7 @@ await oneSpanSign.documents.create(packageId, ...)
 
 |  Namespace | Description |
 |  --- | --- |
+|  [Account](./onespan-sign-node.account.md) |  |
 |  [RequestBuilders](./onespan-sign-node.requestbuilders.md) |  |
 |  [Requests](./onespan-sign-node.requests.md) |  |
 |  [Responses](./onespan-sign-node.responses.md) |  |
@@ -74,11 +78,11 @@ await oneSpanSign.documents.create(packageId, ...)
 |  --- | --- |
 |  [AuditEventTargetType](./onespan-sign-node.auditeventtargettype.md) |  |
 |  [AuditEventType](./onespan-sign-node.auditeventtype.md) |  |
-|  [CreatePackageData](./onespan-sign-node.createpackagedata.md) | Request payload for package creation/replacement operations. |
+|  [CustomData](./onespan-sign-node.customdata.md) | Custom data embedded into parent object |
+|  [DateTimeString](./onespan-sign-node.datetimestring.md) | String in date-time notation as defined by [RFC 3339, section 5.6](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) |
 |  [ExtractionType](./onespan-sign-node.extractiontype.md) |  |
 |  [FieldSubtype](./onespan-sign-node.fieldsubtype.md) |  |
 |  [FieldType](./onespan-sign-node.fieldtype.md) |  |
-|  [GetDocumentBodyOption](./onespan-sign-node.getdocumentbodyoption.md) |  |
 |  [MessageStatus](./onespan-sign-node.messagestatus.md) |  |
 |  [Nullable](./onespan-sign-node.nullable.md) | Make <code>T</code> either its own type or null |
 |  [PackageStatus](./onespan-sign-node.packagestatus.md) |  |
@@ -86,7 +90,9 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [PackageVisibility](./onespan-sign-node.packagevisibility.md) |  |
 |  [RecursivePartial](./onespan-sign-node.recursivepartial.md) | Recursively make properties in <code>T</code> optional |
 |  [RoleType](./onespan-sign-node.roletype.md) |  |
+|  [SenderStatus](./onespan-sign-node.senderstatus.md) |  |
+|  [SenderType](./onespan-sign-node.sendertype.md) |  |
 |  [SignerStatus](./onespan-sign-node.signerstatus.md) |  |
 |  [SpecialUserType](./onespan-sign-node.specialusertype.md) |  |
-|  [UpdatePackageData](./onespan-sign-node.updatepackagedata.md) | Request payload for package creation/replacement operations. |
+|  [TimeZoneId](./onespan-sign-node.timezoneid.md) | Timezone IDs as defined in the [Time Zone Database](https://www.iana.org/time-zones)<!-- -->. |
 

@@ -15,10 +15,10 @@ export interface User
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [address](./onespan-sign-node.user.address.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Address&gt; |  |
+|  [address](./onespan-sign-node.user.address.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[Address](./onespan-sign-node.address.md)<!-- -->&gt; |  |
 |  [company](./onespan-sign-node.user.company.md) | string |  |
 |  [created](./onespan-sign-node.user.created.md) | string |  |
-|  [data](./onespan-sign-node.user.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; |  |
+|  [data](./onespan-sign-node.user.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; |  |
 |  [email](./onespan-sign-node.user.email.md) | string |  |
 |  [external](./onespan-sign-node.user.external.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;External&gt; |  |
 |  [firstName](./onespan-sign-node.user.firstname.md) | string |  |
@@ -27,8 +27,8 @@ export interface User
 |  [lastName](./onespan-sign-node.user.lastname.md) | string |  |
 |  [name](./onespan-sign-node.user.name.md) | string |  |
 |  [phone](./onespan-sign-node.user.phone.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
-|  [professionalIdentityFields](./onespan-sign-node.user.professionalidentityfields.md) | ProfessionalIdentityField\[\] |  |
-|  [signature](./onespan-sign-node.user.signature.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;SignatureStyle&gt; |  |
+|  [professionalIdentityFields](./onespan-sign-node.user.professionalidentityfields.md) | [ProfessionalIdentityField](./onespan-sign-node.professionalidentityfield.md)<!-- -->\[\] |  |
+|  [signature](./onespan-sign-node.user.signature.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[SignatureStyle](./onespan-sign-node.signaturestyle.md)<!-- -->&gt; |  |
 |  [specialTypes](./onespan-sign-node.user.specialtypes.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[SpecialUserType](./onespan-sign-node.specialusertype.md)<!-- -->\[\]&gt; |  |
 |  [timezoneId](./onespan-sign-node.user.timezoneid.md) | string |  |
 |  [title](./onespan-sign-node.user.title.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |

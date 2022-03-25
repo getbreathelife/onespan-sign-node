@@ -8,6 +8,8 @@
 
 |  Interface | Description |
 |  --- | --- |
+|  [BulkGetResponse](./onespan-sign-node.responses.bulkgetresponse.md) |  |
 |  [CreatePackage](./onespan-sign-node.responses.createpackage.md) |  |
-|  [Response](./onespan-sign-node.responses.response.md) |  |
+|  [Response](./onespan-sign-node.responses.response.md) | \* |
+|  [SignatureImage](./onespan-sign-node.responses.signatureimage.md) |  |
 

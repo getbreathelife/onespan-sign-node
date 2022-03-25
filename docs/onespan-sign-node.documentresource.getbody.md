@@ -18,7 +18,7 @@ getBody(packageId: string, documentId: string, option?: Requests.GetDocumentBody
 |  --- | --- | --- |
 |  packageId | string | Package ID |
 |  documentId | string | Document ID |
-|  option | Requests.[GetDocumentBodyOption](./onespan-sign-node.getdocumentbodyoption.md) | (Optional) Option to specify the format and parameters to retrieve the document. Defaults to original format |
+|  option | Requests.GetDocumentBodyOption | (Optional) Option to specify the format and parameters to retrieve the document. Defaults to original format |
 
 <b>Returns:</b>
 

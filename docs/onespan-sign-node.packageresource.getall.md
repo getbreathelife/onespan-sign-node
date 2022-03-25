@@ -9,18 +9,18 @@ Retrieves all packages (transactions).
 <b>Signature:</b>
 
 ```typescript
-getAll(params?: Requests.GetAllPackagesParameters): Promise<Package[]>;
+getAll(params?: Requests.GetAllPackagesParameters): Promise<Responses.BulkGetResponse<Package>>;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  params | Requests.[GetAllPackagesParameters](./onespan-sign-node.getallpackagesparameters.md) |  |
+|  params | Requests.GetAllPackagesParameters | Additional parameters for the query |
 
 <b>Returns:</b>
 
-Promise&lt;[Package](./onespan-sign-node.package.md)<!-- -->\[\]&gt;
+Promise&lt;Responses.BulkGetResponse&lt;[Package](./onespan-sign-node.package.md)<!-- -->&gt;&gt;
 
 ## Remarks
 

@@ -17,7 +17,7 @@ bulkCreate(packageId: string, documents: Requests.BulkCreateDocumentData[]): Pro
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  packageId | string | Package ID |
-|  documents | Requests.[BulkCreateDocumentData](./onespan-sign-node.bulkcreatedocumentdata.md)<!-- -->\[\] | Metadata and data of the to-be-uploaded documents |
+|  documents | Requests.BulkCreateDocumentData\[\] | Metadata and data of the to-be-uploaded documents |
 
 <b>Returns:</b>
 

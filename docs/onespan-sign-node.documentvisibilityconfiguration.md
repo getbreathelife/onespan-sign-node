@@ -16,7 +16,7 @@ export interface DocumentVisibilityConfiguration
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [data](./onespan-sign-node.documentvisibilityconfiguration.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; | Additional data |
+|  [data](./onespan-sign-node.documentvisibilityconfiguration.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; | Additional data |
 |  [documentUid](./onespan-sign-node.documentvisibilityconfiguration.documentuid.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; | Document Id |
 |  [id](./onespan-sign-node.documentvisibilityconfiguration.id.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; | Configuration Id |
 |  [name](./onespan-sign-node.documentvisibilityconfiguration.name.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; | Configuration name |

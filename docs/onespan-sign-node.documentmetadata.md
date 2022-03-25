@@ -16,7 +16,7 @@ export interface DocumentMetadata
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [approvals](./onespan-sign-node.documentmetadata.approvals.md) | [DocumentApproval](./onespan-sign-node.documentapproval.md)<!-- -->\[\] |  |
-|  [data](./onespan-sign-node.documentmetadata.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; | Custom data that is passed through. |
+|  [data](./onespan-sign-node.documentmetadata.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; | Custom data that is passed through. |
 |  [description](./onespan-sign-node.documentmetadata.description.md) | string | Document description |
 |  [external](./onespan-sign-node.documentmetadata.external.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;External&gt; |  |
 |  [extract](./onespan-sign-node.documentmetadata.extract.md) | boolean | Enable/disable extraction on the document |

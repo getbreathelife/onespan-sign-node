@@ -15,9 +15,9 @@ export interface UserCustomField
 
 |  Property | Type | Description |
 |  --- | --- | --- |
-|  [data](./onespan-sign-node.usercustomfield.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; |  |
+|  [data](./onespan-sign-node.usercustomfield.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; |  |
 |  [id](./onespan-sign-node.usercustomfield.id.md) | string |  |
 |  [name](./onespan-sign-node.usercustomfield.name.md) | string |  |
-|  [translations](./onespan-sign-node.usercustomfield.translations.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Translation\[\]&gt; |  |
+|  [translations](./onespan-sign-node.usercustomfield.translations.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[Translation](./onespan-sign-node.translation.md)<!-- -->\[\]&gt; |  |
 |  [value](./onespan-sign-node.usercustomfield.value.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
 

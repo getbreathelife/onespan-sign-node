@@ -23,7 +23,7 @@ See: [REST API documentation (OneSpan)](https://community.onespan.com/products/o
 |  Property | Type | Description |
 |  --- | --- | --- |
 |  [configurations](./onespan-sign-node.documentvisibility.configurations.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[DocumentVisibilityConfiguration](./onespan-sign-node.documentvisibilityconfiguration.md)<!-- -->\[\]&gt; | List of [DocumentVisibilityConfiguration](./onespan-sign-node.documentvisibilityconfiguration.md) |
-|  [data](./onespan-sign-node.documentvisibility.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; | Additional data |
+|  [data](./onespan-sign-node.documentvisibility.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; | Additional data |
 |  [id](./onespan-sign-node.documentvisibility.id.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
 |  [name](./onespan-sign-node.documentvisibility.name.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
 

@@ -14,7 +14,7 @@ export interface CreateDocumentData
 
 ## Remarks
 
-Only ['name'](./onespan-sign-node.createdocumentdata.name.md) is required. See [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post) for more information.
+Only  is required. See [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post) for more information.
 
 ## Properties
 

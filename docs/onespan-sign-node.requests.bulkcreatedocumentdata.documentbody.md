@@ -4,7 +4,7 @@
 
 ## Requests.BulkCreateDocumentData.documentBody property
 
-Data and filename of a document for resource creation/update purpose
+Data and filename of the document
 
 <b>Signature:</b>
 

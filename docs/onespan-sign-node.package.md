@@ -20,7 +20,7 @@ export interface Package
 |  [completed](./onespan-sign-node.package.completed.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
 |  [consent](./onespan-sign-node.package.consent.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
 |  [created](./onespan-sign-node.package.created.md) | string |  |
-|  [data](./onespan-sign-node.package.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Record&lt;string, any&gt;&gt; | Custom data that is passed through. |
+|  [data](./onespan-sign-node.package.data.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[CustomData](./onespan-sign-node.customdata.md)<!-- -->&gt; | Custom data that is passed through. |
 |  [description](./onespan-sign-node.package.description.md) | string |  |
 |  [documents](./onespan-sign-node.package.documents.md) | [DocumentMetadata](./onespan-sign-node.documentmetadata.md)<!-- -->\[\] |  |
 |  [due](./onespan-sign-node.package.due.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
@@ -33,7 +33,7 @@ export interface Package
 |  [notarized](./onespan-sign-node.package.notarized.md) | boolean |  |
 |  [notaryRoleId](./onespan-sign-node.package.notaryroleid.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
 |  [roles](./onespan-sign-node.package.roles.md) | Role\[\] |  |
-|  [sender](./onespan-sign-node.package.sender.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;Sender&gt; |  |
+|  [sender](./onespan-sign-node.package.sender.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[Sender](./onespan-sign-node.sender.md)<!-- -->&gt; |  |
 |  [settings](./onespan-sign-node.package.settings.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;PackageSettings&gt; |  |
 |  [signedDocumentDelivery](./onespan-sign-node.package.signeddocumentdelivery.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;SignedDocumentDelivery&gt; |  |
 |  [status](./onespan-sign-node.package.status.md) | [PackageStatus](./onespan-sign-node.packagestatus.md) |  |

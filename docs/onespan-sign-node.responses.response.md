@@ -4,6 +4,8 @@
 
 ## Responses.Response interface
 
+\*
+
 <b>Signature:</b>
 
 ```typescript

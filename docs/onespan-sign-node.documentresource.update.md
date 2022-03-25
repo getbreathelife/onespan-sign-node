@@ -19,7 +19,7 @@ update(packageId: string, documentId: string, payload: Partial<DocumentMetadata>
 |  packageId | string | Package ID |
 |  documentId | string | ID of the document to be updated |
 |  payload | Partial&lt;[DocumentMetadata](./onespan-sign-node.documentmetadata.md)<!-- -->&gt; | Updated metadata of the document |
-|  documentBody | Requests.[DocumentBody](./onespan-sign-node.documentbody.md) | (Optional) data to replace the document |
+|  documentBody | Requests.DocumentBody | (Optional) data to replace the document |
 
 <b>Returns:</b>
 

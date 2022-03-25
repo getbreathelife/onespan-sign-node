@@ -17,7 +17,7 @@ update(packageId: string, payload: Requests.UpdatePackageData): Promise<void>;
 |  Parameter | Type | Description |
 |  --- | --- | --- |
 |  packageId | string | Package ID |
-|  payload | Requests.[UpdatePackageData](./onespan-sign-node.updatepackagedata.md) | Package information |
+|  payload | Requests.UpdatePackageData | Package information |
 
 <b>Returns:</b>
 

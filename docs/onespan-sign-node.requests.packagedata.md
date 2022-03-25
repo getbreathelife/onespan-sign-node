@@ -14,7 +14,7 @@ export interface PackageData
 
 ## Remarks
 
-Request payload should at least contain ['name'](./onespan-sign-node.packagedata.name.md) property.
+Request payload should at least contain  property.
 
 See [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post) for more information.
 
@@ -40,7 +40,7 @@ See [REST API documentation](https://community.onespan.com/products/onespan-sign
 |  [notarized?](./onespan-sign-node.requests.packagedata.notarized.md) | boolean | <i>(Optional)</i> |
 |  [notaryRoleId?](./onespan-sign-node.requests.packagedata.notaryroleid.md) | string | <i>(Optional)</i> |
 |  [roles?](./onespan-sign-node.requests.packagedata.roles.md) | Role\[\] | <i>(Optional)</i> |
-|  [sender?](./onespan-sign-node.requests.packagedata.sender.md) | Sender | <i>(Optional)</i> |
+|  [sender?](./onespan-sign-node.requests.packagedata.sender.md) | [Sender](./onespan-sign-node.sender.md) | <i>(Optional)</i> |
 |  [settings?](./onespan-sign-node.requests.packagedata.settings.md) | PackageSettings | <i>(Optional)</i> |
 |  [signedDocumentDelivery?](./onespan-sign-node.requests.packagedata.signeddocumentdelivery.md) | SignedDocumentDelivery | <i>(Optional)</i> |
 |  [status?](./onespan-sign-node.requests.packagedata.status.md) | [PackageStatus](./onespan-sign-node.packagestatus.md) | <i>(Optional)</i> |

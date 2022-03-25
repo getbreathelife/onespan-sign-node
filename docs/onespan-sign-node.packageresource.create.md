@@ -16,7 +16,7 @@ create(payload: Requests.CreatePackageData): Promise<Responses.CreatePackage>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  payload | Requests.[CreatePackageData](./onespan-sign-node.createpackagedata.md) | Package initial information |
+|  payload | Requests.CreatePackageData | Package initial information |
 
 <b>Returns:</b>
 

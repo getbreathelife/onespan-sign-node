@@ -4,18 +4,15 @@
 
 ## Requests.CreatePackageData type
 
-Request payload for package creation/replacement operations.
+Request payload for package creation operations.
 
 <b>Signature:</b>
 
 ```typescript
 export declare type CreatePackageData = PackageData;
 ```
-<b>References:</b> [PackageData](./onespan-sign-node.packagedata.md)
 
 ## Remarks
 
-Request payload should at least contain ['name'](./onespan-sign-node.packagedata.name.md) property.
-
-See [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post) for more information.
+See .
 

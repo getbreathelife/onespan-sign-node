@@ -12,13 +12,15 @@
 |  [CreateDocumentData](./onespan-sign-node.requests.createdocumentdata.md) | Request payload for create document operations. |
 |  [DocumentBody](./onespan-sign-node.requests.documentbody.md) | Data and filename of a document for resource creation/update purpose |
 |  [GetAllPackagesParameters](./onespan-sign-node.requests.getallpackagesparameters.md) | Request parameters for the get all packages operation. The parameters will be appended to the URL when the API request is made. |
+|  [GetAllSendersParameters](./onespan-sign-node.requests.getallsendersparameters.md) |  |
 |  [PackageData](./onespan-sign-node.requests.packagedata.md) | Request payload for package creation/replacement operations. |
 
 ## Type Aliases
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [CreatePackageData](./onespan-sign-node.requests.createpackagedata.md) | Request payload for package creation/replacement operations. |
+|  [CreatePackageData](./onespan-sign-node.requests.createpackagedata.md) | Request payload for package creation operations. |
+|  [CreateSenderData](./onespan-sign-node.requests.createsenderdata.md) |  |
 |  [GetDocumentBodyOption](./onespan-sign-node.requests.getdocumentbodyoption.md) |  |
-|  [UpdatePackageData](./onespan-sign-node.requests.updatepackagedata.md) | Request payload for package creation/replacement operations. |
+|  [UpdatePackageData](./onespan-sign-node.requests.updatepackagedata.md) | Request payload for package replacement operations. |
 
