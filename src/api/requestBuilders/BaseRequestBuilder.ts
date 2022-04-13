@@ -14,6 +14,8 @@ export class BaseRequestBuilder {
   protected requestOptions: RequestInit = {};
   protected url: URL;
 
+  protected readonly API_VERSION = '11.46';
+
   constructor(url: URL) {
     this.url = url;
 
@@ -85,6 +87,19 @@ export class BaseRequestBuilder {
     return this;
   }
 
+  protected appendApiVersion(acceptHeader: string): string {
+    const values = acceptHeader.split(',').map((value) => value.trim());
+
+    return values
+      .map((value) => {
+        if (value.match(/^.+;\s*.+$/)) {
+          return value;
+        }
+        return `${value}; esl-api-version=${this.API_VERSION}`;
+      })
+      .join(', ');
+  }
+
   /**
    * Constructs the header dictionary for the request.
    * @internal
@@ -99,6 +114,8 @@ export class BaseRequestBuilder {
         headers.authorization = authorization;
       }
     }
+
+    headers.accept = this.appendApiVersion(headers.accept);
 
     return headers;
   }
