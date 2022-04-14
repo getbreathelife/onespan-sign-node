@@ -1,9 +1,9 @@
+import { CustomData } from '../shared';
 import { Nullable } from '../utils';
 import { DocumentMetadata } from './document';
 import { Message } from './message';
 import { Role } from './role';
 import { Sender } from './sender';
-import { CustomData } from './shared';
 
 /** @public */
 export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';

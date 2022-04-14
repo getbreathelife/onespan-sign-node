@@ -1,6 +1,6 @@
+import { CustomData } from '../shared';
 import { Nullable } from '../utils';
 import { External } from './external';
-import { CustomData } from './shared';
 
 /** @public */
 export type ExtractionType = 'TEXT_TAGS' | 'ACROFIELDS';

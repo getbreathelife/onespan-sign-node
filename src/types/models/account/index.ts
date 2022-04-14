@@ -1,6 +1,6 @@
+import { CustomData, DateTimeString, TimeZoneId } from '../../shared';
 import { Nullable } from '../../utils';
 import { Address } from '../address';
-import { CustomData, DateTimeString, TimeZoneId } from '../shared';
 import { Translation } from '../translation';
 import * as License from './license';
 
