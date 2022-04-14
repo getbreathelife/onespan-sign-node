@@ -1,4 +1,4 @@
-const repl = require('repl')
-const OneSpanSign = require('./dist').OneSpanSign
+const repl = require('repl');
+const OneSpanSign = require('./dist');
 
 repl.start('> ').context.OneSpanSign = OneSpanSign;
