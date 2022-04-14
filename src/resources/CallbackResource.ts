@@ -23,14 +23,14 @@ export class CallbackResource extends Resource {
   }
 
   /**
-   * Create callback settings.
+   * Create/update callback settings.
    *
    * @param payload - Callback settings
    *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Callback/api.callback.post | REST API documentation (OneSpan)}
    */
-  public async create(payload: Partial<Callback>): Promise<Callback> {
+  public async set(payload: Partial<Callback>): Promise<Callback> {
     const response = await this.api.post('/api/callback').withBody(payload).fetch();
     return response.json();
   }

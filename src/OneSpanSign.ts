@@ -1,5 +1,6 @@
 import { Api } from './api';
-import { DocumentResource, PackageResource } from './resources';
+import { DocumentResource, PackageResource, SenderResource } from './resources';
+import { CallbackResource } from './resources/CallbackResource';
 import { AccessTokenOwnerConfig, AccessTokenSenderConfig } from './types';
 
 /**
@@ -57,5 +58,31 @@ export class OneSpanSign {
       configurable: false,
     });
     return packages;
+  }
+
+  /**
+   * Sender resource
+   */
+  public get senders(): SenderResource {
+    const senders = new SenderResource(this.api);
+    Object.defineProperty(this, 'senders', {
+      value: senders,
+      writable: false,
+      configurable: false,
+    });
+    return senders;
+  }
+
+  /**
+   * Callback resource
+   */
+  public get callback(): CallbackResource {
+    const callback = new CallbackResource(this.api);
+    Object.defineProperty(this, 'callback', {
+      value: callback,
+      writable: false,
+      configurable: false,
+    });
+    return callback;
   }
 }
