@@ -1,10 +1,12 @@
 import { DateTimeString } from '../shared';
 
-/** @public */
-export default interface DocumentSignedEvent {
+/**
+ * KBA Authentication (Knowledge-Based Authentication) failure event.
+ * @public
+ */
+export default interface KbaFailureEvent {
   readonly name: string;
   readonly sessionUser: string;
   readonly packageId: string;
-  readonly documentId: string;
   readonly createdDate: DateTimeString;
 }
