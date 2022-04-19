@@ -48,7 +48,7 @@ describe('SenderResource', () => {
           Object {
             "body": "{\\"email\\":\\"sender@email.com\\",\\"name\\":\\"sender\\",\\"firstName\\":\\"sender first name\\",\\"lastName\\":\\"sender last name\\"}",
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -74,7 +74,7 @@ describe('SenderResource', () => {
           "http://demo.com/api/account/senders?search=type&from=10&to=20",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -92,7 +92,7 @@ describe('SenderResource', () => {
           "http://demo.com/api/account/senders",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -112,7 +112,7 @@ describe('SenderResource', () => {
           "http://demo.com/api/account/senders/sender1",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -132,7 +132,7 @@ describe('SenderResource', () => {
           "http://demo.com/api/account/senders/sender1",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -152,7 +152,7 @@ describe('SenderResource', () => {
           "http://demo.com/api/account/senders/sender1/invite",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -183,7 +183,7 @@ describe('SenderResource', () => {
           "http://demo.com/api/account/senders/sender1/signature/image",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -212,7 +212,7 @@ describe('SenderResource', () => {
 
       expect(mockedFetch.mock.calls[0][1]).toEqual({
         headers: {
-          accept: 'application/json',
+          accept: expect.stringMatching(/^application\/json; esl-api-version=.+/),
           authorization: expect.stringMatching(/^Bearer/),
           'content-type': expect.stringMatching(/^multipart\/form-data; boundary=.+/),
         },
@@ -237,7 +237,7 @@ describe('SenderResource', () => {
           "http://demo.com/api/account/senders/sender1",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },

@@ -29,7 +29,7 @@ describe('BaseRequestBuilder', () => {
     await requestBuilder.fetch();
 
     expect(mockedFetch.mock.calls[0][1]?.headers).toStrictEqual({
-      accept: 'application/json',
+      accept: expect.stringMatching(/^application\/json; esl-api-version=.+/),
       'content-type': 'application/json',
     });
   });
@@ -65,7 +65,7 @@ describe('BaseRequestBuilder', () => {
 
       expect(mockedFetch.mock.calls[0][1]?.headers).toStrictEqual(
         expect.objectContaining({
-          accept: 'text/html',
+          accept: expect.stringMatching(/^text\/html; esl-api-version=.+/),
         })
       );
     });
