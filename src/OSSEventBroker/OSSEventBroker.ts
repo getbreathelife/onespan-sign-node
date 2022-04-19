@@ -8,6 +8,23 @@ import { EventMessageError } from './error';
  * {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/setting-callback-notifications | callback notifications}
  * from OneSpan Sign and call the appropriate handler.
  *
+ * @example
+ * ```ts
+ *  import * as http from 'node:http';
+ *  import { OSSEventBroker } from 'onespan-sign-node';
+ *
+ *  const broker = new OSSEventBroker();
+ *  broker.setHandler('DOCUMENT_SIGNED', onDocumentSigned);
+ *
+ *  const server = http.createServer((req, res) => {
+ *    if (req.url === EVENT_CALLBACK_URL) {
+ *      broker.handle(req);
+ *    }
+ *  });
+ *
+ *  server.listen(8080);
+ * ```
+ *
  * @public
  */
 export class OSSEventBroker {
@@ -33,7 +50,21 @@ export class OSSEventBroker {
   public setHandler<T extends keyof Events.LOOKUP_TABLE>(key: T, handler: EventHandler<Events.LOOKUP_TABLE[T]>): void {
     Object.defineProperty(this.handlers, key, {
       value: handler,
+      configurable: true,
+      enumerable: true,
+      writable: true,
     });
+  }
+
+  /**
+   * Removes the handler for a callback event.
+   *
+   * @param key - Name of the event. See {@link Events.LOOKUP_TABLE} for the list of valid keys.
+   */
+  public removeHandler<T extends keyof Events.LOOKUP_TABLE>(key: T): void {
+    if (key in this.handlers) {
+      delete this.handlers[key];
+    }
   }
 
   protected async parseStream(stream: Readable): Promise<Record<string, any>> {
@@ -79,23 +110,6 @@ export class OSSEventBroker {
    *
    * @remarks
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/setting-callback-notifications | Setting Up Callback Notifications (OneSpan Sign)}
-   *
-   * @example
-   * ```ts
-   *  import * as http from 'node:http';
-   *  import { OSSEventBroker } from 'onespan-sign-node';
-   *
-   *  const broker = new OSSEventBroker();
-   *  broker.setHandler('DOCUMENT_SIGNED', onDocumentSigned);
-   *
-   *  const server = http.createServer((req, res) => {
-   *    if (req.url === EVENT_CALLBACK_URL) {
-   *      broker.handle(req);
-   *    }
-   *  });
-   *
-   *  server.listen(8080);
-   * ```
    */
   public async handle(message: Readable | string | Record<string, any>): Promise<void> {
     let body;
