@@ -6,6 +6,8 @@
 
 /// <reference types="node" />
 
+import { EventHandler as EventHandler_2 } from 'types';
+import { Events as Events_2 } from 'types';
 import { default as FormData_2 } from 'form-data';
 import { Readable } from 'node:stream';
 import { RequestInit as RequestInit_2 } from 'node-fetch';
@@ -159,6 +161,13 @@ interface BulkGetResponse<T> {
     count: number;
     // (undocumented)
     results: T[];
+}
+
+// @public
+export class CallbackResource extends Resource {
+    // Warning: (ae-forgotten-export) The symbol "Callback" needs to be exported by the entry point index.d.ts
+    get(): Promise<Callback>;
+    set(payload: Partial<Callback>): Promise<Callback>;
 }
 
 // @public
@@ -382,6 +391,34 @@ export class DocumentResource extends Resource {
     updateVisibilityInfo(packageId: string, payload: RecursivePartial<DocumentVisibility>): Promise<DocumentVisibility>;
 }
 
+// @public (undocumented)
+interface DocumentSignedEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly documentId: string;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
+interface DocumentViewedEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly documentId: string;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
 // @public
 export interface DocumentVisibility {
     configurations: Nullable<DocumentVisibilityConfiguration[]>;
@@ -400,6 +437,58 @@ export interface DocumentVisibilityConfiguration {
     name: Nullable<string>;
     roleUids: Nullable<string[]>;
 }
+
+// @public (undocumented)
+interface EmailBounceEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    readonly message: 'BOUNCE' | 'COMPLAINT' | 'OOTO' | 'UNKNOWN';
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
+export type EventHandler<T extends Record<string, any>> = (payload: T) => void;
+
+// @public
+export class EventMessageError extends Error {
+    constructor(reason: string, errorCode: string);
+    // (undocumented)
+    readonly errorCode: string;
+    // (undocumented)
+    readonly name = "EventMessageError";
+}
+
+declare namespace Events {
+    export {
+        LOOKUP_TABLE,
+        DocumentSignedEvent,
+        DocumentViewedEvent,
+        EmailBounceEvent,
+        KbaFailureEvent,
+        PackageActivateEvent,
+        PackageArchiveEvent,
+        PackageAttachmentEvent,
+        PackageCompleteEvent,
+        PackageCreateEvent,
+        PackageDeactivateEvent,
+        PackageDeclineEvent,
+        PackageDeleteEvent,
+        PackageExpireEvent,
+        PackageReadyForCompleteEvent,
+        PackageRestoreEvent,
+        PackageTrashEvent,
+        RoleReassignEvent,
+        SignerCompleteEvent,
+        SignerLockedEvent,
+        TemplateCreateEvent
+    }
+}
+export { Events }
 
 // @public (undocumented)
 export interface ExportedAuditTrail {
@@ -524,6 +613,18 @@ export interface GroupMembership {
     memberType: 'REGULAR' | 'MANAGER';
 }
 
+// @public
+interface KbaFailureEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
 declare namespace License {
     export {
         License_2 as default,
@@ -549,6 +650,30 @@ interface License_2 {
     // (undocumented)
     transactions: Transaction[];
 }
+
+// @public (undocumented)
+type LOOKUP_TABLE = {
+    DOCUMENT_SIGNED: DocumentSignedEvent;
+    DOCUMENT_VIEWED: DocumentViewedEvent;
+    EMAIL_BOUNCE: EmailBounceEvent;
+    KBA_FAILURE: KbaFailureEvent;
+    PACKAGE_ACTIVATE: PackageActivateEvent;
+    PACKAGE_ARCHIVE: PackageArchiveEvent;
+    PACKAGE_ATTACHMENT: PackageAttachmentEvent;
+    PACKAGE_COMPLETE: PackageCompleteEvent;
+    PACKAGE_CREATE: PackageCreateEvent;
+    PACKAGE_DEACTIVATE: PackageDeactivateEvent;
+    PACKAGE_DECLINE: PackageDeclineEvent;
+    PACKAGE_DELETE: PackageDeleteEvent;
+    PACKAGE_EXPIRE: PackageExpireEvent;
+    PACKAGE_READY_FOR_COMPLETE: PackageReadyForCompleteEvent;
+    PACKAGE_RESTORE: PackageRestoreEvent;
+    PACKAGE_TRASH: PackageTrashEvent;
+    ROLE_REASSIGN: RoleReassignEvent;
+    SIGNER_COMPLETE: SignerCompleteEvent;
+    SIGNER_LOCKED: SignerLockedEvent;
+    TEMPLATE_CREATE: TemplateCreateEvent;
+};
 
 // @public (undocumented)
 export interface Message {
@@ -586,12 +711,31 @@ export class OneSpanResponseError extends Error {
 }
 
 // @public
-export class OneSpanSign {
+class OneSpanSign {
     constructor(accessTokenConfig: AccessTokenOwnerConfig | AccessTokenSenderConfig, apiUrl: string);
     // (undocumented)
     protected api: Api;
+    get callback(): CallbackResource;
     get documents(): DocumentResource;
     get packages(): PackageResource;
+    get senders(): SenderResource;
+}
+export default OneSpanSign;
+
+// @public
+export class OSSEventBroker {
+    getHandler<T extends keyof Events_2.LOOKUP_TABLE>(key: T): EventHandler_2<Events_2.LOOKUP_TABLE[T]> | undefined;
+    handle(message: Readable | string | Record<string, any>): Promise<void>;
+    // (undocumented)
+    protected handlers: {
+        [key in keyof Events_2.LOOKUP_TABLE]?: EventHandler_2<Events_2.LOOKUP_TABLE[key]>;
+    };
+    // @internal
+    protected isPOJO(param: unknown): param is Record<string, any>;
+    // (undocumented)
+    protected parseStream(stream: Readable): Promise<Record<string, any>>;
+    removeHandler<T extends keyof Events_2.LOOKUP_TABLE>(key: T): void;
+    setHandler<T extends keyof Events_2.LOOKUP_TABLE>(key: T, handler: EventHandler_2<Events_2.LOOKUP_TABLE[T]>): void;
 }
 
 // @public (undocumented)
@@ -659,8 +803,69 @@ export interface Package {
     visibility: PackageVisibility;
 }
 
+// @public
+interface PackageActivateEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
+interface PackageArchiveEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
 // @alpha (undocumented)
 export interface PackageArtifactsLimits {
+}
+
+// @public
+interface PackageAttachmentEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    readonly message: string;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public
+interface PackageCompleteEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
+interface PackageCreateEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
 }
 
 // @public
@@ -734,6 +939,67 @@ interface PackageData {
 }
 
 // @public
+interface PackageDeactivateEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public
+interface PackageDeclineEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    readonly message: string;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
+interface PackageDeleteEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
+interface PackageExpireEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public
+interface PackageReadyForCompleteEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public
 export class PackageResource extends Resource {
     create(payload: Requests.CreatePackageData): Promise<Responses.CreatePackage>;
     delete(packageId: string): Promise<void>;
@@ -742,6 +1008,18 @@ export class PackageResource extends Resource {
     getEvidenceSummary(packageId: string): Promise<Responses.Response>;
     getOne(packageId: string): Promise<Package>;
     update(packageId: string, payload: Requests.UpdatePackageData): Promise<void>;
+}
+
+// @public
+interface PackageRestoreEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
 }
 
 // @alpha (undocumented)
@@ -761,6 +1039,18 @@ export interface PackageSettings {
 
 // @public (undocumented)
 export type PackageStatus = 'DRAFT' | 'SENT' | 'COMPLETED' | 'EXPIRED' | 'DECLINED' | 'OPTED_OUT' | 'ARCHIVED';
+
+// @public (undocumented)
+interface PackageTrashEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
 
 // @public (undocumented)
 export type PackageType = 'PACKAGE' | 'TEMPLATE' | 'LAYOUT';
@@ -940,6 +1230,20 @@ export type Role = {
 };
 
 // @public (undocumented)
+interface RoleReassignEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly newRoleId: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
 export type RoleType = 'SIGNER' | 'SENDER';
 
 // @public (undocumented)
@@ -1055,10 +1359,46 @@ export type Signer = {
 };
 
 // @public (undocumented)
+interface SignerCompleteEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public
+interface SignerLockedEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
+
+// @public (undocumented)
 export type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
 
 // @public (undocumented)
 export type SpecialUserType = 'NOTARY';
+
+// @public (undocumented)
+interface TemplateCreateEvent {
+    // (undocumented)
+    readonly createdDate: DateTimeString;
+    // (undocumented)
+    readonly name: string;
+    // (undocumented)
+    readonly packageId: string;
+    // (undocumented)
+    readonly sessionUser: string;
+}
 
 // @public (undocumented)
 export interface TextualSignatureStyle {
