@@ -6,4 +6,5 @@ import * as Responses from './responses';
 export * from './api';
 export * from './models';
 export * from './utils';
+export * from './shared';
 export { Requests, Responses, Events };

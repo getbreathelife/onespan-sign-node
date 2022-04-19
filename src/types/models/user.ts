@@ -1,7 +1,7 @@
+import { CustomData } from '../shared';
 import { Nullable } from '../utils';
 import { Address } from './address';
 import { External } from './external';
-import { CustomData } from './shared';
 import { SignatureStyle } from './signature';
 import { Translation } from './translation';
 
