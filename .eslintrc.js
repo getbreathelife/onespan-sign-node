@@ -43,6 +43,27 @@ const rules = {
   '@typescript-eslint/no-empty-interface': 'warn',
 
   '@typescript-eslint/no-floating-promises': ['error', { ignoreIIFE: true }],
+
+  '@typescript-eslint/naming-convention': [
+    'warn',
+    { selector: 'default', format: ['camelCase'], leadingUnderscore: 'allow' },
+    {
+      selector: 'typeLike',
+      format: ['PascalCase'],
+    },
+    {
+      selector: 'memberLike',
+      format: ['camelCase', 'PascalCase', 'UPPER_CASE', 'snake_case'],
+    },
+    {
+      selector: 'function',
+      format: ['camelCase', 'PascalCase'],
+    },
+    {
+      selector: 'variable',
+      format: ['camelCase', 'PascalCase', 'UPPER_CASE'],
+    },
+  ],
   '@typescript-eslint/no-explicit-any': 'off',
   '@typescript-eslint/interface-name-prefix': 'off',
   '@typescript-eslint/no-non-null-asserted-optional-chain': 'warn',
