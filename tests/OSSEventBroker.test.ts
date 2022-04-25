@@ -1,6 +1,6 @@
 import { Readable } from 'node:stream';
 
-import { OSSEventBroker } from '../src';
+import { EventMessageError, OSSEventBroker } from '../src';
 
 describe('OSSEventBroker', () => {
   let broker: OSSEventBroker;
@@ -66,6 +66,65 @@ describe('OSSEventBroker', () => {
     beforeEach(() => {
       handlerCallback.mockClear();
       broker.setHandler('PACKAGE_COMPLETE', handlerCallback);
+    });
+
+    it.each`
+      type          | payload
+      ${'string'}   | ${'payload'}
+      ${'number'}   | ${123}
+      ${'array'}    | ${[{ test: 'test' }]}
+      ${'non-POJO'} | ${new Date()}
+    `('throws an EventMessageError if an invalid payload ($type) is passed in', async ({ payload }) => {
+      expect.assertions(3);
+
+      try {
+        await broker.handle(payload);
+      } catch (err) {
+        expect(err).toBeInstanceOf(EventMessageError);
+        expect((err as EventMessageError).message).toStrictEqual(
+          'Unable to match an event handler because: the request body is not a valid object.'
+        );
+        expect((err as EventMessageError).errorCode).toStrictEqual('INVALID_REQUEST_BODY');
+      }
+    });
+
+    it.each`
+      type          | payload
+      ${'string'}   | ${'payload'}
+      ${'array'}    | ${JSON.stringify([{ test: 'test' }])}
+      ${'non-POJO'} | ${JSON.stringify(new Date())}
+    `('throws an EventMessageError if an invalid payload stream ($type) is passed in', async ({ payload }) => {
+      expect.assertions(3);
+
+      try {
+        await broker.handle(Readable.from(payload));
+      } catch (err) {
+        expect(err).toBeInstanceOf(EventMessageError);
+        expect((err as EventMessageError).message).toStrictEqual(
+          'Unable to match an event handler because: the request body is not a valid object.'
+        );
+        expect((err as EventMessageError).errorCode).toStrictEqual('INVALID_REQUEST_BODY');
+      }
+    });
+
+    it('throws an EventMessageError if there is missing required property in the request payload', async () => {
+      expect.assertions(3);
+
+      const eventMessage = {
+        sessionUser: 'user',
+        packageId: 'packageId',
+        createdDate: new Date().toISOString(),
+      };
+
+      try {
+        await broker.handle(eventMessage);
+      } catch (err) {
+        expect(err).toBeInstanceOf(EventMessageError);
+        expect((err as EventMessageError).message).toStrictEqual(
+          'Unable to match an event handler because: the request body does not contain the "name" property.'
+        );
+        expect((err as EventMessageError).errorCode).toStrictEqual('MISSING_NAME_PROPERTY');
+      }
     });
 
     it('does not pass the event message to the callback if no callback is specified for the event', async () => {

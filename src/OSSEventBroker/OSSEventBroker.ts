@@ -68,7 +68,7 @@ export class OSSEventBroker {
   }
 
   protected async parseStream(stream: Readable): Promise<Record<string, any>> {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       let message = '';
 
       stream.on('data', (chunk) => {
@@ -76,7 +76,11 @@ export class OSSEventBroker {
       });
 
       stream.on('end', () => {
-        resolve(JSON.parse(message));
+        try {
+          resolve(JSON.parse(message));
+        } catch (err) {
+          reject(err);
+        }
       });
     });
   }
@@ -114,12 +118,20 @@ export class OSSEventBroker {
   public async handle(message: Readable | string | Record<string, any>): Promise<void> {
     let body;
 
-    if (message instanceof Readable) {
-      body = await this.parseStream(message);
-    } else if (typeof message === 'string') {
-      body = JSON.parse(message);
-    } else {
-      body = message;
+    try {
+      if (message instanceof Readable) {
+        body = await this.parseStream(message);
+      } else if (typeof message === 'string') {
+        body = JSON.parse(message);
+      } else {
+        body = message;
+      }
+    } catch (err) {
+      if (err instanceof SyntaxError) {
+        // Handles invalid JSON
+        throw new EventMessageError('the request body is not a valid object.', 'INVALID_REQUEST_BODY');
+      }
+      throw err;
     }
 
     if (!this.isPOJO(body)) {
