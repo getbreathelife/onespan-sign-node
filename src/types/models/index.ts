@@ -9,7 +9,6 @@ export * from './message';
 export * from './package';
 export * from './role';
 export * from './sender';
-export * from './shared';
 export * from './signature';
 export * from './translation';
 export * from './user';

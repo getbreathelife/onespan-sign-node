@@ -48,7 +48,7 @@ describe('DocumentResource', () => {
       // Had to compare the value this way instead of using a snapshot because the boundary value is different each time
       expect(mockedFetch.mock.calls[0][1]).toEqual({
         headers: {
-          accept: 'application/json',
+          accept: expect.stringMatching(/^application\/json; esl-api-version=.+/),
           authorization: expect.stringMatching(/^Bearer/),
           'content-type': expect.stringMatching(/^multipart\/form-data; boundary=.+/),
         },
@@ -86,7 +86,7 @@ describe('DocumentResource', () => {
 
       expect(mockedFetch.mock.calls[0][1]).toEqual({
         headers: {
-          accept: 'application/json',
+          accept: expect.stringMatching(/^application\/json; esl-api-version=.+/),
           authorization: expect.stringMatching(/^Bearer/),
           'content-type': expect.stringMatching(/^multipart\/form-data; boundary=.+/),
         },
@@ -115,7 +115,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/documentId",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -135,7 +135,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/original",
           Object {
             "headers": Object {
-              "accept": "application/octet-stream, application/json",
+              "accept": "application/octet-stream; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -153,7 +153,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/pdf?flatten=true",
           Object {
             "headers": Object {
-              "accept": "application/octet-stream, application/json",
+              "accept": "application/octet-stream; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -169,7 +169,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/pdf?flatten=false",
           Object {
             "headers": Object {
-              "accept": "application/octet-stream, application/json",
+              "accept": "application/octet-stream; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -185,7 +185,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/pdf",
           Object {
             "headers": Object {
-              "accept": "application/octet-stream, application/json",
+              "accept": "application/octet-stream; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -205,7 +205,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packagespackage-id/documents/documentId/pages/0",
           Object {
             "headers": Object {
-              "accept": "image/png, application/json",
+              "accept": "image/png; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -225,7 +225,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/zip",
           Object {
             "headers": Object {
-              "accept": "application/zip, application/json",
+              "accept": "application/zip; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -241,7 +241,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/zip?flatten=true",
           Object {
             "headers": Object {
-              "accept": "application/zip, application/json",
+              "accept": "application/zip; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -257,7 +257,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/zip?flatten=false",
           Object {
             "headers": Object {
-              "accept": "application/zip, application/json",
+              "accept": "application/zip; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -277,7 +277,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/visibility",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -301,7 +301,7 @@ describe('DocumentResource', () => {
           Object {
             "body": "{\\"name\\":\\"new document name\\",\\"description\\":\\"Updated description\\"}",
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -334,7 +334,7 @@ describe('DocumentResource', () => {
 
         expect(mockedFetch.mock.calls[0][1]).toEqual({
           headers: {
-            accept: 'application/json',
+            accept: expect.stringMatching(/^application\/json; esl-api-version=.+/),
             authorization: expect.stringMatching(/^Bearer/),
             'content-type': expect.stringMatching(/^multipart\/form-data; boundary=.+/),
           },
@@ -370,7 +370,7 @@ describe('DocumentResource', () => {
           Object {
             "body": "{\\"configurations\\":[{\\"documentUid\\":\\"document-1\\",\\"roleUids\\":[\\"owner\\",\\"payor\\"]}]}",
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -390,7 +390,7 @@ describe('DocumentResource', () => {
           "http://demo.com/api/packages/package-id/documents/documentId",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -411,7 +411,7 @@ describe('DocumentResource', () => {
           Object {
             "body": "[\\"document1\\",\\"document2\\"]",
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },

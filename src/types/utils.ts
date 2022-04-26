@@ -11,3 +11,5 @@ export type Nullable<T> = T | null;
 export type RecursivePartial<T> = {
   [P in keyof T]?: RecursivePartial<T[P]>;
 };
+
+export type EventHandler<T extends Record<string, any>> = (payload: T) => void;

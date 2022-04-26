@@ -120,9 +120,6 @@ export class PackageResource extends Resource {
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages._packageId.evidence.summary.get | REST API documentation (OneSpan)}
    */
   public async getEvidenceSummary(packageId: string): Promise<Responses.Response> {
-    return this.api
-      .get(`/api/packages/${packageId}/evidence/summary`)
-      .withAcceptHeader('application/pdf, application/json')
-      .fetch();
+    return this.api.get(`/api/packages/${packageId}/evidence/summary`).withAcceptHeader('application/pdf').fetch();
   }
 }

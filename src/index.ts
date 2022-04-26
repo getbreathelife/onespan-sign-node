@@ -17,7 +17,8 @@
  * @packageDocumentation
  */
 
-export { OneSpanSign } from './OneSpanSign';
+export { OneSpanSign as default } from './OneSpanSign';
+export * from './OSSEventBroker';
 export * from './api';
 export * from './resources';
 export * from './types';

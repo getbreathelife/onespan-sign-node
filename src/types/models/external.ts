@@ -1,5 +1,5 @@
+import { CustomData } from '../shared';
 import { Nullable } from '../utils';
-import { CustomData } from './shared';
 
 /** @public */
 export interface External {

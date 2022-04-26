@@ -42,7 +42,7 @@ describe('PackageResource', () => {
           Object {
             "body": "{\\"name\\":\\"mock package\\"}",
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -68,7 +68,7 @@ describe('PackageResource', () => {
           "http://demo.com/api/packages?query=inbox&predefined=all",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -86,7 +86,7 @@ describe('PackageResource', () => {
           "http://demo.com/api/packages",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -112,7 +112,7 @@ describe('PackageResource', () => {
           "http://demo.com/api/packages?query=inbox&predefined=all&lastUpdatedStartDate=2022-01-10T22%3A05%3A02.242Z&lastUpdatedEndDate=2022-01-10T22%3A05%3A02.242Z",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -132,7 +132,7 @@ describe('PackageResource', () => {
           "http://demo.com/api/packages/package1",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -158,7 +158,7 @@ describe('PackageResource', () => {
           Object {
             "body": "{\\"name\\":\\"mock package update\\",\\"status\\":\\"ARCHIVED\\"}",
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -178,7 +178,7 @@ describe('PackageResource', () => {
           "http://demo.com/api/packages/package1",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -198,7 +198,7 @@ describe('PackageResource', () => {
           "http://demo.com/api/packages/package1/audit",
           Object {
             "headers": Object {
-              "accept": "application/json",
+              "accept": "application/json; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },
@@ -218,7 +218,7 @@ describe('PackageResource', () => {
           "http://demo.com/api/packages/package1/evidence/summary",
           Object {
             "headers": Object {
-              "accept": "application/pdf, application/json",
+              "accept": "application/pdf; esl-api-version=11.46",
               "authorization": "Bearer mockedToken",
               "content-type": "application/json",
             },

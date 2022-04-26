@@ -1,9 +1,9 @@
+import { CustomData, DateTimeString, TimeZoneId } from '../shared';
 import { Nullable } from '../utils';
 import Account from './account';
 import { Address } from './address';
 import { External } from './external';
 import { GroupMembership } from './group';
-import { CustomData, DateTimeString, TimeZoneId } from './shared';
 import { SignatureStyle } from './signature';
 import { ProfessionalIdentityField, SpecialUserType, UserCustomField } from './user';
 

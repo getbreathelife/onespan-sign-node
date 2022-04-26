@@ -2,7 +2,7 @@
 
 :warning: This library is still a WIP
 
-Node.js library for the OneSpan Sign API
+Node.js library for the OneSpan Sign API. (Version 11.46)
 
 If you wish to contribute to this project, please read the [contribution guidelines](./CONTRIBUTING.md).
 
@@ -48,6 +48,12 @@ You can view the latest documentation [here](./docs/index.md).
 | `/api/account/senders/{senderId}/password`        | -                  | :x:                | -     | -                  |
 | `/api/account/senders/{senderId}/resetpassword`   | -                  | :x:                | -     | -                  |
 | `/api/account/senders/{senderId}/signature/image` | :white_check_mark: | :white_check_mark: | -     | :white_check_mark: |
+
+### [Callback](https://community.onespan.com/products/onespan-sign/sandbox#/Callback)
+| Endpoints                                         | `GET`              | `POST`             | `PUT` | `DELETE` |
+|---------------------------------------------------|--------------------|--------------------|-------|----------|
+| `/api/callback`                                   | :white_check_mark: | :white_check_mark: | -     | -        |
+| `/api/callback/connectors/{origin}`               | :x:                | :x:                | -     | -        |
 
 Any other resources not mentioned in this document are currently **unsupported**.
 

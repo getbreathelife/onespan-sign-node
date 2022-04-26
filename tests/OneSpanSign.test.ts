@@ -1,4 +1,4 @@
-import { DocumentResource, OneSpanSign, PackageResource } from '../src';
+import OneSpanSign, { DocumentResource, PackageResource } from '../src';
 
 describe('OneSpanSign', () => {
   let oneSpanSign: OneSpanSign;

@@ -105,7 +105,7 @@ export class DocumentResource extends Resource {
   ): Promise<Responses.Response> {
     const request = this.api
       .get(`/api/packages/${packageId}/documents/${option.format}`)
-      .withAcceptHeader('application/octet-stream, application/json');
+      .withAcceptHeader('application/octet-stream');
 
     if (option.format === 'pdf' && option.flatten !== undefined) {
       request.withQueryParams({ flatten: option.flatten });
@@ -128,7 +128,7 @@ export class DocumentResource extends Resource {
   public async getPage(packageId: string, documentId: string, pageIndex: number): Promise<Responses.Response> {
     return this.api
       .get(`/api/packages${packageId}/documents/${documentId}/pages/${pageIndex}`)
-      .withAcceptHeader('image/png, application/json')
+      .withAcceptHeader('image/png')
       .fetch();
   }
 
@@ -148,7 +148,7 @@ export class DocumentResource extends Resource {
       .withQueryParams({
         flatten,
       })
-      .withAcceptHeader('application/zip, application/json')
+      .withAcceptHeader('application/zip')
       .fetch();
   }
 

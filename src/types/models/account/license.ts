@@ -1,5 +1,5 @@
+import { CustomData, DateTimeString } from '../../shared';
 import { Nullable } from '../../utils';
-import { CustomData, DateTimeString } from '../shared';
 
 /** @public */
 type Cycle = 'DAY' | 'MONTH' | 'YEAR';
