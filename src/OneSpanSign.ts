@@ -1,6 +1,5 @@
 import { Api } from './api';
-import { DocumentResource, PackageResource, SenderResource } from './resources';
-import { CallbackResource } from './resources/CallbackResource';
+import { CallbackResource, DocumentResource, PackageResource, SenderResource } from './resources';
 import { AccessTokenOwnerConfig, AccessTokenSenderConfig } from './types';
 
 /**
@@ -38,6 +37,7 @@ export class OneSpanSign {
 
   /**
    * Document resource
+   * @readonly
    * @public
    */
   public get documents(): DocumentResource {
@@ -52,6 +52,7 @@ export class OneSpanSign {
 
   /**
    * Package resource
+   * @readonly
    * @public
    */
   public get packages(): PackageResource {
@@ -66,6 +67,7 @@ export class OneSpanSign {
 
   /**
    * Sender resource
+   * @readonly
    * @public
    */
   public get senders(): SenderResource {
@@ -80,6 +82,7 @@ export class OneSpanSign {
 
   /**
    * Callback resource
+   * @readonly
    * @public
    */
   public get callback(): CallbackResource {
