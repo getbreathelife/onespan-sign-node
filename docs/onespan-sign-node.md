@@ -26,10 +26,13 @@ await oneSpanSign.documents.create(packageId, ...)
 |  Class | Description |
 |  --- | --- |
 |  [Api](./onespan-sign-node.api.md) | Factory class to create RequestBuilders based on the request method. |
+|  [CallbackResource](./onespan-sign-node.callbackresource.md) | Resource class to interact with [callbacks](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/setting-callback-notifications)<!-- -->.<!-- -->Callback event notifications allow you to be automatically notified of events pertaining to a package. Upon a specific event, the system will automatically call a specified URL. |
 |  [ClientError](./onespan-sign-node.clienterror.md) | Error thrown when there's an error on the client. For example, operational errors or aborted requests. |
 |  [DocumentResource](./onespan-sign-node.documentresource.md) | Resource class to interact with [documents](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents)<!-- -->. |
+|  [EventMessageError](./onespan-sign-node.eventmessageerror.md) | Error thrown when there's an error on the message received by the OSSEventBroker. |
 |  [OneSpanResponseError](./onespan-sign-node.onespanresponseerror.md) | Error thrown when there's an unsuccessful response from OneSpan Sign's API. More specifically, API responses with status code &amp;gt;= 200 &amp;&amp; &amp;lt; 300. |
 |  [OneSpanSign](./onespan-sign-node.onespansign.md) | Main class to interact with OneSpan Sign's API. This class is a collection of resource objects used to interact with OneSpan Sign's API. |
+|  [OSSEventBroker](./onespan-sign-node.osseventbroker.md) | Helper class to ingest [callback notifications](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/setting-callback-notifications) from OneSpan Sign and call the appropriate handler. |
 |  [PackageResource](./onespan-sign-node.packageresource.md) | Resource class to interact with [packages (transactions)](https://community.onespan.com/documentation/onespan-sign/guides/sender-guides/user/transactions)<!-- -->. |
 |  [Resource](./onespan-sign-node.resource.md) | Base class for resources. Resource classes are used to call endpoints specific to the resource (entity) on OneSpan Sign. |
 |  [SenderResource](./onespan-sign-node.senderresource.md) | Resource class to interact with [senders](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/managing-senders)<!-- -->. |
@@ -68,6 +71,7 @@ await oneSpanSign.documents.create(packageId, ...)
 |  Namespace | Description |
 |  --- | --- |
 |  [Account](./onespan-sign-node.account.md) |  |
+|  [Events](./onespan-sign-node.events.md) |  |
 |  [RequestBuilders](./onespan-sign-node.requestbuilders.md) |  |
 |  [Requests](./onespan-sign-node.requests.md) |  |
 |  [Responses](./onespan-sign-node.responses.md) |  |
@@ -80,6 +84,7 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [AuditEventType](./onespan-sign-node.auditeventtype.md) |  |
 |  [CustomData](./onespan-sign-node.customdata.md) | Custom data embedded into parent object |
 |  [DateTimeString](./onespan-sign-node.datetimestring.md) | String in date-time notation as defined by [RFC 3339, section 5.6](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) |
+|  [EventHandler](./onespan-sign-node.eventhandler.md) |  |
 |  [ExtractionType](./onespan-sign-node.extractiontype.md) |  |
 |  [FieldSubtype](./onespan-sign-node.fieldsubtype.md) |  |
 |  [FieldType](./onespan-sign-node.fieldtype.md) |  |

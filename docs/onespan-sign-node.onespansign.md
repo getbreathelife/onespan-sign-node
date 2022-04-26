@@ -23,6 +23,8 @@ export declare class OneSpanSign
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
 |  [api](./onespan-sign-node.onespansign.api.md) |  | [Api](./onespan-sign-node.api.md) |  |
+|  [callback](./onespan-sign-node.onespansign.callback.md) |  | [CallbackResource](./onespan-sign-node.callbackresource.md) | Callback resource |
 |  [documents](./onespan-sign-node.onespansign.documents.md) |  | [DocumentResource](./onespan-sign-node.documentresource.md) | Document resource |
 |  [packages](./onespan-sign-node.onespansign.packages.md) |  | [PackageResource](./onespan-sign-node.packageresource.md) | Package resource |
+|  [senders](./onespan-sign-node.onespansign.senders.md) |  | [SenderResource](./onespan-sign-node.senderresource.md) | Sender resource |
 
