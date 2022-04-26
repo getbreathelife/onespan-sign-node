@@ -22,6 +22,8 @@ export class OneSpanSign {
    *   see {@link https://community.onespan.com/documentation/onespan-sign/guides/admin-guides/user/integration | Integration (OneSpan)}.
    *
    * - A list of server URLs can be found at {@link https://community.onespan.com/documentation/onespan-sign/guides/quick-start-guides/developer/environment-urls-ip-addresses | Environment URLs & IP Addresses (OneSpan)}.
+   *
+   * @public
    */
   constructor(accessTokenConfig: AccessTokenOwnerConfig | AccessTokenSenderConfig, apiUrl: string) {
     this.api = new Api(accessTokenConfig, apiUrl);
@@ -36,6 +38,7 @@ export class OneSpanSign {
 
   /**
    * Document resource
+   * @public
    */
   public get documents(): DocumentResource {
     const documents = new DocumentResource(this.api);
@@ -49,6 +52,7 @@ export class OneSpanSign {
 
   /**
    * Package resource
+   * @public
    */
   public get packages(): PackageResource {
     const packages = new PackageResource(this.api);
@@ -62,6 +66,7 @@ export class OneSpanSign {
 
   /**
    * Sender resource
+   * @public
    */
   public get senders(): SenderResource {
     const senders = new SenderResource(this.api);
@@ -75,6 +80,7 @@ export class OneSpanSign {
 
   /**
    * Callback resource
+   * @public
    */
   public get callback(): CallbackResource {
     const callback = new CallbackResource(this.api);
