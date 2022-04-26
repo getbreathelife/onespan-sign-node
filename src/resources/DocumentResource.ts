@@ -6,22 +6,21 @@ import { Resource } from './Resource';
 /**
  * Resource class to interact with
  * {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | documents}.
- *
  * @public
  */
 export class DocumentResource extends Resource {
   /**
    * Uploads a document to an existing package.
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
    *
    * @param packageId - Package ID
    * @param payload - Metadata of the to-be-uploaded document
    * @param documentBody - Data of the document
    * @returns Metadata of the uploaded document
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation (OneSpan)}
-   *
-   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   * @public
    */
   public async create(
     packageId: string,
@@ -38,15 +37,15 @@ export class DocumentResource extends Resource {
 
   /**
    * Uploads multiple documents to an existing package.
-   *
-   * @param packageId - Package ID
-   * @param documents - Metadata and data of the to-be-uploaded documents
-   * @returns Metadata of the uploaded documents
-   *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation (OneSpan)}
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   *
+   * @param packageId - Package ID
+   * @param documents - Metadata and data of the to-be-uploaded documents
+   * @returns Metadata of the uploaded documents
+   * @public
    */
   public async bulkCreate(
     packageId: string,
@@ -70,13 +69,13 @@ export class DocumentResource extends Resource {
 
   /**
    * Retrieves metadata related to a given document.
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.get | REST API documentation (OneSpan)}
    *
    * @param packageId - Package ID
    * @param documentId - Document ID
    * @returns Metadata of the document
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.get | REST API documentation (OneSpan)}
+   * @public
    */
   public async getMetadata(packageId: string, documentId: string): Promise<DocumentMetadata> {
     const response = await this.api.get(`/api/packages/${packageId}/documents/${documentId}`).fetch();
@@ -85,18 +84,18 @@ export class DocumentResource extends Resource {
 
   /**
    * Retrieves the document in the original or PDF version.
+   * @remarks
+   * REST API documentation (OneSpan):
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.original.get | Retrieve document in original format}
+   *
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pdf.get | Retrieve document in PDF format}
    *
    * @param packageId - Package ID
    * @param documentId - Document ID
    * @param option - (Optional) Option to specify the format and parameters to retrieve the document.
    *                 Defaults to original format
    * @returns Document body
-   *
-   * @remarks
-   * REST API documentation (OneSpan):
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.original.get | Retrieve document in original format}
-   *
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pdf.get | Retrieve document in PDF format}
+   * @public
    */
   public async getBody(
     packageId: string,
@@ -116,14 +115,14 @@ export class DocumentResource extends Resource {
 
   /**
    * Retrieves a specific document page. The page is retrieved as a .png image file.
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pages._index.get | REST API documentation (OneSpan)}
    *
    * @param packageId - Package ID
    * @param documentId - Document ID
    * @param pageIndex - Page index in the document
    * @returns PNG image data of the specified document page
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.pages._index.get | REST API documentation (OneSpan)}
+   * @public
    */
   public async getPage(packageId: string, documentId: string, pageIndex: number): Promise<Responses.Response> {
     return this.api
@@ -134,13 +133,13 @@ export class DocumentResource extends Resource {
 
   /**
    * Retrieves all documents of a package in a zipped file.
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.zip.get | REST API documentation (OneSpan)}
    *
    * @param packageId - Package ID
    * @param flatten - (Optional) Flattens the PDFs
    * @returns Zipped documents of a package
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.zip.get | REST API documentation (OneSpan)}
+   * @public
    */
   public async getZipped(packageId: string, flatten?: boolean): Promise<Responses.Response> {
     return this.api
@@ -154,12 +153,12 @@ export class DocumentResource extends Resource {
 
   /**
    * Retrieves information about which recipients can view specific documents in a package during a Signing Ceremony.
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.visibility.get | REST API documentation (OneSpan)}
    *
    * @param packageId - Package ID
    * @returns Document visibility information
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.visibility.get | REST API documentation (OneSpan)}
+   * @public
    */
   public async getVisibilityInfo(packageId: string): Promise<DocumentVisibility> {
     const response = await this.api.get(`/api/packages/${packageId}/documents/visibility`).fetch();
@@ -168,17 +167,17 @@ export class DocumentResource extends Resource {
 
   /**
    * Updates the specified document.
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.post | REST API documentation (OneSpan)}
+   *
+   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
    *
    * @param packageId - Package ID
    * @param documentId - ID of the document to be updated
    * @param payload - Updated metadata of the document
    * @param documentBody - (Optional) data to replace the document
    * @returns Updated metadata of the document
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.post | REST API documentation (OneSpan)}
-   *
-   * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   * @public
    */
   public async update(
     packageId: string,
@@ -204,13 +203,13 @@ export class DocumentResource extends Resource {
 
   /**
    * Updates information about which recipients can view specific documents in a package during a Signing Ceremony.
+   * @remarks
+   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.visibility.post | REST API documentation (OneSpan)}
    *
    * @param packageId - Package ID
    * @param payload - Updated document visibility information
    * @returns Document visibility information
-   *
-   * @remarks
-   * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.visibility.post | REST API documentation (OneSpan)}
+   * @public
    */
   public async updateVisibilityInfo(
     packageId: string,
@@ -222,14 +221,14 @@ export class DocumentResource extends Resource {
 
   /**
    * Deletes the specified document.
-   *
-   * @param packageId - Package ID
-   * @param documentId - ID of the document to be deleted
-   *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents._documentId.delete | REST API documentation (OneSpan)}
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   *
+   * @param packageId - Package ID
+   * @param documentId - ID of the document to be deleted
+   * @public
    */
   public async delete(packageId: string, documentId: string): Promise<void> {
     await this.api.delete(`/api/packages/${packageId}/documents/${documentId}`).fetch();
@@ -237,14 +236,14 @@ export class DocumentResource extends Resource {
 
   /**
    * Deletes multiple documents.
-   *
-   * @param packageId - Package ID
-   * @param documentIds - ID of the documents to be deleted
-   *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.delete | REST API documentation (OneSpan)}
    *
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents | Uploading & Deleting Documents (OneSpan)}
+   *
+   * @param packageId - Package ID
+   * @param documentIds - ID of the documents to be deleted
+   * @public
    */
   public async bulkDelete(packageId: string, documentIds: string[]): Promise<void> {
     await this.api.delete(`/api/packages/${packageId}/documents`).withBody(documentIds).fetch();

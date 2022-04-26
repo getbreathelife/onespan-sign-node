@@ -1,4 +1,4 @@
-import { Callback } from '../types/models/callback';
+import { Callback } from '../types';
 import { Resource } from './Resource';
 
 /**
@@ -13,9 +13,11 @@ import { Resource } from './Resource';
 export class CallbackResource extends Resource {
   /**
    * Retrieve registered callback settings.
-   *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Callback/api.callback.get | REST API documentation (OneSpan)}
+   *
+   * @returns The callback settings registered on the authenticated account.
+   * @public
    */
   public async get(): Promise<Callback> {
     const response = await this.api.get('/api/callback').fetch();
@@ -24,11 +26,12 @@ export class CallbackResource extends Resource {
 
   /**
    * Create/update callback settings.
-   *
-   * @param payload - Callback settings
-   *
    * @remarks
    * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Callback/api.callback.post | REST API documentation (OneSpan)}
+   *
+   * @param payload - Callback settings
+   * @returns The updated callback settings registered on the authenticated account.
+   * @public
    */
   public async set(payload: Partial<Callback>): Promise<Callback> {
     const response = await this.api.post('/api/callback').withBody(payload).fetch();

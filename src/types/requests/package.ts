@@ -29,7 +29,7 @@ export interface GetAllPackagesParameters {
 
   /**
    * Any text which is going to be used in conjunction with the
-   * {@link GetAllPackagesParameters.searchtype | searchtype} if provided.
+   * {@link searchtype | searchtype} if provided.
    */
   search?: string;
 
@@ -80,7 +80,7 @@ export interface GetAllPackagesParameters {
  * TODO: support uploading documents during package creation
  *
  * @remarks
- * Request payload should at least contain {@link PackageData.name | 'name'} property.
+ * Request payload should at least contain {@link name | 'name'} property.
  *
  * See {@link https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post | REST API documentation}
  * for more information.

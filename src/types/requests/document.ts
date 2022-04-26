@@ -19,7 +19,7 @@ export interface DocumentBody {
  * Request payload for create document operations.
  *
  * @remarks
- * Only {@link CreateDocumentData.name | 'name'} is required.
+ * Only {@link name | 'name'} is required.
  * See {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation} for more information.
  *
  * @public
@@ -78,7 +78,7 @@ export interface CreateDocumentData {
  * Request payload for each entry in the bulk create document operations.
  *
  * @remarks
- * Only {@link BulkCreateDocumentData.name | 'name'} is required.
+ * Only {@link name | 'name'} is required.
  * See:
  * - {@link https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post | REST API documentation}
  *
