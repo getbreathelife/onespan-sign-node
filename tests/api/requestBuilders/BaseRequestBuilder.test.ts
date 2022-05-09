@@ -1,13 +1,13 @@
 import { FetchError, Response } from 'node-fetch';
 
 import { ClientError, OneSpanResponseError } from '../../../src';
-import { BaseRequestBuilder } from '../../../src/api/requestBuilders/BaseRequestBuilder';
+import { GetRequestBuilder } from '../../../src/api/requestBuilders';
 import { mockedFetch, mockFetchHappyPath } from '../../setup/mockNodeFetch';
 
 const MOCK_URL = new URL('/index', 'http://test.com');
 
-describe('BaseRequestBuilder', () => {
-  let requestBuilder: BaseRequestBuilder;
+describe('GetRequestBuilder', () => {
+  let requestBuilder: GetRequestBuilder;
 
   beforeAll(() => {
     mockFetchHappyPath();
@@ -18,7 +18,7 @@ describe('BaseRequestBuilder', () => {
   });
 
   beforeEach(() => {
-    requestBuilder = new BaseRequestBuilder(MOCK_URL);
+    requestBuilder = new GetRequestBuilder(MOCK_URL);
   });
 
   afterEach(() => {
