@@ -1,6 +1,6 @@
 import { Readable } from 'node:stream';
-import { EventHandler, Events } from 'types';
 
+import { EventHandler, Events } from '../types';
 import { EventMessageError } from './error';
 
 /**
