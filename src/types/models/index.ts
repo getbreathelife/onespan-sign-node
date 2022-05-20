@@ -3,6 +3,7 @@ import * as Auth from './auth';
 
 export { Account, Auth };
 export * from './address';
+export * from './attachment';
 export * from './callback';
 export * from './document';
 export * from './external';
