@@ -8,7 +8,7 @@ import { SpecialUserType } from './user';
 export type RoleType = 'SIGNER' | 'SENDER';
 
 /** @public */
-interface BaseMessage {
+export interface BaseMessage {
   content: string;
 }
 

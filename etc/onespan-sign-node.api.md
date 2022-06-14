@@ -6,8 +6,6 @@
 
 /// <reference types="node" />
 
-import { EventHandler as EventHandler_2 } from 'types';
-import { Events as Events_2 } from 'types';
 import { default as FormData_2 } from 'form-data';
 import { Readable } from 'node:stream';
 import { RequestInit as RequestInit_2 } from 'node-fetch';
@@ -111,6 +109,24 @@ export class Api {
 }
 
 // @public (undocumented)
+export interface AttachmentRequirement {
+    // (undocumented)
+    comment: Nullable<string>;
+    // (undocumented)
+    data: Nullable<CustomData>;
+    // (undocumented)
+    description: Nullable<string>;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    required: boolean;
+    // (undocumented)
+    status: 'INCOMPLETE' | 'REJECTED' | 'COMPLETE';
+}
+
+// @public (undocumented)
 export interface AuditEvent {
     'date-time': Nullable<string>;
     'target-type': Nullable<AuditEventTargetType>;
@@ -127,6 +143,80 @@ export type AuditEventTargetType = 'Document' | 'Package' | 'AuthMethod' | 'Acco
 
 // @public (undocumented)
 export type AuditEventType = 'Accept' | 'Click To Sign' | 'Click To Initial' | 'Capture Signature' | 'Confirm' | 'Download' | 'Download Zip' | 'Form Field' | 'Login' | 'View' | 'Opt Out' | 'Signing Session For Recipient' | 'Decline';
+
+declare namespace Auth {
+    export {
+        Auth_2 as default,
+        Auth_2 as Auth,
+        AuthScheme as Scheme,
+        AuthChallenge as Challenge,
+        IdvWorkflow,
+        KnowledgeBasedAuthentication
+    }
+}
+export { Auth }
+
+// @public (undocumented)
+interface Auth_2 {
+    // (undocumented)
+    challenges: AuthChallenge[];
+    // (undocumented)
+    idvWorkflow: Nullable<IdvWorkflow>;
+    // (undocumented)
+    scheme: AuthScheme;
+}
+
+// @public (undocumented)
+interface AuthChallenge {
+    // (undocumented)
+    answer: Nullable<string>;
+    // (undocumented)
+    maskInput: boolean;
+    // (undocumented)
+    question: string;
+}
+
+// @public (undocumented)
+type AuthScheme = 'NONE' | 'PROVIDER' | 'CHALLENGE' | 'SMS' | 'SSO' | 'KBA' | 'SAA';
+
+// @public (undocumented)
+export interface BaseMessage {
+    // (undocumented)
+    content: string;
+}
+
+// @public
+abstract class BaseRequestBuilder {
+    constructor(url: URL);
+    // (undocumented)
+    protected readonly API_VERSION = "11.46";
+    // (undocumented)
+    protected appendApiVersion(acceptHeader: string): string;
+    // @internal
+    protected createHeaders(): Promise<Record<string, string>>;
+    fetch(): Promise<Response_2>;
+    // (undocumented)
+    protected abstract readonly method: string;
+    // (undocumented)
+    protected requestHeaders: Record<string, string> & {
+        authorization?: string | (() => string) | (() => Promise<string>);
+    };
+    // (undocumented)
+    protected requestOptions: RequestInit_2;
+    // (undocumented)
+    protected url: URL;
+    withAcceptHeader(value: string): this;
+    withAuthorizationHeader(value: string): this;
+    withAuthorizationHeader(value: () => string): this;
+    withAuthorizationHeader(value: () => Promise<string>): this;
+    withQueryParams(params: Record<string, string | number | boolean | null | undefined>): this;
+}
+
+// @public (undocumented)
+export interface BrandingBarOptions {
+    // (undocumented)
+    logo: Nullable<Image_2>;
+}
 
 // @public
 interface BulkCreateDocumentData {
@@ -163,21 +253,96 @@ interface BulkGetResponse<T> {
     results: T[];
 }
 
+// @public (undocumented)
+export interface Callback {
+    // (undocumented)
+    events: Nullable<CallbackEvent[]>;
+    key: Nullable<string>;
+    url: Nullable<string>;
+}
+
+// @public (undocumented)
+export type CallbackEvent = 'DOCUMENT_SIGNED' | 'EMAIL_BOUNCE' | 'KBA_FAILURE' | 'PACKAGE_ACTIVATE' | 'PACKAGE_ARCHIVE' | 'PACKAGE_ATTACHMENT' | 'PACKAGE_COMPLETE' | 'PACKAGE_CREATE' | 'PACKAGE_DEACTIVATE' | 'PACKAGE_DECLINE' | 'PACKAGE_DELETE' | 'PACKAGE_EXPIRE' | 'PACKAGE_OPT_OUT' | 'PACKAGE_READY_FOR_COMPLETE' | 'PACKAGE_RESTORE' | 'PACKAGE_TRASH' | 'ROLE_REASSIGN' | 'SIGNER_COMPLETE' | 'SIGNER_LOCKED' | 'TEMPLATE_CREATE';
+
 // @public
 export class CallbackResource extends Resource {
-    // Warning: (ae-forgotten-export) The symbol "Callback" needs to be exported by the entry point index.d.ts
     get(): Promise<Callback>;
     set(payload: Partial<Callback>): Promise<Callback>;
+}
+
+// @public (undocumented)
+export interface CeremonyEventComplete {
+    // (undocumented)
+    dialog: Nullable<boolean>;
+    // (undocumented)
+    redirect: Nullable<string>;
+}
+
+// @public (undocumented)
+export interface CeremonyEvents {
+    // (undocumented)
+    complete: Nullable<CeremonyEventComplete>;
+}
+
+// @public (undocumented)
+export interface CeremonySettings {
+    // (undocumented)
+    ada: boolean;
+    // (undocumented)
+    declineButton: boolean;
+    // (undocumented)
+    declineReasons: string[];
+    // (undocumented)
+    disableDeclineOther: boolean;
+    // (undocumented)
+    disableDownloadForUncompletedPackage: boolean;
+    // (undocumented)
+    disableFirstInPersonAffidavit: boolean;
+    // (undocumented)
+    disableInPersonAffidavit: boolean;
+    // (undocumented)
+    disableOptOutOther: boolean;
+    // (undocumented)
+    disableSecondInPersonAffidavit: boolean;
+    // (undocumented)
+    documentToolbarOptions: Nullable<DocumentToolbarOptions>;
+    // (undocumented)
+    enforceCaptureSignature: boolean;
+    // (undocumented)
+    events: Nullable<CeremonyEvents>;
+    // (undocumented)
+    extractAcroFields: boolean;
+    // (undocumented)
+    extractTextTags: boolean;
+    // (undocumented)
+    handOver: Nullable<Link>;
+    // (undocumented)
+    hideCaptureText: boolean;
+    // (undocumented)
+    hideLanguageDropdown: boolean;
+    // (undocumented)
+    hidePackageOwnerInPerson: boolean;
+    // (undocumented)
+    hideWatermark: boolean;
+    // (undocumented)
+    inPerson: boolean;
+    // (undocumented)
+    layout: Nullable<LayoutOptions>;
+    // (undocumented)
+    maxAuthFailsAllowed: Nullable<number>;
+    // (undocumented)
+    optOutButton: boolean;
+    // (undocumented)
+    optOutReasons: string[];
+    // (undocumented)
+    style: Nullable<LayoutStyle>;
 }
 
 // @public
 export class ClientError extends Error {
     constructor(error: Error);
-    // (undocumented)
     readonly isAborted: boolean;
-    // (undocumented)
     readonly name = "ClientError";
-    // (undocumented)
     readonly originalError: Error;
 }
 
@@ -270,6 +435,16 @@ export type DateTimeString = string;
 class DeleteRequestBuilder extends PostRequestBuilder {
     // (undocumented)
     protected method: string;
+}
+
+// @public (undocumented)
+export interface Delivery {
+    // (undocumented)
+    download: boolean;
+    // (undocumented)
+    email: boolean;
+    // (undocumented)
+    provider: boolean;
 }
 
 // @public (undocumented)
@@ -406,6 +581,18 @@ interface DocumentSignedEvent {
 }
 
 // @public (undocumented)
+export interface DocumentToolbarOptions {
+    // (undocumented)
+    configurations: Nullable<DocumentVisibilityConfiguration[]>;
+    // (undocumented)
+    data: Nullable<CustomData>;
+    // (undocumented)
+    id: Nullable<string>;
+    // (undocumented)
+    name: Nullable<string>;
+}
+
+// @public (undocumented)
 interface DocumentViewedEvent {
     // (undocumented)
     readonly createdDate: DateTimeString;
@@ -451,7 +638,7 @@ interface EmailBounceEvent {
     readonly sessionUser: string;
 }
 
-// @public (undocumented)
+// @public
 export type EventHandler<T extends Record<string, any>> = (payload: T) => void;
 
 // @public
@@ -465,7 +652,7 @@ export class EventMessageError extends Error {
 
 declare namespace Events {
     export {
-        LOOKUP_TABLE,
+        InterfaceMap,
         DocumentSignedEvent,
         DocumentViewedEvent,
         EmailBounceEvent,
@@ -560,6 +747,18 @@ export interface FieldValidation {
     required: Nullable<boolean>;
 }
 
+// @public (undocumented)
+export interface FooterOptions {
+    // (undocumented)
+    confirm: boolean;
+    // (undocumented)
+    download: boolean;
+    // (undocumented)
+    hideEvidenceSummary: boolean;
+    // (undocumented)
+    saveAsLayout: boolean;
+}
+
 // @public
 interface GetAllPackagesParameters {
     dir?: 'asc' | 'desc';
@@ -595,12 +794,62 @@ type GetDocumentBodyOption = {
     flatten?: boolean;
 };
 
-// Warning: (ae-forgotten-export) The symbol "BaseRequestBuilder" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 class GetRequestBuilder extends BaseRequestBuilder {
     // (undocumented)
     protected method: string;
+}
+
+// @public (undocumented)
+export interface GlobalActionsOptions {
+    // (undocumented)
+    confirm: boolean;
+    // (undocumented)
+    download: boolean;
+    // (undocumented)
+    hideEvidenceSummary: boolean;
+    // (undocumented)
+    saveAsLayout: boolean;
+}
+
+// @public (undocumented)
+export interface Group {
+    // (undocumented)
+    account: Nullable<Account_2>;
+    // (undocumented)
+    created: DateTimeString;
+    // (undocumented)
+    data: Nullable<CustomData>;
+    // (undocumented)
+    email: Nullable<string>;
+    // (undocumented)
+    emailMembers: boolean;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    members: GroupMember[];
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    reciprocalDelegation: boolean;
+    // (undocumented)
+    updated: DateTimeString;
+}
+
+// @public (undocumented)
+export interface GroupMember {
+    // (undocumented)
+    email: string;
+    // (undocumented)
+    firstName: string;
+    // (undocumented)
+    lastName: string;
+    // (undocumented)
+    memberType: GroupMemberType;
+    // (undocumented)
+    pending: boolean;
+    // (undocumented)
+    userId: string;
 }
 
 // @public (undocumented)
@@ -610,8 +859,76 @@ export interface GroupMembership {
     // (undocumented)
     groupName: string;
     // (undocumented)
-    memberType: 'REGULAR' | 'MANAGER';
+    memberType: GroupMemberType;
 }
+
+// @public (undocumented)
+export type GroupMemberType = 'REGULAR' | 'MANAGER';
+
+// @public (undocumented)
+export interface HeaderOptions {
+    // (undocumented)
+    breadcrumbs: boolean;
+    // (undocumented)
+    feedback: boolean;
+    // (undocumented)
+    globalActions: Nullable<GlobalActionsOptions>;
+    // (undocumented)
+    globalNavigation: boolean;
+    // (undocumented)
+    sessionBar: boolean;
+    // (undocumented)
+    titleBar: Nullable<TitleBarOptions>;
+}
+
+// @public
+interface IdvWorkflow {
+    // (undocumented)
+    desc: Nullable<string>;
+    // (undocumented)
+    id: Nullable<string>;
+    // (undocumented)
+    skipWhenAccessingSignedDocuments: Nullable<string>;
+    // (undocumented)
+    tenant: Nullable<string>;
+    // (undocumented)
+    type: Nullable<string>;
+}
+
+// @public (undocumented)
+interface Image_2 {
+    // (undocumented)
+    link: Nullable<string>;
+    // (undocumented)
+    logoAltTextKey: Nullable<string>;
+    // (undocumented)
+    src: string;
+}
+export { Image_2 as Image }
+
+// @public
+type InterfaceMap = {
+    DOCUMENT_SIGNED: DocumentSignedEvent;
+    DOCUMENT_VIEWED: DocumentViewedEvent;
+    EMAIL_BOUNCE: EmailBounceEvent;
+    KBA_FAILURE: KbaFailureEvent;
+    PACKAGE_ACTIVATE: PackageActivateEvent;
+    PACKAGE_ARCHIVE: PackageArchiveEvent;
+    PACKAGE_ATTACHMENT: PackageAttachmentEvent;
+    PACKAGE_COMPLETE: PackageCompleteEvent;
+    PACKAGE_CREATE: PackageCreateEvent;
+    PACKAGE_DEACTIVATE: PackageDeactivateEvent;
+    PACKAGE_DECLINE: PackageDeclineEvent;
+    PACKAGE_DELETE: PackageDeleteEvent;
+    PACKAGE_EXPIRE: PackageExpireEvent;
+    PACKAGE_READY_FOR_COMPLETE: PackageReadyForCompleteEvent;
+    PACKAGE_RESTORE: PackageRestoreEvent;
+    PACKAGE_TRASH: PackageTrashEvent;
+    ROLE_REASSIGN: RoleReassignEvent;
+    SIGNER_COMPLETE: SignerCompleteEvent;
+    SIGNER_LOCKED: SignerLockedEvent;
+    TEMPLATE_CREATE: TemplateCreateEvent;
+};
 
 // @public
 interface KbaFailureEvent {
@@ -623,6 +940,54 @@ interface KbaFailureEvent {
     readonly packageId: string;
     // (undocumented)
     readonly sessionUser: string;
+}
+
+declare namespace KnowledgeBasedAuthentication {
+    export {
+        KnowledgeBasedAuthentication_2 as default,
+        Status,
+        SignerInformation
+    }
+}
+
+// @public (undocumented)
+interface KnowledgeBasedAuthentication_2 {
+    // (undocumented)
+    equifaxCanada: Nullable<boolean>;
+    // (undocumented)
+    equifaxUSA: Nullable<boolean>;
+    // (undocumented)
+    knowledgeBasedAuthenticationStatus: Nullable<Status>;
+    // (undocumented)
+    signerInformationForEquifaxCanada: Nullable<SignerInformation.EquifaxCanada>;
+    // (undocumented)
+    signerInformationForEquifaxUSA: Nullable<SignerInformation.EquifaxUSA>;
+}
+
+// @public (undocumented)
+export interface LayoutOptions {
+    // (undocumented)
+    brandingBar: Nullable<BrandingBarOptions>;
+    // (undocumented)
+    footer: Nullable<FooterOptions>;
+    // (undocumented)
+    header: Nullable<HeaderOptions>;
+    // (undocumented)
+    iframe: boolean;
+    // (undocumented)
+    navigator: boolean;
+}
+
+// @public (undocumented)
+export interface LayoutStyle {
+    // (undocumented)
+    brandingBar: Nullable<Image_2>;
+    // (undocumented)
+    dialog: Nullable<Style>;
+    // (undocumented)
+    titleBar: Nullable<Style>;
+    // (undocumented)
+    toolbar: Nullable<Style>;
 }
 
 declare namespace License {
@@ -652,28 +1017,14 @@ interface License_2 {
 }
 
 // @public (undocumented)
-type LOOKUP_TABLE = {
-    DOCUMENT_SIGNED: DocumentSignedEvent;
-    DOCUMENT_VIEWED: DocumentViewedEvent;
-    EMAIL_BOUNCE: EmailBounceEvent;
-    KBA_FAILURE: KbaFailureEvent;
-    PACKAGE_ACTIVATE: PackageActivateEvent;
-    PACKAGE_ARCHIVE: PackageArchiveEvent;
-    PACKAGE_ATTACHMENT: PackageAttachmentEvent;
-    PACKAGE_COMPLETE: PackageCompleteEvent;
-    PACKAGE_CREATE: PackageCreateEvent;
-    PACKAGE_DEACTIVATE: PackageDeactivateEvent;
-    PACKAGE_DECLINE: PackageDeclineEvent;
-    PACKAGE_DELETE: PackageDeleteEvent;
-    PACKAGE_EXPIRE: PackageExpireEvent;
-    PACKAGE_READY_FOR_COMPLETE: PackageReadyForCompleteEvent;
-    PACKAGE_RESTORE: PackageRestoreEvent;
-    PACKAGE_TRASH: PackageTrashEvent;
-    ROLE_REASSIGN: RoleReassignEvent;
-    SIGNER_COMPLETE: SignerCompleteEvent;
-    SIGNER_LOCKED: SignerLockedEvent;
-    TEMPLATE_CREATE: TemplateCreateEvent;
-};
+export interface Link {
+    // (undocumented)
+    href: string;
+    // (undocumented)
+    text: string;
+    // (undocumented)
+    title: Nullable<string>;
+}
 
 // @public (undocumented)
 export interface Message {
@@ -700,11 +1051,8 @@ export type Nullable<T> = T | null;
 // @public
 export class OneSpanResponseError extends Error {
     constructor(response: Record<string, any>, statusCode: number);
-    // (undocumented)
     readonly code?: number;
-    // (undocumented)
     readonly messageKey?: string;
-    // (undocumented)
     readonly name = "OneSpanResponseError";
     // (undocumented)
     readonly statusCode: number;
@@ -724,18 +1072,18 @@ export default OneSpanSign;
 
 // @public
 export class OSSEventBroker {
-    getHandler<T extends keyof Events_2.LOOKUP_TABLE>(key: T): EventHandler_2<Events_2.LOOKUP_TABLE[T]> | undefined;
+    getHandler<T extends keyof Events.InterfaceMap>(key: T): EventHandler<Events.InterfaceMap[T]> | undefined;
     handle(message: Readable | string | Record<string, any>): Promise<void>;
-    // (undocumented)
+    // @internal
     protected handlers: {
-        [key in keyof Events_2.LOOKUP_TABLE]?: EventHandler_2<Events_2.LOOKUP_TABLE[key]>;
+        [key in keyof Events.InterfaceMap]?: EventHandler<Events.InterfaceMap[key]>;
     };
     // @internal
     protected isPOJO(param: unknown): param is Record<string, any>;
-    // (undocumented)
+    // @internal
     protected parseStream(stream: Readable): Promise<Record<string, any>>;
-    removeHandler<T extends keyof Events_2.LOOKUP_TABLE>(key: T): void;
-    setHandler<T extends keyof Events_2.LOOKUP_TABLE>(key: T, handler: EventHandler_2<Events_2.LOOKUP_TABLE[T]>): void;
+    removeHandler<T extends keyof Events.InterfaceMap>(key: T): void;
+    setHandler<T extends keyof Events.InterfaceMap>(key: T, handler: EventHandler<Events.InterfaceMap[T]>): void;
 }
 
 // @public (undocumented)
@@ -763,8 +1111,6 @@ export interface Package {
     id: string;
     // (undocumented)
     language: Nullable<string>;
-    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
-    //
     // (undocumented)
     limits: Nullable<PackageArtifactsLimits>;
     // (undocumented)
@@ -775,18 +1121,12 @@ export interface Package {
     notarized: boolean;
     // (undocumented)
     notaryRoleId: Nullable<string>;
-    // Warning: (ae-incompatible-release-tags) The symbol "roles" is marked as @public, but its signature references "Role" which is marked as @alpha
-    //
     // (undocumented)
     roles: Role[];
     // (undocumented)
     sender: Nullable<Sender>;
-    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
-    //
     // (undocumented)
     settings: Nullable<PackageSettings>;
-    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
-    //
     // (undocumented)
     signedDocumentDelivery: Nullable<SignedDocumentDelivery>;
     // (undocumented)
@@ -827,8 +1167,12 @@ interface PackageArchiveEvent {
     readonly sessionUser: string;
 }
 
-// @alpha (undocumented)
+// @public (undocumented)
 export interface PackageArtifactsLimits {
+    // (undocumented)
+    documents: Nullable<number>;
+    // (undocumented)
+    roles: Nullable<number>;
 }
 
 // @public
@@ -894,9 +1238,6 @@ interface PackageData {
     id?: string;
     // (undocumented)
     language?: string;
-    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
-    // Warning: (ae-incompatible-release-tags) The symbol "limits" is marked as @public, but its signature references "PackageArtifactsLimits" which is marked as @alpha
-    //
     // (undocumented)
     limits?: PackageArtifactsLimits;
     // (undocumented)
@@ -907,21 +1248,12 @@ interface PackageData {
     notarized?: boolean;
     // (undocumented)
     notaryRoleId?: string;
-    // Warning: (ae-incompatible-release-tags) The symbol "roles" is marked as @public, but its signature references "Role" which is marked as @alpha
-    // Warning: (ae-incompatible-release-tags) The symbol "roles" is marked as @public, but its signature references "Role" which is marked as @alpha
-    //
     // (undocumented)
     roles?: Role[];
     // (undocumented)
     sender?: Sender;
-    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
-    // Warning: (ae-incompatible-release-tags) The symbol "settings" is marked as @public, but its signature references "PackageSettings" which is marked as @alpha
-    //
     // (undocumented)
     settings?: PackageSettings;
-    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
-    // Warning: (ae-incompatible-release-tags) The symbol "signedDocumentDelivery" is marked as @public, but its signature references "SignedDocumentDelivery" which is marked as @alpha
-    //
     // (undocumented)
     signedDocumentDelivery?: SignedDocumentDelivery;
     // (undocumented)
@@ -1022,19 +1354,10 @@ interface PackageRestoreEvent {
     readonly sessionUser: string;
 }
 
-// @alpha (undocumented)
+// @public (undocumented)
 export interface PackageSettings {
     // (undocumented)
-    ceremony: {
-        handOver: {
-            title: string | undefined;
-            href: string | undefined;
-            text: string | undefined;
-        };
-        declineButton?: boolean;
-        hideCaptureText?: boolean;
-        hideWatermark?: boolean;
-    };
+    ceremony: CeremonySettings;
 }
 
 // @public (undocumented)
@@ -1169,6 +1492,7 @@ export type RecursivePartial<T> = {
 
 declare namespace RequestBuilders {
     export {
+        BaseRequestBuilder,
         GetRequestBuilder,
         PostRequestBuilder,
         PutRequestBuilder,
@@ -1220,14 +1544,29 @@ declare namespace Responses {
 }
 export { Responses }
 
-// @alpha (undocumented)
-export type Role = {
-    id?: string;
+// @public (undocumented)
+export interface Role {
+    // (undocumented)
+    attachmentRequirements: AttachmentRequirement[];
+    // (undocumented)
+    data: Nullable<CustomData>;
+    // (undocumented)
+    emailMessage: Nullable<BaseMessage>;
+    // (undocumented)
+    id: string;
+    // (undocumented)
     index: number;
-    type: RoleType;
+    // (undocumented)
     name: string;
+    // (undocumented)
+    reassign: Nullable<boolean>;
+    // (undocumented)
     signers: Signer[];
-};
+    // (undocumented)
+    specialTypes: Nullable<SpecialUserType[]>;
+    // (undocumented)
+    type: RoleType;
+}
 
 // @public (undocumented)
 interface RoleReassignEvent {
@@ -1334,29 +1673,69 @@ export interface SignatureStyle {
     textual: Nullable<TextualSignatureStyle>;
 }
 
-// @alpha (undocumented)
+// @public (undocumented)
 export interface SignedDocumentDelivery {
+    // (undocumented)
+    destinations: External_2[];
+    // (undocumented)
+    excludedDocuments: DocumentMetadata[];
+    // (undocumented)
+    filePrefix: Nullable<string>;
+    // (undocumented)
+    fileSuffix: Nullable<string>;
 }
 
-// @alpha (undocumented)
-export type Signer = {
-    id: string;
-    status?: SignerStatus;
-    firstName: string;
-    lastName: string;
+// @public (undocumented)
+export interface Signer {
+    // (undocumented)
+    address: Nullable<Address>;
+    // (undocumented)
+    auth: Auth_2;
+    // (undocumented)
+    company: string;
+    // (undocumented)
+    created: DateTimeString;
+    // (undocumented)
+    data: Nullable<CustomData>;
+    // (undocumented)
+    delivery: Delivery;
+    // (undocumented)
     email: string;
-    company?: string;
-    auth?: {
-        scheme: 'SMS';
-        challenges: [
-            {
-            answer: null;
-            question: string;
-            maskInput: boolean;
-        }
-        ];
-    };
-};
+    // (undocumented)
+    external: Nullable<External_2>;
+    // (undocumented)
+    firstName: string;
+    // (undocumented)
+    group: Nullable<Group>;
+    // (undocumented)
+    id: string;
+    // (undocumented)
+    knowledgeBasedAuthentication: KnowledgeBasedAuthentication.default;
+    // (undocumented)
+    language: Nullable<string>;
+    // (undocumented)
+    lastName: string;
+    // (undocumented)
+    name: Nullable<string>;
+    // (undocumented)
+    phone: Nullable<string>;
+    // (undocumented)
+    professionalIdentityFields: ProfessionalIdentityField[];
+    // (undocumented)
+    signature: Nullable<SignatureStyle>;
+    // (undocumented)
+    signerType: SignerType;
+    // (undocumented)
+    specialTypes: Nullable<SpecialUserType[]>;
+    // (undocumented)
+    timezoneId: TimeZoneId;
+    // (undocumented)
+    title: Nullable<string>;
+    // (undocumented)
+    updated: DateTimeString;
+    // (undocumented)
+    userCustomFields: UserCustomField[];
+}
 
 // @public (undocumented)
 interface SignerCompleteEvent {
@@ -1368,6 +1747,67 @@ interface SignerCompleteEvent {
     readonly packageId: string;
     // (undocumented)
     readonly sessionUser: string;
+}
+
+declare namespace SignerInformation {
+    export {
+        SignerInformationForEquifaxCanada as EquifaxCanada,
+        SignerInformationForEquifaxUSA as EquifaxUSA
+    }
+}
+
+// @public (undocumented)
+interface SignerInformationForEquifaxCanada {
+    // (undocumented)
+    city: string;
+    // (undocumented)
+    dateOfBirth: Nullable<DateTimeString>;
+    // (undocumented)
+    driversLicenseNumber: Nullable<string>;
+    // (undocumented)
+    firstName: string;
+    // (undocumented)
+    homePhoneNumber: Nullable<string>;
+    // (undocumented)
+    lastName: string;
+    // (undocumented)
+    postalCode: string;
+    // (undocumented)
+    province: string;
+    // (undocumented)
+    socialInsuranceNumber: Nullable<string>;
+    // (undocumented)
+    streetAddress: string;
+    // (undocumented)
+    timeAtAddress: Nullable<number>;
+}
+
+// @public (undocumented)
+interface SignerInformationForEquifaxUSA {
+    // (undocumented)
+    city: string;
+    // (undocumented)
+    dateOfBirth: Nullable<DateTimeString>;
+    // (undocumented)
+    driversLicenseNumber: Nullable<string>;
+    // (undocumented)
+    firstName: string;
+    // (undocumented)
+    homePhoneNumber: Nullable<string>;
+    // (undocumented)
+    lastName: string;
+    // (undocumented)
+    socialSecurityNumber: Nullable<string>;
+    // (undocumented)
+    state: string;
+    // (undocumented)
+    streetAddress: string;
+    // (undocumented)
+    timeAtAddress: Nullable<number>;
+    // (undocumented)
+    valid: Nullable<boolean>;
+    // (undocumented)
+    zip: string;
 }
 
 // @public
@@ -1383,10 +1823,21 @@ interface SignerLockedEvent {
 }
 
 // @public (undocumented)
-export type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
+export type SignerType = 'ACCOUNT_SENDER' | 'EXTERNAL_SENDER' | 'EXTERNAL_SIGNER' | 'GROUP_SIGNER';
 
 // @public (undocumented)
 export type SpecialUserType = 'NOTARY';
+
+// @public (undocumented)
+type Status = 'NOT_YET_ATTEMPTED' | 'PASSED' | 'FAILED' | 'INVALID_SIGNER' | 'UPDATED';
+
+// @public (undocumented)
+export interface Style {
+    // (undocumented)
+    backgroundColor: Nullable<string>;
+    // (undocumented)
+    color: Nullable<string>;
+}
 
 // @public (undocumented)
 interface TemplateCreateEvent {
@@ -1410,6 +1861,14 @@ export interface TextualSignatureStyle {
 
 // @public
 export type TimeZoneId = string;
+
+// @public (undocumented)
+export interface TitleBarOptions {
+    // (undocumented)
+    progressBar: boolean;
+    // (undocumented)
+    title: boolean;
+}
 
 // @public (undocumented)
 interface Transaction {

@@ -139,4 +139,5 @@ export interface BulkCreateDocumentData {
   documentBody: DocumentBody;
 }
 
+/** @public */
 export type GetDocumentBodyOption = { format: 'original' } | { format: 'pdf'; flatten?: boolean };
