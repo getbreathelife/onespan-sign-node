@@ -1,6 +1,7 @@
 /** @public */
 import { Nullable } from '../utils';
 
+/** @public */
 export type CallbackEvent =
   | 'DOCUMENT_SIGNED'
   | 'EMAIL_BOUNCE'

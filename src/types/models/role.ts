@@ -1,44 +1,28 @@
+import { CustomData } from '../shared';
+import { Nullable } from '../utils';
+import { AttachmentRequirement } from './attachment';
+import { Signer } from './signer';
+import { SpecialUserType } from './user';
+
 /** @public */
 export type RoleType = 'SIGNER' | 'SENDER';
 
 /** @public */
-export type SignerStatus = 'SIGNED' | 'EMAIL_BOUNCED' | 'SIGNER_LOCKED_OUT' | 'EXPIRED';
+export interface BaseMessage {
+  content: string;
+}
 
-/**
- * @privateRemarks
- * TODO - #3
- *
- * @alpha
- */
-export type Signer = {
+/** @public */
+export interface Role {
   id: string;
-  status?: SignerStatus;
-  firstName: string;
-  lastName: string;
-  email: string;
-  company?: string;
-  auth?: {
-    scheme: 'SMS';
-    challenges: [
-      {
-        answer: null;
-        question: string;
-        maskInput: boolean;
-      }
-    ];
-  };
-};
-
-/**
- * @privateRemarks
- * TODO - #3
- *
- * @alpha
- */
-export type Role = {
-  id?: string;
   index: number;
   type: RoleType;
   name: string;
   signers: Signer[];
-};
+  attachmentRequirements: AttachmentRequirement[];
+
+  data: Nullable<CustomData>;
+  emailMessage: Nullable<BaseMessage>;
+  reassign: Nullable<boolean>;
+  specialTypes: Nullable<SpecialUserType[]>;
+}

@@ -19,7 +19,11 @@ import SignerCompleteEvent from './signerComplete';
 import SignerLockedEvent from './signerLocked';
 import TemplateCreateEvent from './templateCreate';
 
-type LOOKUP_TABLE = {
+/**
+ * Event interfaces keyed by their respective event name.
+ * @public
+ */
+type InterfaceMap = {
   DOCUMENT_SIGNED: DocumentSignedEvent;
   DOCUMENT_VIEWED: DocumentViewedEvent;
   EMAIL_BOUNCE: EmailBounceEvent;
@@ -43,7 +47,7 @@ type LOOKUP_TABLE = {
 };
 
 export type {
-  LOOKUP_TABLE,
+  InterfaceMap,
   DocumentSignedEvent,
   DocumentViewedEvent,
   EmailBounceEvent,

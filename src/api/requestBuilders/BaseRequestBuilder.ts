@@ -6,8 +6,8 @@ import { ClientError, OneSpanResponseError } from '../error';
  * Builder class to construct an api request.
  * @public
  */
-export class BaseRequestBuilder {
-  protected readonly method: string = 'GET';
+export abstract class BaseRequestBuilder {
+  protected abstract readonly method: string;
   protected requestHeaders: Record<string, string> & {
     authorization?: string | (() => string) | (() => Promise<string>);
   };

@@ -1,6 +1,6 @@
 import { Readable } from 'node:stream';
-import { EventHandler, Events } from 'types';
 
+import { EventHandler, Events } from '../types';
 import { EventMessageError } from './error';
 
 /**
@@ -28,26 +28,32 @@ import { EventMessageError } from './error';
  * @public
  */
 export class OSSEventBroker {
-  protected handlers: { [key in keyof Events.LOOKUP_TABLE]?: EventHandler<Events.LOOKUP_TABLE[key]> } = {};
+  /**
+   * Stored event handlers
+   * @internal
+   */
+  protected handlers: { [key in keyof Events.InterfaceMap]?: EventHandler<Events.InterfaceMap[key]> } = {};
 
   /**
    * Gets the handler for a callback event.
    *
-   * @param key - Name of the event. See {@link Events.LOOKUP_TABLE} for the list of valid keys.
+   * @param key - Name of the event. See {@link Events.InterfaceMap} for the list of valid keys.
+   * @public
    */
-  public getHandler<T extends keyof Events.LOOKUP_TABLE>(key: T): EventHandler<Events.LOOKUP_TABLE[T]> | undefined {
+  public getHandler<T extends keyof Events.InterfaceMap>(key: T): EventHandler<Events.InterfaceMap[T]> | undefined {
     return key in this.handlers && this.handlers[key]
-      ? (this.handlers[key] as EventHandler<Events.LOOKUP_TABLE[T]>)
+      ? (this.handlers[key] as EventHandler<Events.InterfaceMap[T]>)
       : undefined;
   }
 
   /**
    * Sets the handler for a callback event.
    *
-   * @param key - Name of the event. See {@link Events.LOOKUP_TABLE} for the list of valid keys.
+   * @param key - Name of the event. See {@link Events.InterfaceMap} for the list of valid keys.
    * @param handler - Callback function to handle the event message.
+   * @public
    */
-  public setHandler<T extends keyof Events.LOOKUP_TABLE>(key: T, handler: EventHandler<Events.LOOKUP_TABLE[T]>): void {
+  public setHandler<T extends keyof Events.InterfaceMap>(key: T, handler: EventHandler<Events.InterfaceMap[T]>): void {
     Object.defineProperty(this.handlers, key, {
       value: handler,
       configurable: true,
@@ -59,14 +65,21 @@ export class OSSEventBroker {
   /**
    * Removes the handler for a callback event.
    *
-   * @param key - Name of the event. See {@link Events.LOOKUP_TABLE} for the list of valid keys.
+   * @param key - Name of the event. See {@link Events.InterfaceMap} for the list of valid keys.
+   * @public
    */
-  public removeHandler<T extends keyof Events.LOOKUP_TABLE>(key: T): void {
+  public removeHandler<T extends keyof Events.InterfaceMap>(key: T): void {
     if (key in this.handlers) {
       delete this.handlers[key];
     }
   }
 
+  /**
+   * Parse stream data into an object.
+   *
+   * @param stream - Stream data
+   * @internal
+   */
   protected async parseStream(stream: Readable): Promise<Record<string, any>> {
     return new Promise((resolve, reject) => {
       let message = '';
@@ -114,6 +127,8 @@ export class OSSEventBroker {
    *
    * @remarks
    * - {@link https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/setting-callback-notifications | Setting Up Callback Notifications (OneSpan Sign)}
+   *
+   * @public
    */
   public async handle(message: Readable | string | Record<string, any>): Promise<void> {
     let body;

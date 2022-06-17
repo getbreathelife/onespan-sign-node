@@ -4,7 +4,7 @@ import { Address } from '../address';
 import { Translation } from '../translation';
 import * as License from './license';
 
-/** @public **/
+/** @public */
 interface CustomField {
   id: string;
   name: string;
