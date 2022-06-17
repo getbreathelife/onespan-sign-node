@@ -4,7 +4,7 @@
 
 ## Requests.GetAllPackagesParameters.search property
 
-Any text which is going to be used in conjunction with the  if provided.
+Any text which is going to be used in conjunction with the [searchtype](./onespan-sign-node.requests.getallpackagesparameters.searchtype.md) if provided.
 
 <b>Signature:</b>
 

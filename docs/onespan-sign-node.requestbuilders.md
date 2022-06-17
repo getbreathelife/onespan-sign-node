@@ -8,6 +8,7 @@
 
 |  Class | Description |
 |  --- | --- |
+|  [BaseRequestBuilder](./onespan-sign-node.requestbuilders.baserequestbuilder.md) | Builder class to construct an api request. |
 |  [DeleteRequestBuilder](./onespan-sign-node.requestbuilders.deleterequestbuilder.md) |  |
 |  [GetRequestBuilder](./onespan-sign-node.requestbuilders.getrequestbuilder.md) |  |
 |  [PostRequestBuilder](./onespan-sign-node.requestbuilders.postrequestbuilder.md) |  |

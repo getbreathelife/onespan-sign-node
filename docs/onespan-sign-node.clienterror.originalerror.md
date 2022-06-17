@@ -4,6 +4,8 @@
 
 ## ClientError.originalError property
 
+Original error thrown by the client.
+
 <b>Signature:</b>
 
 ```typescript

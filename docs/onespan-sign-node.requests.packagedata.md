@@ -14,7 +14,7 @@ export interface PackageData
 
 ## Remarks
 
-Request payload should at least contain  property.
+Request payload should at least contain [\`name\`](./onespan-sign-node.requests.packagedata.name.md) property.
 
 See [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.post) for more information.
 
@@ -34,15 +34,15 @@ See [REST API documentation](https://community.onespan.com/products/onespan-sign
 |  [emailMessage?](./onespan-sign-node.requests.packagedata.emailmessage.md) | string | <i>(Optional)</i> |
 |  [id?](./onespan-sign-node.requests.packagedata.id.md) | string | <i>(Optional)</i> |
 |  [language?](./onespan-sign-node.requests.packagedata.language.md) | string | <i>(Optional)</i> |
-|  [limits?](./onespan-sign-node.requests.packagedata.limits.md) | PackageArtifactsLimits | <i>(Optional)</i> |
+|  [limits?](./onespan-sign-node.requests.packagedata.limits.md) | [PackageArtifactsLimits](./onespan-sign-node.packageartifactslimits.md) | <i>(Optional)</i> |
 |  [messages?](./onespan-sign-node.requests.packagedata.messages.md) | [Message](./onespan-sign-node.message.md)<!-- -->\[\] | <i>(Optional)</i> |
 |  [name](./onespan-sign-node.requests.packagedata.name.md) | string |  |
 |  [notarized?](./onespan-sign-node.requests.packagedata.notarized.md) | boolean | <i>(Optional)</i> |
 |  [notaryRoleId?](./onespan-sign-node.requests.packagedata.notaryroleid.md) | string | <i>(Optional)</i> |
-|  [roles?](./onespan-sign-node.requests.packagedata.roles.md) | Role\[\] | <i>(Optional)</i> |
+|  [roles?](./onespan-sign-node.requests.packagedata.roles.md) | [Role](./onespan-sign-node.role.md)<!-- -->\[\] | <i>(Optional)</i> |
 |  [sender?](./onespan-sign-node.requests.packagedata.sender.md) | [Sender](./onespan-sign-node.sender.md) | <i>(Optional)</i> |
-|  [settings?](./onespan-sign-node.requests.packagedata.settings.md) | PackageSettings | <i>(Optional)</i> |
-|  [signedDocumentDelivery?](./onespan-sign-node.requests.packagedata.signeddocumentdelivery.md) | SignedDocumentDelivery | <i>(Optional)</i> |
+|  [settings?](./onespan-sign-node.requests.packagedata.settings.md) | [PackageSettings](./onespan-sign-node.packagesettings.md) | <i>(Optional)</i> |
+|  [signedDocumentDelivery?](./onespan-sign-node.requests.packagedata.signeddocumentdelivery.md) | [SignedDocumentDelivery](./onespan-sign-node.signeddocumentdelivery.md) | <i>(Optional)</i> |
 |  [status?](./onespan-sign-node.requests.packagedata.status.md) | [PackageStatus](./onespan-sign-node.packagestatus.md) | <i>(Optional)</i> |
 |  [timezoneId?](./onespan-sign-node.requests.packagedata.timezoneid.md) | string | <i>(Optional)</i> |
 |  [trashed?](./onespan-sign-node.requests.packagedata.trashed.md) | boolean | <i>(Optional)</i> |

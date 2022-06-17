@@ -14,5 +14,5 @@ export declare type CreatePackageData = PackageData;
 
 ## Remarks
 
-See .
+See [Requests.PackageData](./onespan-sign-node.requests.packagedata.md)<!-- -->.
 

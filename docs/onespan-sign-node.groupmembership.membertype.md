@@ -7,5 +7,5 @@
 <b>Signature:</b>
 
 ```typescript
-memberType: 'REGULAR' | 'MANAGER';
+memberType: GroupMemberType;
 ```

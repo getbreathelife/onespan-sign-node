@@ -22,7 +22,7 @@ getEvidenceSummary(packageId: string): Promise<Responses.Response>;
 
 Promise&lt;Responses.Response&gt;
 
-An object that implements the [Response](./onespan-sign-node.responses.response.md) interface
+An object that implements the [Response](./onespan-sign-node.responses.response.md) interface.
 
 ## Remarks
 

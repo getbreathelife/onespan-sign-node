@@ -9,16 +9,16 @@ Gets the handler for a callback event.
 <b>Signature:</b>
 
 ```typescript
-getHandler<T extends keyof Events.LOOKUP_TABLE>(key: T): EventHandler<Events.LOOKUP_TABLE[T]> | undefined;
+getHandler<T extends keyof Events.InterfaceMap>(key: T): EventHandler<Events.InterfaceMap[T]> | undefined;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  key | T | Name of the event. See [Events.LOOKUP\_TABLE](./onespan-sign-node.events.lookup_table.md) for the list of valid keys. |
+|  key | T | Name of the event. See [Events.InterfaceMap](./onespan-sign-node.events.interfacemap.md) for the list of valid keys. |
 
 <b>Returns:</b>
 
-[EventHandler](./onespan-sign-node.eventhandler.md)<!-- -->&lt;Events.LOOKUP\_TABLE\[T\]&gt; \| undefined
+[EventHandler](./onespan-sign-node.eventhandler.md)<!-- -->&lt;Events.InterfaceMap\[T\]&gt; \| undefined
 

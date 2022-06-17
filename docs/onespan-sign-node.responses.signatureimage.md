@@ -4,6 +4,7 @@
 
 ## Responses.SignatureImage interface
 
+
 <b>Signature:</b>
 
 ```typescript

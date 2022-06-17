@@ -4,6 +4,8 @@
 
 ## EventHandler type
 
+Callback function to handle an event produced by OneSpan.
+
 <b>Signature:</b>
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## ClientError.name property
 
+Name of the error.
+
 <b>Signature:</b>
 
 ```typescript

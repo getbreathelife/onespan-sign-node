@@ -14,7 +14,9 @@ export interface BulkCreateDocumentData
 
 ## Remarks
 
-Only  is required. See: - [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post)
+Only [\`name\`](./onespan-sign-node.requests.bulkcreatedocumentdata.name.md) is required. See:
+
+- [REST API documentation](https://community.onespan.com/products/onespan-sign/sandbox#/Documents/api.packages._packageId.documents.post)
 
 - [Uploading &amp; Deleting Documents](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents) (Uploading Multiple Documents)
 

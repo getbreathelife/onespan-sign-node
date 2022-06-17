@@ -22,6 +22,8 @@ getDefaultSignature(senderId: string): Promise<Responses.SignatureImage>;
 
 Promise&lt;Responses.SignatureImage&gt;
 
+A payload that contains data of the signature image.
+
 ## Remarks
 
 - [REST API documentation (OneSpan)](https://community.onespan.com/products/onespan-sign/sandbox#/Senders/api.account.senders._senderId.signature.image.get)

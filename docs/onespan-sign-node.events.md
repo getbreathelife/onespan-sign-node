@@ -33,5 +33,5 @@
 
 |  Type Alias | Description |
 |  --- | --- |
-|  [LOOKUP\_TABLE](./onespan-sign-node.events.lookup_table.md) |  |
+|  [InterfaceMap](./onespan-sign-node.events.interfacemap.md) | Event interfaces keyed by their respective event name. |
 

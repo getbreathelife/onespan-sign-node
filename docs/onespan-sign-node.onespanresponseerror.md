@@ -4,7 +4,7 @@
 
 ## OneSpanResponseError class
 
-Error thrown when there's an unsuccessful response from OneSpan Sign's API. More specifically, API responses with status code &amp;gt;= 200 &amp;&amp; &amp;lt; 300.
+Error thrown when there's an unsuccessful response from OneSpan Sign's API. More specifically, API responses with status code in the range 200-299.
 
 <b>Signature:</b>
 
@@ -23,8 +23,8 @@ export declare class OneSpanResponseError extends Error
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [code?](./onespan-sign-node.onespanresponseerror.code.md) |  | number | <i>(Optional)</i> |
-|  [messageKey?](./onespan-sign-node.onespanresponseerror.messagekey.md) |  | string | <i>(Optional)</i> |
-|  [name](./onespan-sign-node.onespanresponseerror.name.md) |  | (not declared) |  |
+|  [code?](./onespan-sign-node.onespanresponseerror.code.md) |  | number | <i>(Optional)</i> Code property returned from OneSpan Sign's API. |
+|  [messageKey?](./onespan-sign-node.onespanresponseerror.messagekey.md) |  | string | <i>(Optional)</i> Message key property returned from OneSpan Sign's API. |
+|  [name](./onespan-sign-node.onespanresponseerror.name.md) |  | (not declared) | Name of the error. |
 |  [statusCode](./onespan-sign-node.onespanresponseerror.statuscode.md) |  | number |  |
 

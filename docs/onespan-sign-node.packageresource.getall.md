@@ -22,6 +22,8 @@ getAll(params?: Requests.GetAllPackagesParameters): Promise<Responses.BulkGetRes
 
 Promise&lt;Responses.BulkGetResponse&lt;[Package](./onespan-sign-node.package.md)<!-- -->&gt;&gt;
 
+A payload that contains the result count and an array of the matched packages.
+
 ## Remarks
 
 - [REST API documentation (OneSpan)](https://community.onespan.com/products/onespan-sign/sandbox#/Packages/api.packages.get)

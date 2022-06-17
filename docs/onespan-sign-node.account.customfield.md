@@ -4,7 +4,6 @@
 
 ## Account.CustomField interface
 
-\*
 
 <b>Signature:</b>
 

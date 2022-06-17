@@ -16,11 +16,13 @@ set(payload: Partial<Callback>): Promise<Callback>;
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  payload | Partial&lt;Callback&gt; | Callback settings |
+|  payload | Partial&lt;[Callback](./onespan-sign-node.callback.md)<!-- -->&gt; | Callback settings |
 
 <b>Returns:</b>
 
-Promise&lt;Callback&gt;
+Promise&lt;[Callback](./onespan-sign-node.callback.md)<!-- -->&gt;
+
+The updated callback settings registered on the authenticated account.
 
 ## Remarks
 

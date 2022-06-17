@@ -9,7 +9,7 @@
 |  Interface | Description |
 |  --- | --- |
 |  [Company](./onespan-sign-node.account.company.md) |  |
-|  [CustomField](./onespan-sign-node.account.customfield.md) | \* |
+|  [CustomField](./onespan-sign-node.account.customfield.md) |  |
 |  [default](./onespan-sign-node.account.default.md) |  |
 |  [Provider](./onespan-sign-node.account.provider.md) |  |
 |  [Providers](./onespan-sign-node.account.providers.md) |  |

@@ -30,7 +30,7 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [ClientError](./onespan-sign-node.clienterror.md) | Error thrown when there's an error on the client. For example, operational errors or aborted requests. |
 |  [DocumentResource](./onespan-sign-node.documentresource.md) | Resource class to interact with [documents](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/uploading-deleting-documents)<!-- -->. |
 |  [EventMessageError](./onespan-sign-node.eventmessageerror.md) | Error thrown when there's an error on the message received by the OSSEventBroker. |
-|  [OneSpanResponseError](./onespan-sign-node.onespanresponseerror.md) | Error thrown when there's an unsuccessful response from OneSpan Sign's API. More specifically, API responses with status code &amp;gt;= 200 &amp;&amp; &amp;lt; 300. |
+|  [OneSpanResponseError](./onespan-sign-node.onespanresponseerror.md) | Error thrown when there's an unsuccessful response from OneSpan Sign's API. More specifically, API responses with status code in the range 200-299. |
 |  [OneSpanSign](./onespan-sign-node.onespansign.md) | Main class to interact with OneSpan Sign's API. This class is a collection of resource objects used to interact with OneSpan Sign's API. |
 |  [OSSEventBroker](./onespan-sign-node.osseventbroker.md) | Helper class to ingest [callback notifications](https://community.onespan.com/documentation/onespan-sign/guides/feature-guides/developer/setting-callback-notifications) from OneSpan Sign and call the appropriate handler. |
 |  [PackageResource](./onespan-sign-node.packageresource.md) | Resource class to interact with [packages (transactions)](https://community.onespan.com/documentation/onespan-sign/guides/sender-guides/user/transactions)<!-- -->. |
@@ -44,24 +44,49 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [AccessTokenOwnerConfig](./onespan-sign-node.accesstokenownerconfig.md) | Configuration to retrieve the access token for a user with the <code>OWNER</code> type. |
 |  [AccessTokenSenderConfig](./onespan-sign-node.accesstokensenderconfig.md) | Configuration to retrieve the access token for a user with the <code>SENDER</code> type. |
 |  [Address](./onespan-sign-node.address.md) |  |
+|  [AttachmentRequirement](./onespan-sign-node.attachmentrequirement.md) |  |
 |  [AuditEvent](./onespan-sign-node.auditevent.md) |  |
+|  [BaseMessage](./onespan-sign-node.basemessage.md) |  |
+|  [BrandingBarOptions](./onespan-sign-node.brandingbaroptions.md) |  |
+|  [Callback](./onespan-sign-node.callback.md) |  |
+|  [CeremonyEventComplete](./onespan-sign-node.ceremonyeventcomplete.md) |  |
+|  [CeremonyEvents](./onespan-sign-node.ceremonyevents.md) |  |
+|  [CeremonySettings](./onespan-sign-node.ceremonysettings.md) |  |
+|  [Delivery](./onespan-sign-node.delivery.md) |  |
 |  [DocumentApproval](./onespan-sign-node.documentapproval.md) |  |
 |  [DocumentField](./onespan-sign-node.documentfield.md) |  |
 |  [DocumentMetadata](./onespan-sign-node.documentmetadata.md) |  |
 |  [DocumentPage](./onespan-sign-node.documentpage.md) |  |
+|  [DocumentToolbarOptions](./onespan-sign-node.documenttoolbaroptions.md) |  |
 |  [DocumentVisibility](./onespan-sign-node.documentvisibility.md) | Contains a list of [document visibility configurations](./onespan-sign-node.documentvisibilityconfiguration.md)<!-- -->. |
 |  [DocumentVisibilityConfiguration](./onespan-sign-node.documentvisibilityconfiguration.md) | Document visibility configuration (i.e. who can view the document). |
 |  [ExportedAuditTrail](./onespan-sign-node.exportedaudittrail.md) |  |
 |  [External\_2](./onespan-sign-node.external_2.md) |  |
 |  [ExtractAnchor](./onespan-sign-node.extractanchor.md) |  |
 |  [FieldValidation](./onespan-sign-node.fieldvalidation.md) |  |
+|  [FooterOptions](./onespan-sign-node.footeroptions.md) |  |
+|  [GlobalActionsOptions](./onespan-sign-node.globalactionsoptions.md) |  |
+|  [Group](./onespan-sign-node.group.md) |  |
+|  [GroupMember](./onespan-sign-node.groupmember.md) |  |
 |  [GroupMembership](./onespan-sign-node.groupmembership.md) |  |
+|  [HeaderOptions](./onespan-sign-node.headeroptions.md) |  |
+|  [Image\_2](./onespan-sign-node.image_2.md) |  |
+|  [LayoutOptions](./onespan-sign-node.layoutoptions.md) |  |
+|  [LayoutStyle](./onespan-sign-node.layoutstyle.md) |  |
+|  [Link](./onespan-sign-node.link.md) |  |
 |  [Message](./onespan-sign-node.message.md) |  |
 |  [Package](./onespan-sign-node.package.md) |  |
+|  [PackageArtifactsLimits](./onespan-sign-node.packageartifactslimits.md) |  |
+|  [PackageSettings](./onespan-sign-node.packagesettings.md) |  |
 |  [ProfessionalIdentityField](./onespan-sign-node.professionalidentityfield.md) |  |
+|  [Role](./onespan-sign-node.role.md) |  |
 |  [Sender](./onespan-sign-node.sender.md) |  |
 |  [SignatureStyle](./onespan-sign-node.signaturestyle.md) |  |
+|  [SignedDocumentDelivery](./onespan-sign-node.signeddocumentdelivery.md) |  |
+|  [Signer](./onespan-sign-node.signer.md) |  |
+|  [Style](./onespan-sign-node.style.md) |  |
 |  [TextualSignatureStyle](./onespan-sign-node.textualsignaturestyle.md) |  |
+|  [TitleBarOptions](./onespan-sign-node.titlebaroptions.md) |  |
 |  [Translation](./onespan-sign-node.translation.md) |  |
 |  [User](./onespan-sign-node.user.md) |  |
 |  [UserCustomField](./onespan-sign-node.usercustomfield.md) |  |
@@ -71,6 +96,7 @@ await oneSpanSign.documents.create(packageId, ...)
 |  Namespace | Description |
 |  --- | --- |
 |  [Account](./onespan-sign-node.account.md) |  |
+|  [Auth](./onespan-sign-node.auth.md) |  |
 |  [Events](./onespan-sign-node.events.md) |  |
 |  [RequestBuilders](./onespan-sign-node.requestbuilders.md) |  |
 |  [Requests](./onespan-sign-node.requests.md) |  |
@@ -82,12 +108,14 @@ await oneSpanSign.documents.create(packageId, ...)
 |  --- | --- |
 |  [AuditEventTargetType](./onespan-sign-node.auditeventtargettype.md) |  |
 |  [AuditEventType](./onespan-sign-node.auditeventtype.md) |  |
+|  [CallbackEvent](./onespan-sign-node.callbackevent.md) |  |
 |  [CustomData](./onespan-sign-node.customdata.md) | Custom data embedded into parent object |
 |  [DateTimeString](./onespan-sign-node.datetimestring.md) | String in date-time notation as defined by [RFC 3339, section 5.6](https://datatracker.ietf.org/doc/html/rfc3339#section-5.6) |
-|  [EventHandler](./onespan-sign-node.eventhandler.md) |  |
+|  [EventHandler](./onespan-sign-node.eventhandler.md) | Callback function to handle an event produced by OneSpan. |
 |  [ExtractionType](./onespan-sign-node.extractiontype.md) |  |
 |  [FieldSubtype](./onespan-sign-node.fieldsubtype.md) |  |
 |  [FieldType](./onespan-sign-node.fieldtype.md) |  |
+|  [GroupMemberType](./onespan-sign-node.groupmembertype.md) |  |
 |  [MessageStatus](./onespan-sign-node.messagestatus.md) |  |
 |  [Nullable](./onespan-sign-node.nullable.md) | Make <code>T</code> either its own type or null |
 |  [PackageStatus](./onespan-sign-node.packagestatus.md) |  |
@@ -97,7 +125,7 @@ await oneSpanSign.documents.create(packageId, ...)
 |  [RoleType](./onespan-sign-node.roletype.md) |  |
 |  [SenderStatus](./onespan-sign-node.senderstatus.md) |  |
 |  [SenderType](./onespan-sign-node.sendertype.md) |  |
-|  [SignerStatus](./onespan-sign-node.signerstatus.md) |  |
+|  [SignerType](./onespan-sign-node.signertype.md) |  |
 |  [SpecialUserType](./onespan-sign-node.specialusertype.md) |  |
 |  [TimeZoneId](./onespan-sign-node.timezoneid.md) | Timezone IDs as defined in the [Time Zone Database](https://www.iana.org/time-zones)<!-- -->. |
 

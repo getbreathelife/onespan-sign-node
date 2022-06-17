@@ -4,6 +4,7 @@
 
 ## Requests.GetDocumentBodyOption type
 
+
 <b>Signature:</b>
 
 ```typescript

@@ -4,6 +4,8 @@
 
 ## OneSpanResponseError.code property
 
+Code property returned from OneSpan Sign's API.
+
 <b>Signature:</b>
 
 ```typescript

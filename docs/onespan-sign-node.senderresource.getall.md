@@ -22,6 +22,8 @@ getAll(params?: Requests.GetAllSendersParameters): Promise<Responses.BulkGetResp
 
 Promise&lt;Responses.BulkGetResponse&lt;[Sender](./onespan-sign-node.sender.md)<!-- -->&gt;&gt;
 
+A payload that contains the result count and an array of the matched senders.
+
 ## Remarks
 
 - [REST API documentation (OneSpan)](https://community.onespan.com/products/onespan-sign/sandbox#/Senders/api.account.senders.get)

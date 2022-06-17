@@ -31,19 +31,12 @@ export declare class OSSEventBroker
  server.listen(8080);
 ```
 
-## Properties
-
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [handlers](./onespan-sign-node.osseventbroker.handlers.md) |  | { \[key in keyof Events.LOOKUP\_TABLE\]?: [EventHandler](./onespan-sign-node.eventhandler.md)<!-- -->&lt;Events.LOOKUP\_TABLE\[key\]&gt;; } |  |
-
 ## Methods
 
 |  Method | Modifiers | Description |
 |  --- | --- | --- |
 |  [getHandler(key)](./onespan-sign-node.osseventbroker.gethandler.md) |  | Gets the handler for a callback event. |
 |  [handle(message)](./onespan-sign-node.osseventbroker.handle.md) |  | Handles incoming messages from OneSpan Sign by passing the message to an appropriate handler (if set). |
-|  [parseStream(stream)](./onespan-sign-node.osseventbroker.parsestream.md) |  |  |
 |  [removeHandler(key)](./onespan-sign-node.osseventbroker.removehandler.md) |  | Removes the handler for a callback event. |
 |  [setHandler(key, handler)](./onespan-sign-node.osseventbroker.sethandler.md) |  | Sets the handler for a callback event. |
 

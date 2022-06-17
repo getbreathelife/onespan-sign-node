@@ -16,5 +16,5 @@ constructor(error: Error);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  error | Error |  |
+|  error | Error | Error object thrown from the client |
 

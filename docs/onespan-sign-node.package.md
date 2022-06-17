@@ -27,15 +27,15 @@ export interface Package
 |  [emailMessage](./onespan-sign-node.package.emailmessage.md) | string |  |
 |  [id](./onespan-sign-node.package.id.md) | string |  |
 |  [language](./onespan-sign-node.package.language.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
-|  [limits](./onespan-sign-node.package.limits.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;PackageArtifactsLimits&gt; |  |
+|  [limits](./onespan-sign-node.package.limits.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[PackageArtifactsLimits](./onespan-sign-node.packageartifactslimits.md)<!-- -->&gt; |  |
 |  [messages](./onespan-sign-node.package.messages.md) | [Message](./onespan-sign-node.message.md)<!-- -->\[\] |  |
 |  [name](./onespan-sign-node.package.name.md) | string |  |
 |  [notarized](./onespan-sign-node.package.notarized.md) | boolean |  |
 |  [notaryRoleId](./onespan-sign-node.package.notaryroleid.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
-|  [roles](./onespan-sign-node.package.roles.md) | Role\[\] |  |
+|  [roles](./onespan-sign-node.package.roles.md) | [Role](./onespan-sign-node.role.md)<!-- -->\[\] |  |
 |  [sender](./onespan-sign-node.package.sender.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[Sender](./onespan-sign-node.sender.md)<!-- -->&gt; |  |
-|  [settings](./onespan-sign-node.package.settings.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;PackageSettings&gt; |  |
-|  [signedDocumentDelivery](./onespan-sign-node.package.signeddocumentdelivery.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;SignedDocumentDelivery&gt; |  |
+|  [settings](./onespan-sign-node.package.settings.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[PackageSettings](./onespan-sign-node.packagesettings.md)<!-- -->&gt; |  |
+|  [signedDocumentDelivery](./onespan-sign-node.package.signeddocumentdelivery.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;[SignedDocumentDelivery](./onespan-sign-node.signeddocumentdelivery.md)<!-- -->&gt; |  |
 |  [status](./onespan-sign-node.package.status.md) | [PackageStatus](./onespan-sign-node.packagestatus.md) |  |
 |  [timezoneId](./onespan-sign-node.package.timezoneid.md) | [Nullable](./onespan-sign-node.nullable.md)<!-- -->&lt;string&gt; |  |
 |  [trashed](./onespan-sign-node.package.trashed.md) | boolean |  |

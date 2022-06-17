@@ -4,6 +4,8 @@
 
 ## ClientError.isAborted property
 
+Set to `true` if the error is thrown because the request is aborted.
+
 <b>Signature:</b>
 
 ```typescript

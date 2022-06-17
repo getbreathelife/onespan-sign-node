@@ -13,7 +13,9 @@ get(): Promise<Callback>;
 ```
 <b>Returns:</b>
 
-Promise&lt;Callback&gt;
+Promise&lt;[Callback](./onespan-sign-node.callback.md)<!-- -->&gt;
+
+The callback settings registered on the authenticated account.
 
 ## Remarks
 

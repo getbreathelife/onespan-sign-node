@@ -22,6 +22,8 @@ getOne(id: string): Promise<Sender>;
 
 Promise&lt;[Sender](./onespan-sign-node.sender.md)<!-- -->&gt;
 
+The sender associated wth the given ID.
+
 ## Remarks
 
 - [REST API documentation (OneSpan)](https://community.onespan.com/products/onespan-sign/sandbox#/Senders/api.account.senders._senderId.get)

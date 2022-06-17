@@ -23,7 +23,7 @@ export declare class ClientError extends Error
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
-|  [isAborted](./onespan-sign-node.clienterror.isaborted.md) |  | boolean |  |
-|  [name](./onespan-sign-node.clienterror.name.md) |  | (not declared) |  |
-|  [originalError](./onespan-sign-node.clienterror.originalerror.md) |  | Error |  |
+|  [isAborted](./onespan-sign-node.clienterror.isaborted.md) |  | boolean | Set to <code>true</code> if the error is thrown because the request is aborted. |
+|  [name](./onespan-sign-node.clienterror.name.md) |  | (not declared) | Name of the error. |
+|  [originalError](./onespan-sign-node.clienterror.originalerror.md) |  | Error | Original error thrown by the client. |
 

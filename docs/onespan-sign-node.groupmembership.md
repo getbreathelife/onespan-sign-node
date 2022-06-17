@@ -17,5 +17,5 @@ export interface GroupMembership
 |  --- | --- | --- |
 |  [groupId](./onespan-sign-node.groupmembership.groupid.md) | string |  |
 |  [groupName](./onespan-sign-node.groupmembership.groupname.md) | string |  |
-|  [memberType](./onespan-sign-node.groupmembership.membertype.md) | 'REGULAR' \| 'MANAGER' |  |
+|  [memberType](./onespan-sign-node.groupmembership.membertype.md) | [GroupMemberType](./onespan-sign-node.groupmembertype.md) |  |
 

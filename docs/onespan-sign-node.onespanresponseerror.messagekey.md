@@ -4,6 +4,8 @@
 
 ## OneSpanResponseError.messageKey property
 
+Message key property returned from OneSpan Sign's API.
+
 <b>Signature:</b>
 
 ```typescript

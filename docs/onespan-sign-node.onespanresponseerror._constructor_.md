@@ -16,6 +16,6 @@ constructor(response: Record<string, any>, statusCode: number);
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  response | Record&lt;string, any&gt; |  |
-|  statusCode | number |  |
+|  response | Record&lt;string, any&gt; | Response payload returned by OneSpan Sign's API |
+|  statusCode | number | Response status code |
 

@@ -9,14 +9,14 @@ Removes the handler for a callback event.
 <b>Signature:</b>
 
 ```typescript
-removeHandler<T extends keyof Events.LOOKUP_TABLE>(key: T): void;
+removeHandler<T extends keyof Events.InterfaceMap>(key: T): void;
 ```
 
 ## Parameters
 
 |  Parameter | Type | Description |
 |  --- | --- | --- |
-|  key | T | Name of the event. See [Events.LOOKUP\_TABLE](./onespan-sign-node.events.lookup_table.md) for the list of valid keys. |
+|  key | T | Name of the event. See [Events.InterfaceMap](./onespan-sign-node.events.interfacemap.md) for the list of valid keys. |
 
 <b>Returns:</b>
 
