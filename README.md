@@ -1,7 +1,5 @@
 # onespan-sign-node
 
-:warning: This library is still a WIP
-
 Node.js library for the OneSpan Sign API. (Version 11.46)
 
 If you wish to contribute to this project, please read the [contribution guidelines](./CONTRIBUTING.md).
