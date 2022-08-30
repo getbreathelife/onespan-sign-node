@@ -1,0 +1,24 @@
+name: publish
+on:
+  release:
+    types:
+      - published # release, pre-release or draft is published
+jobs:
+  build-pack-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@breathelife'
+
+      - run: yarn
+      - run: yarn test
+      - run: |
+          [[ "${{ github.event.release.prerelease }}" == "true" ]] && release_tag="next" || release_tag="latest"
+          npm publish --tag "$release_tag" --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
